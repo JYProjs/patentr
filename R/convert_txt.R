@@ -35,5 +35,10 @@ convert_txt_to_df <- function(input_file, temp_output_file = "temp-output.csv") 
                          na.strings = c("NA", "N/A", ""),
                          colClasses = rep("character", 8),
                          nrows = num_pat)
+
+  # delete temporary storage file
+  file.remove(temp_output_file);
+
+  # return answer
   return(ans)
 }

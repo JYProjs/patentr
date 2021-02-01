@@ -3,6 +3,7 @@
 #include <fstream>
 #include <string>
 #include <algorithm>
+#include <cctype>
 
 using namespace Rcpp;
 
@@ -56,7 +57,7 @@ void formatName(std::string &name)
     // leave as-is if there's no semi colon or if the format is not as expected
     if (semicolon == std::string::npos || name.length() < semicolon + 2) return ;
 
-    std::string temp = name.substr(0, semicolon - 1),
+    std::string temp = name.substr(0, semicolon),
                 revised = name.substr(semicolon + 2);
 
     name = revised + " " + temp;
@@ -68,6 +69,17 @@ void appendToField(std::string &orig, const std::string &addon)
       orig = addon;
     else
       orig = orig + ';' + addon;
+}
+
+void alphaDigitOnly(std::string &text)
+{
+    std::string ans = "";
+    int len = text.length();
+    for (int i = 0; i < len; i++)
+        if (isdigit(text[i]) || isalpha(text[i]))
+          ans.push_back(text[i]);
+
+    text = ans;
 }
 
 // [[Rcpp::export]]
@@ -93,7 +105,8 @@ int txt_to_df_cpp(std::string input_file, std::string output_file)
                 tempLine,
                 tempInvt = "",
                 tempAssg = "",
-                tempClass = "";
+                tempClass = "",
+                tempRef = "";
     bool inPatent = false,
          gotAPD = false,
          gotISD = false;
@@ -134,6 +147,7 @@ int txt_to_df_cpp(std::string input_file, std::string output_file)
             assignee = "";
             tempClass = "";
             iclClass = "";
+            tempRef = "";
             refs = "";
         }
         else if (inPatent && startsWith(currLine, "TTL  "))
@@ -187,6 +201,19 @@ int txt_to_df_cpp(std::string input_file, std::string output_file)
         {
             tempClass = extractField(currLine, 5);
             appendToField(iclClass, tempClass);
+        }
+        else if (inPatent && startsWith(currLine, "UREF"))
+        {
+            // read next line to get patent number (and confirm format)
+            getline(fin, tempLine);
+            if (startsWith(tempLine, "PNO  "))
+            {
+                tempRef = extractField(tempLine, 5);
+                alphaDigitOnly(tempRef);
+            }
+
+            // add this reference to set of references for this patent
+            appendToField(refs, tempRef);
         }
 
         // read next line

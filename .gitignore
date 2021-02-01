@@ -2,3 +2,9 @@
 .Rhistory
 .Rproj.user
 *.Rproj
+
+# sample data files
+*.zip
+*.txt
+*.xml
+sample-data

@@ -6,14 +6,15 @@
 using namespace Rcpp;
 
 // txt_to_df_cpp
-void txt_to_df_cpp(std::string input_file, std::string output_file);
+int txt_to_df_cpp(std::string input_file, std::string output_file);
 RcppExport SEXP _patentr_txt_to_df_cpp(SEXP input_fileSEXP, SEXP output_fileSEXP) {
 BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< std::string >::type input_file(input_fileSEXP);
     Rcpp::traits::input_parameter< std::string >::type output_file(output_fileSEXP);
-    txt_to_df_cpp(input_file, output_file);
-    return R_NilValue;
+    rcpp_result_gen = Rcpp::wrap(txt_to_df_cpp(input_file, output_file));
+    return rcpp_result_gen;
 END_RCPP
 }
 

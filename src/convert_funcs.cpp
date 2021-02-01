@@ -33,7 +33,7 @@ void stripEndWhitespace(std::string &text)
 }
 
 // [[Rcpp::export]]
-void txt_to_df_cpp(std::string input_file, std::string output_file)
+int txt_to_df_cpp(std::string input_file, std::string output_file)
 {
     // setup IO
     std::ifstream fin(input_file);
@@ -57,6 +57,7 @@ void txt_to_df_cpp(std::string input_file, std::string output_file)
 
     // read input file line-by-line and store patent data
     getline(fin, currLine);
+    int countPat = 0;
     while (!fin.eof())
     {
         // look at current line
@@ -66,8 +67,8 @@ void txt_to_df_cpp(std::string input_file, std::string output_file)
             if (inPatent)
             {
                 fout << currID
-                  << "," << title
-                  << "," << appDate
+                  << ",\"" << title
+                  << "\"," << appDate
                   << "," << issDate
                   << "," << inventor
                   << "," << assignee
@@ -77,7 +78,8 @@ void txt_to_df_cpp(std::string input_file, std::string output_file)
             }
             else inPatent = true;
 
-            // reset vars
+            // update counter/tracker vars
+            countPat++;
             gotAPD = false;
         }
         else if (inPatent && startsWith(currLine, "TTL  "))
@@ -104,7 +106,21 @@ void txt_to_df_cpp(std::string input_file, std::string output_file)
         getline(fin, currLine);
     }
 
+    // output details of last patent
+    fout << currID
+         << ",\"" << title
+         << "\"," << appDate
+         << "," << issDate
+         << "," << inventor
+         << "," << assignee
+         << "," << iclClass
+         << "," << refs
+         << "\n";
+
     // close IO
     fin.close();
     fout.close();
+
+    // return number of patents
+    return countPat;
 }

@@ -22,6 +22,7 @@ convert_txt_to_df <- function(year, week) {
 }
 
 # convert TXT file containing patent data to data frame
-convert_txt_to_df <- function(filename) {
-
+#' @export
+convert_txt_to_df <- function(input_file) {
+  txt_to_df_cpp(input_file, "temp-output.csv")
 }

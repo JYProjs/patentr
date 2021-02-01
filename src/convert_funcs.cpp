@@ -32,6 +32,22 @@ void stripEndWhitespace(std::string &text)
     text = text.substr(0, end);
 }
 
+// remove whitespace from beginning and end
+void stripEdgeWhitespace(std::string &text)
+{
+    stripBeginWhitespace(text);
+    stripEndWhitespace(text);
+}
+
+// extract single-line field and strip whitespace
+std::string extractField(std::string line, int startPos)
+{
+    // extract, strip whitespace, and return
+    std::string ans = line.substr(startPos);
+    stripEdgeWhitespace(ans);
+    return ans;
+}
+
 // [[Rcpp::export]]
 int txt_to_df_cpp(std::string input_file, std::string output_file)
 {
@@ -53,7 +69,8 @@ int txt_to_df_cpp(std::string input_file, std::string output_file)
                 refs = "",
                 currLine;
     bool inPatent = false,
-         gotAPD = false;
+         gotAPD = false,
+         gotISD = false;
 
     // read input file line-by-line and store patent data
     getline(fin, currLine);
@@ -84,22 +101,21 @@ int txt_to_df_cpp(std::string input_file, std::string output_file)
         }
         else if (inPatent && startsWith(currLine, "TTL  "))
         {
-            title = currLine.substr(5);
-            stripBeginWhitespace(title);
-            stripEndWhitespace(title);
+            title = extractField(currLine, 5);
         }
         else if (inPatent && startsWith(currLine, "WKU  "))
         {
-            currID = currLine.substr(5);
-            stripBeginWhitespace(currID);
-            stripEndWhitespace(currID);
+            currID = extractField(currLine, 5);
         }
         else if (inPatent && !gotAPD && startsWith(currLine, "APD  "))
         {
             gotAPD = true;
-            appDate = currLine.substr(5);
-            stripBeginWhitespace(appDate);
-            stripEndWhitespace(appDate);
+            appDate = extractField(currLine, 5);
+        }
+        else if (inPatent && !gotISD && startsWith(currLine, "ISD  "))
+        {
+            gotISD = true;
+            issDate = extractField(currLine, 5);
         }
 
         // read next line

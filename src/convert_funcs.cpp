@@ -81,6 +81,12 @@ void txt_to_df_cpp(std::string input_file, std::string output_file)
             stripBeginWhitespace(title);
             stripEndWhitespace(title);
         }
+        else if (inPatent && startsWith(currLine, "WKU  "))
+        {
+            currID = currLine.substr(5);
+            stripBeginWhitespace(currID);
+            stripEndWhitespace(currID);
+        }
 
         // read next line
         getline(fin, currLine);

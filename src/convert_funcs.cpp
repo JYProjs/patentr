@@ -52,7 +52,8 @@ void txt_to_df_cpp(std::string input_file, std::string output_file)
                 iclClass = "",
                 refs = "",
                 currLine;
-    bool inPatent = false;
+    bool inPatent = false,
+         gotAPD = false;
 
     // read input file line-by-line and store patent data
     getline(fin, currLine);
@@ -61,6 +62,7 @@ void txt_to_df_cpp(std::string input_file, std::string output_file)
         // look at current line
         if (startsWith(currLine, "PATN"))
         {
+            // print past patent (unless this is the first one)
             if (inPatent)
             {
                 fout << currID
@@ -74,6 +76,9 @@ void txt_to_df_cpp(std::string input_file, std::string output_file)
                   << "\n";
             }
             else inPatent = true;
+
+            // reset vars
+            gotAPD = false;
         }
         else if (inPatent && startsWith(currLine, "TTL  "))
         {
@@ -86,6 +91,13 @@ void txt_to_df_cpp(std::string input_file, std::string output_file)
             currID = currLine.substr(5);
             stripBeginWhitespace(currID);
             stripEndWhitespace(currID);
+        }
+        else if (inPatent && !gotAPD && startsWith(currLine, "APD  "))
+        {
+            gotAPD = true;
+            appDate = currLine.substr(5);
+            stripBeginWhitespace(appDate);
+            stripEndWhitespace(appDate);
         }
 
         // read next line

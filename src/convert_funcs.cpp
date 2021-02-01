@@ -92,7 +92,8 @@ int txt_to_df_cpp(std::string input_file, std::string output_file)
                 currLine,
                 tempLine,
                 tempInvt = "",
-                tempAssg = "";
+                tempAssg = "",
+                tempClass = "";
     bool inPatent = false,
          gotAPD = false,
          gotISD = false;
@@ -131,6 +132,7 @@ int txt_to_df_cpp(std::string input_file, std::string output_file)
             inventor = "";
             tempAssg = "";
             assignee = "";
+            tempClass = "";
             iclClass = "";
             refs = "";
         }
@@ -180,6 +182,11 @@ int txt_to_df_cpp(std::string input_file, std::string output_file)
 
             // add this assignee to set of assignees for this patent
             appendToField(assignee, tempAssg);
+        }
+        else if (inPatent && startsWith(currLine, "ICL  "))
+        {
+            tempClass = extractField(currLine, 5);
+            appendToField(iclClass, tempClass);
         }
 
         // read next line

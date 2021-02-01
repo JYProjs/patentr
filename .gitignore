@@ -8,3 +8,7 @@
 *.txt
 *.xml
 sample-data
+
+# Mac files
+.DS_Store
+

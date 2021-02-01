@@ -91,7 +91,8 @@ int txt_to_df_cpp(std::string input_file, std::string output_file)
                 refs = "",
                 currLine,
                 tempLine,
-                tempInvt = "";
+                tempInvt = "",
+                tempAssg = "";
     bool inPatent = false,
          gotAPD = false,
          gotISD = false;
@@ -112,8 +113,8 @@ int txt_to_df_cpp(std::string input_file, std::string output_file)
                   << "\"," << appDate
                   << "," << issDate
                   << ",\"" << inventor
-                  << "\"," << assignee
-                  << "," << iclClass
+                  << "\",\"" << assignee
+                  << "\"," << iclClass
                   << "," << refs
                   << "\n";
             }
@@ -122,8 +123,16 @@ int txt_to_df_cpp(std::string input_file, std::string output_file)
             // update counter/tracker vars
             countPat++;
             gotAPD = false;
+            gotISD = false;
+            title = "";
+            appDate = "";
+            issDate = "";
             tempInvt = "";
             inventor = "";
+            tempAssg = "";
+            assignee = "";
+            iclClass = "";
+            refs = "";
         }
         else if (inPatent && startsWith(currLine, "TTL  "))
         {
@@ -155,6 +164,22 @@ int txt_to_df_cpp(std::string input_file, std::string output_file)
 
             // add this inventor to set of inventors for this patent
             appendToField(inventor, tempInvt);
+        }
+        else if (inPatent && startsWith(currLine, "ASSG"))
+        {
+            // read next line to get assignee name (and confirm format)
+            getline(fin, tempLine);
+            if (startsWith(tempLine, "NAM  "))
+            {
+                tempAssg = extractField(tempLine, 5);
+
+                // fix name format if person (and not corporation)
+                if (tempAssg.find(';') != std::string::npos)
+                  formatName(tempAssg);
+            }
+
+            // add this assignee to set of assignees for this patent
+            appendToField(assignee, tempAssg);
         }
 
         // read next line

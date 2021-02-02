@@ -35,4 +35,5 @@ Imports:
     dplyr (>= 1.0.2)
 URL: https://github.com/JYProjs/patentr
 BugReports: https://github.com/JYProjs/patentr/issues
-
+Suggests: 
+    testthat

@@ -83,14 +83,24 @@ void alphaDigitOnly(std::string &text)
 }
 
 // [[Rcpp::export]]
-int txt_to_df_cpp(std::string input_file, std::string output_file)
+int txt_to_df_cpp(std::string input_file, std::string output_file, bool append, bool header)
 {
     // setup IO
     std::ifstream fin(input_file);
-    std::ofstream fout(output_file);
+    std::ofstream fout;
 
-    // output header line to CSV
-    fout << "WKU,Title,App_Date,Issue_Date,Inventor,Assignee,ICL_Class,References\n";
+    // initialize ofstream depending on append param
+    if (append)
+    {
+        fout = std::ofstream(output_file, std::ios::app);
+    }
+    else
+    {
+        fout = std::ofstream(output_file);
+
+        // output header line to CSV (if necessary)
+        if (header) fout << "WKU,Title,App_Date,Issue_Date,Inventor,Assignee,ICL_Class,References\n";
+    }
 
     // variables holding patent properties
     std::string currID = "",

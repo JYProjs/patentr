@@ -2,4 +2,5 @@
 
 export(convert_txt_to_df)
 importFrom(Rcpp,sourceCpp)
+importFrom(magrittr,"%>%")
 useDynLib(patentr, .registration = TRUE)

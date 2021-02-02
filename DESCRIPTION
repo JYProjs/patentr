@@ -22,4 +22,8 @@ RoxygenNote: 7.1.1
 LinkingTo: 
     Rcpp
 Imports: 
-    Rcpp (>= 1.0.5)
+    Rcpp (>= 1.0.5),
+    data.table (>= 1.13),
+    utils (>= 4.0),
+    lubridate (>= 1.7.9),
+    magrittr (>= 2.0)

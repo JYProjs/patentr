@@ -6,20 +6,22 @@
 using namespace Rcpp;
 
 // txt_to_df_cpp
-int txt_to_df_cpp(std::string input_file, std::string output_file);
-RcppExport SEXP _patentr_txt_to_df_cpp(SEXP input_fileSEXP, SEXP output_fileSEXP) {
+int txt_to_df_cpp(std::string input_file, std::string output_file, bool append, bool header);
+RcppExport SEXP _patentr_txt_to_df_cpp(SEXP input_fileSEXP, SEXP output_fileSEXP, SEXP appendSEXP, SEXP headerSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< std::string >::type input_file(input_fileSEXP);
     Rcpp::traits::input_parameter< std::string >::type output_file(output_fileSEXP);
-    rcpp_result_gen = Rcpp::wrap(txt_to_df_cpp(input_file, output_file));
+    Rcpp::traits::input_parameter< bool >::type append(appendSEXP);
+    Rcpp::traits::input_parameter< bool >::type header(headerSEXP);
+    rcpp_result_gen = Rcpp::wrap(txt_to_df_cpp(input_file, output_file, append, header));
     return rcpp_result_gen;
 END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
-    {"_patentr_txt_to_df_cpp", (DL_FUNC) &_patentr_txt_to_df_cpp, 2},
+    {"_patentr_txt_to_df_cpp", (DL_FUNC) &_patentr_txt_to_df_cpp, 4},
     {NULL, NULL, 0}
 };
 

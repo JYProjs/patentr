@@ -1,5 +1,31 @@
 # user facing function to get patent data from USPTO
+#' Get Bulk Patent Data from USPTO
+#'
+#' Download and convert bulk patent data to tidy format from the
+#' USPTO website <https://bulkdata.uspto.gov>. Data can be returned as a data
+#' frame or written to a file (see `output_file` parameter). Since USPTO issues
+#' patents weekly, at minimum, all patents from a given week must be acquired
+#' at once.
+#'
+#' @param year integer vector containing years from which patents should be
+#'   collected
+#' @param week integer vector of weeks within the corresponding `year` element
+#'   from which patents should be collected
+#' @param output_file if `NULL`, returns a data frame; if a `character`
+#'   (single-element vector), will output to that file in CSV format
+#' @return either `TRUE` (placeholder) or object of class `data.frame` (see
+#'   param `output_file` for details)
 #' @export
+#' @examples
+#' ## NOTE: none of the examples are run due to the download requirement
+#' \dontrun{
+#' # download patents from the first week of 1976 and get data frame
+#' patent_data <- get_bulk_patent_data(year = 1976, week = 1)
+#'
+#' # download patents from the last 5 weeks of 1980 (and write to a file)
+#' get_bulk_patent_data(year = rep(1980, 5), week = 48:52,
+#'                      output_file = "patent-data.csv")
+#' }
 get_bulk_patent_data <- function(year, week, output_file = NULL) {
   # valid arguments?
   if (sum(is.na(year)) > 0 | sum(is.na(week)) > 0 |

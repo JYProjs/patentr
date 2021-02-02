@@ -16,6 +16,7 @@
 #' @return either `TRUE` (placeholder) or object of class `data.frame` (see
 #'   param `output_file` for details)
 #' @export
+#' @importFrom rlang .data
 #' @examples
 #' ## NOTE: none of the examples are run due to the download requirement
 #' \dontrun{
@@ -65,9 +66,9 @@ get_bulk_patent_data <- function(year, week, output_file = NULL) {
                         Week = week)
 
   # split into 3 data frames based on format (3 formats used by USPTO, as of Feb 2021)
-  date_df_txt <- dplyr::filter(date_df, Year <= 2001)
-  date_df_xml1<- dplyr::filter(date_df, Year >= 2002 & Year <= 2004)
-  date_df_xml2<- dplyr::filter(date_df, Year >= 2005)
+  date_df_txt <- dplyr::filter(date_df, .data$Year <= 2001)
+  date_df_xml1<- dplyr::filter(date_df, .data$Year >= 2002 & .data$Year <= 2004)
+  date_df_xml2<- dplyr::filter(date_df, .data$Year >= 2005)
 
   # NEED TO ADD OTHER 2 FORMATS HERE
   # get data for all 3

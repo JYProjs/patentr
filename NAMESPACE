@@ -3,4 +3,5 @@
 export(get_bulk_patent_data)
 importFrom(Rcpp,sourceCpp)
 importFrom(magrittr,"%>%")
+importFrom(rlang,.data)
 useDynLib(patentr, .registration = TRUE)

@@ -3,3 +3,4 @@
 ^sample-data$
 ^\.travis\.yml$
 ^appveyor\.yml$
+^README.md$

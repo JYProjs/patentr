@@ -7,12 +7,12 @@ Authors@R:
              family = "Wadhwa",
              role = c("aut", "cre"),
              email = "raoulwadhwa@gmail.com"),
-    person(given = "James",
-           family = "Yu",
-           role = "aut"),
-    person(given = "Peter",
-           family = "Erdi",
-           role = "aut"))
+      person(given = "James",
+             family = "Yu",
+             role = "aut"),
+      person(given = "Peter",
+             family = "Erdi",
+             role = "aut"))
 Description: Converts TXT and XML data curated by the United States Patent and
     Trademark Office (USPTO). Allows conversion of bulk data after downloading
     directly from the USPTO bulk data website, eliminating need for users to

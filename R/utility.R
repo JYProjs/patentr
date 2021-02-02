@@ -1,4 +1,5 @@
 # figure out date of Nth Tuesday in given year
+# important b/c USPTO issues patents every Tues
 #' @importFrom magrittr "%>%"
 get_date_tues <- function(year, week) {
   # confirm valid params
@@ -27,6 +28,12 @@ get_date_tues <- function(year, week) {
 
 # get integer with set number of digits (adds appropriate leading zeroes)
 int_with_len <- function(int_val, len) {
+  # doesn't work w/ negative numbers
+  if (int_val < 0) {
+    stop(paste("`int_val` cannot be negative; passed value =", int_val),
+         call. = FALSE)
+  }
+
   # convert to character, then add leading zeroes
   ans <- as.character(int_val)
   num_leading <- len - nchar(ans)

@@ -2,13 +2,6 @@
 # input = file to convert (year & week)
 # output = data frame
 convert_txt_to_df <- function(year, week) {
-  # year has to be between 1976 and 2001 (inclusive)
-  if (year < 1976 | year > 2001) {
-    stop(paste("Patents from the year", year,
-               "are not published in TXT format."),
-         call. = FALSE)
-  }
-
   # download data - NEED TO DO
 
   # extract/uncompress downloaded data - NEED TO DO
@@ -31,7 +24,6 @@ convert_txt_to_df <- function(year, week) {
 #   - output_file = <filename> is used to acquire data and then read into `df2` with `read.csv`
 #     (read.csv(<filename>, colClasses = rep("character", 8), na.strings = c("NA", "N/A", "")))
 # then: all.equal(df1, df2) should return TRUE
-#' @export
 convert_txt_to_df <- function(date_df, output_file = NULL) {
   # NEED TO COMPLETE: confirm dates and data frame format are valid
   if (!("Year" %in% colnames(date_df) & "Week" %in% colnames(date_df))) {
@@ -100,7 +92,7 @@ convert_txt_to_df <- function(date_df, output_file = NULL) {
   ans <- TRUE
   if (is.null(output_file)) {
     ans <- data.table::rbindlist(df_store)
-    attr(ans, ".internal.selfref") <- NULL  # remove attribute for equality between
+    attr(ans, ".internal.selfref") <- NULL  # remove attribute for equality between file read and direct df methods
   }
 
   # return

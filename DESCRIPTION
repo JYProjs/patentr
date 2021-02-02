@@ -26,4 +26,5 @@ Imports:
     data.table (>= 1.13),
     utils (>= 4.0),
     lubridate (>= 1.7.9),
-    magrittr (>= 2.0)
+    magrittr (>= 2.0),
+    dplyr (>= 1.0.2)

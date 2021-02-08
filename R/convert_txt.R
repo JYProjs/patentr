@@ -10,6 +10,7 @@
 # then: all.equal(df1, df2) should return TRUE
 convert_txt_to_df <- function(date_df, output_file = NULL) {
   # NEED TO COMPLETE: confirm dates and data frame format are valid
+  # internal function so should never hit this issue
   if (!("Year" %in% colnames(date_df) & "Week" %in% colnames(date_df))) {
     stop(paste("date_df parameter must have `Year` and `Week` columns;",
                "available cols are:", colnames(date_df)),

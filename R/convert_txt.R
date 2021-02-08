@@ -1,19 +1,3 @@
-# internal function to convert txt bulk data
-# input = file to convert (year & week)
-# output = data frame
-convert_txt_to_df <- function(year, week) {
-  # download data - NEED TO DO
-
-  # extract/uncompress downloaded data - NEED TO DO
-  data_file <- ""
-
-  # convert TXT file
-  ans <- convert_txt_to_df(data_file)
-
-  # return data frame
-  return(ans)
-}
-
 # convert multiple TXT files
 # internal function
 # date_df: column1 = year; column2 = week

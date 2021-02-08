@@ -1,0 +1,1121 @@
+HHHHHT        APS1        ISSUE - 760106
+PATN
+WKU  RE0286710
+SRC  5
+APN  500649&
+APT  2
+PBL  E
+ART  315
+APD  19740826
+TTL  Hydrophone damper assembly
+ISD  19760106
+NCL  18
+ECL  13
+EXA  Basinger; Sherman D.
+EXP  Blix; Trygve M.
+NDR  2
+NFG  10
+INVT
+NAM  Widenhofer; James W.
+CTY  Jackson
+STA  MI
+ASSG
+NAM  Sparton Corporation
+CTY  Jackson
+STA  MI
+COD  02
+REIS
+COD  50
+APN  151269
+APD  19710609
+PNO  03701175
+ISD  19721031
+CLAS
+OCL    9  8R
+XCL  340  2
+XCL  340  3T
+XCL  340  7R
+XCL  340  8R
+EDF  2
+ICL  B63B 2152
+ICL  B63B 5102
+FSC    9
+FSS  8 R
+FSC  340
+FSS  2;3 T;8 S;8 R;7
+FSC  114
+FSS  206 R
+UREF
+PNO  2790186
+ISD  19570400
+NAM  Carapellotti
+OCL    9  8R
+UREF
+PNO  3329015
+ISD  19670700
+NAM  Bakeke et al.
+OCL  340  2
+UREF
+PNO  3377615
+ISD  19680400
+NAM  Lutes
+OCL  340  2
+UREF
+PNO  3543228
+ISD  19701100
+NAM  Farmer
+OCL  340  2
+UREF
+PNO  3543228
+ISD  19701100
+NAM  Farmer et al.
+OCL    9  8R
+UREF
+PNO  3711821
+ISD  19730100
+NAM  Dale et al.
+OCL    9  8R
+UREF
+PNO  3720909
+ISD  19730300
+NAM  Sikora
+OCL  340  2
+UREF
+PNO  3803540
+ISD  19740400
+NAM  Mar et al.
+OCL  340  2
+LREP
+FRM  Beaman & Beaman
+ABST
+PAL  A damper for use in submerged hydrophone suspension systems including an
+      elongated mass cylinder defined by a tube of flexible synthetic plastic
+      film utilizing a check valve located at each end permitting water to enter
+      the tube and preventing egress. Additionally, each tube end is provided
+      with a disk transversely disposed to the tube length and of a diameter
+      substantially greater than that of the tube to provide drag and
+      hydrodynamic mass damping. The tube and disk are of a configuration to
+      eliminate vortex shedding and the entire damper assembly is capable of
+      being folded and packed within a concise configuration prior to
+      deployment.
+BSUM
+PAC  BACKGROUND OF THE INVENTION
+PAR  The invention pertains to the field of motion damping devices used with
+      submerged marine instrumentation for damping instrumentation movement and
+      displacement due to wave and water motion.
+PAR  In underwater transducer and hydrophone installations, such as in a
+      sonobuoy system for detecting submarine sounds and the like, the provision
+      of a substantially stable platform for the hydrophone is of prime
+      importance in order to reduce extraneous noises and signals and permit the
+      most accurate sound pressure wave input characteristics.
+PAR  The purpose of sonobuoy suspension systems is to attenuate the vertical
+      motion imparted by surface wave action to a hydrophone platform as motion
+      of the hydrophone due to surface wave action will result in the generation
+      of spurious low frequency signals. The attenuation system itself must not
+      produce low frequency lateral motion oscillation such as those commonly
+      found in objects suspended in ocean currents resulting from periodic
+      shedding of vortices in the flowing fluid.
+PAR  In a free floating sonobuoy system it is also important that a high drag
+      concentration in the vicinity of the hydrophone platform be produced to
+      reduce the relative velocity of the flow past the hydrophone to minimize
+      the magnitude of any occurring flow noise as well as reducing the
+      frequency of the noise associated with boundry layer transition on the
+      hydrophone surfaces. Additionally, the magnitude and frequency of any
+      unavoidable motion associated with vortex shedding is simultaneously
+      reduced.
+PAR  Improved transducer suspension systems have been achieved by the
+      utilization of complaint members such as shown in the assignee's U.S. Pat.
+      No. 3,377,615. Additionally, the utilization of specialized configurations
+      in floating and buoy systems for stabilization purposes are known as shown
+      in U.S. Pat. Nos. 3,191,202, 3,500,783, 3,510,892 and 3,543,228. However,
+      a damper assembly for use with submerged hydrophone assemblies wherein a
+      mass damper of an effective construction capable of being concisely stored
+      has not been previously successfully achieved.
+PAC  SUMMARY
+PAR  It is an object of the invention to provide a low cost damper for the
+      purpose of stabilizing the position of a hydrophone platform in order to
+      reduce the introduction of spurious noises and signals into the
+      hydrophone. The damper of the invention utilizes both mass, drag and
+      hydrodynamic mass damping characteristics, and while the mass of the
+      damper is significant when deployed, its weight when stored is very small
+      and its unique construction utilizes entrapped water to produce the
+      desired damping mass.
+PAR  Additionally, the damper assembly of the invention isolates the hydrophone
+      platform from any direct input of residual strumming produced by the
+      compliant cable spring suspension utilized in conjunction with the
+      hydrophone, and the construction of the damper is such as to minimize the
+      occurrence of vibration due to water current and flow past the damper
+      components.
+PAR  The damper assembly in accord with the invention includes a long cylinder
+      of flexible synthetic plastic film closed at each end by a check valve of
+      unique configuration which permits water to enter, but not leave the tube.
+      Disks having a diameter substantially greater than that of the tube are
+      attached to each tube end at the check valves transversely disposed to the
+      tube length to produce hydrodynamic damping and the disks are canted with
+      respect to each other to minimize adverse effects produced by vortex
+      shedding. An inelastic strip is affixed to the tube extending its length
+      causing the tube to be warped or curved in an arc in the longitudinal
+      direction minimizing rotation of the damper due to waterflow, and
+      elimination of such rotation is important as rotation will aggravate the
+      instability of the damper assembly in a shear current.
+PAR  The disks located at the tube end are formed of synthetic plastic film and
+      their shape is maintained, when deployed, by a flexible, resilient ring
+      formed of a spring steel material which forms an expanded cylindrical
+      configuration as soon as the damper is deployed and removed from its
+      storage cannister.
+PAR  Assembly of the damper is simplified by the utilization of retaining
+      members defined on the check valve wherein a mechanical interconnection
+      between the tube and associated disks is simultaneously achieved by the
+      assembly of the check valve structure. Also, suspension means are defined
+      on the check valve permitting the damper to constitute a component in the
+      hydrophone suspension system.
+DRWD
+PAC  BRIEF DESCRIPTION OF THE DRAWINGS
+PAR  The aforementioned objects and advantages of the invention will be
+      appreciated from the following description and accompanying drawings
+      wherein:
+PAR  FIG. 1 is a perspective view of a deployed sonobuoy system utilizing the
+      damper of the invention,
+PAR  FIG. 2 is an elevational view of the damper in accord with the invention as
+      deployed,
+PAR  FIG. 3 is a view taken from the right of FIG. 2,
+PAR  FIG. 4 is a top plan view as taken of FIG. 2,
+PAR  FIG. 5 is a cross-sectional view taken through the tube along Section V--V
+      of FIG. 2,
+PAR  FIG. 6 is an enlarged cross-sectional view taken through the disk and check
+      valve along Section VI--VI of FIG. 4,
+PAR  FIG. 7 is an enlarged cross-sectional view taken through the check valve
+      rim region illustrating the retaining ring construction, and FIGS. 8
+      through 10 illustrate the folding of the disk and tube for packing into
+      the sonobuoy cannister.
+DETD
+PAC  DESCRIPTION OF THE PREFERRED EMBODIMENT
+PAR  FIG. 1 illustrates a deployed sonobuoy system using a damper and improved
+      transducer platform for providing high quality transmission of underwater
+      sound vibrations. The sonobuoy float 10 floats upon the surface of the
+      water and the cannister 12 depends from the float. The cannister is of a
+      hollow cylindrical configuration and prior to deployment houses the
+      sonobuoy components. In those cases where the sonobuoy is dropped from
+      aircraft the cannister serves to protect the transducer, damper and other
+      components upon impact with the water. A cable 14 depends from the
+      cannister and is attached to the upper end of the damper assembly
+      generally indicated at 16. A second cable 18 depends from the lower end of
+      the damper assembly and is attached to the hydrophone assembly generally
+      indicated at 20. The assembly 20 includes instrumentation housing 22,
+      housing 23, compliant expansion cables 24 and 26, hydrophone 28, and
+      weight 30. The housing 23 and hydrophone 28 are located within a mesh tube
+      32 which reduces flow noises and electrical conductors, not shown,
+      interconnect the hydrophone with its transmitter housings 22 and 23 and
+      the transmitter located within the cannister 12. The assembly 20
+      constitutes no part of the invention and is described in detail in the
+      assignee's copending application, Ser. No. 111,410, filed Feb. 1, 1971. It
+      is to be understood that the purpose of the damper assembly 16 is to
+      provide a stable platform for the hydrophone assembly 20 and does so in
+      the manner described below.
+PAR  The damper assembly 16 includes a mass cylinder 34 formed by a tube or
+      sleeve of flexible synthetic plastic film of only a few thousandths of an
+      inch thickness whereby the cross-sectional configuration of the tube is
+      cylindrical and the tube may be concisely folded.
+PAR  The ends of the tube 34 are cut at substantially right angles to the tube
+      length, when deployed, and are connected to check valve structure in a
+      manner later described. The check valve structure 36 is identical at each
+      end of the tube and each check valve includes retaining ring members
+      whereby the tube and disk members associated at each tube end may be
+      mechanically connected simultaneously to the check valve.
+PAR  The disks 38 are also each formed of synthetic plastic film having an upper
+      layer 40 and a lower layer 42, FIG. 6. When deployed, the annular
+      configuration of the disks is maintained by an annular resilient
+      spring-like ring 44, and the disks are formed by a heat sealing process
+      resulting in a peripheral seam 46.
+PAR  Stabilizer straps 48 of plastic film are connected to each of the
+      peripheries of the disks 38 at one end, and connected to the central
+      region of the tube 34 at the other end, and the length of the stabilizers
+      is such that the disks 38 are canted with respect to each other as will be
+      apparent in FIGS. 2 and 3.
+PAR  The check valve structure 36 will be appreciated from FIGS. 4, 6 and 7. As
+      appreciated from FIG. 4, the check valves are of an annular configuration
+      including a peripheral rim region 50. The body of the valve is formed of a
+      synthetic plastic material and is of a cylindrical configuration including
+      a passage 52. centrally defined therein through which water may flow into
+      the tube 34. Webs 54 diametrically extend across the passage 52 and the
+      inner surface 56 of the rim region serves as a valve seat for the
+      resilient, flexible flap valve 58 riveted to the valve body at 60. Thus,
+      it will be appreciated that water may flow through the passage 52 against
+      the valve element 58 and around the valve element into the tube 34.
+      However, the water may not flow from the tube in that the valve 58 seats
+      against the surface 56, and that portion of the valve disposed over the
+      passage 52 is supported by the webs 54.
+PAR  The valves 36 are connected to the tube 34, and serve to interconnect the
+      tube and disks by means of a retaining ring assembly 62 which consists of
+      an outer annular ring 64 and annular inner ring 66. The ring 64 and an L
+      cross-sectional configuration including a radial surface 68 for opposed
+      relationship to the peripheral rim region surface 70. Also, the ring 64 is
+      recessed at 72 whereby the ring 66 overlays the ring 64 to maintain the
+      assembly thereof to the valve body.
+PAR  The valve body peripheral rim region is provided with a conical "undercut"
+      surface 74 and a radial surface 76 for cooperation with corresponding
+      conical surface 78 and radial surface 80 defined upon the ring 66. The
+      ring 66 is split at 82, FIG. 4, wherein once the ring 64 is positioned as
+      shown in FIG. 7, the ring 66 may be inserted into the recess 72 defined by
+      the ring 64 and the conical surface 74. Due to the presence of the conical
+      surfaces 74 and 78 the ring 66 will be maintained in position, and thereby
+      maintain the assembly of the retaining ring assembly 62 upon the valve
+      body.
+PAR  The tube material adjacent the tube end is disposed between the surfaces 68
+      and 70, the surfaces 76 and 80 and the surfaces 74 and 78 as appreciated
+      from FIG. 7. Likewise, the synthetic plastic film layers constituting the
+      layers 40 and 42 of the disks 38 are disposed between the aforementioned
+      surfaces as illustrated whereby compression upon the material of the tube
+      and disks is maintained between the valve body and the retaining ring
+      assembly to form an effective sealing mechanical connection between the
+      tube, associated disk and check valve structure.
+PAR  The aforementioned check valve structure constitutes the subject matter of
+      the assignee's pending U.S. Pat. application, Ser. No. 145,133, filed May
+      20, 1971.
+PAR  An inelastic plastic strip 84 is adhered to the tube 34 throughout its
+      length and electrical conductors 86, FIG. 5, are sandwiched between the
+      tube 34 and the adhesive strip 84 wherein such conductors interconnect the
+      hydrophone assembly 20 below the damper with the cannister 12 located
+      vertically above. The disks 38 may be provided with vent holes 88, and
+      loop anchors 90 formed of a reinforced fabric, FIG. 6, are defined on each
+      of the valve structures 36, and affixed thereto by rivets 92, FIG. 6, to
+      serve as the mounting for the suspension cables 14 and 18.
+PAR  In that the tube 34 and disks 38 are formed of a highly flexible
+      lightweight synthetic plastic film material it is possible to fold the
+      entire damper assembly 16 in a space only slightly greater than that
+      occupied by the valves 36 when stacked one upon the other. Such concise
+      packaging is illustrated by the folding procedure shown in FIGS. 8 through
+      10. Each of the disks may be folded as illustrated due to the resilient
+      nature of the annular rings 44 wherein each ring is folded and "wound" to
+      a diameter substantially equal to that of a check valve body. FIG. 10
+      illustrates the configuration of the disk once the ring is folded in the
+      described manner. Thereupon the tube material may be sandwiched between
+      the folded disks and check valves and the damper assembly is inserted into
+      the cannister 12 intermediate the float 10 and the hydrophone assembly 20.
+PAR  When the cannister 12 engages the water surface, the release mechanism
+      permits the assemblies 20 and 16 to deploy from the cannister. The weight
+      of the assembly 20 will pull the damper assembly 16 from the cannister and
+      as the assembly 16 is removed from the confines of the cannister the rings
+      44 will, due to their resilient nature, "open" to form the disk
+      configuration apparent in FIGS. 2 and 3. Additionally, as the damper
+      assembly is pulled down through the water the water will be forced into
+      the interior of the tube through the lower check valve passage 52. Any air
+      trapped in the tube 34 will soon escape the tube upon wave motion causing
+      an upward movement of the damper assembly wherein the upper check valve 36
+      will momentarily open and permit entrapped air to be released. The mass of
+      the water entrapped within the tube 34 is significant and thus a mass
+      damping is achieved.
+PAR  The inelastic strip 84 causes the tube to form an arc rather than a
+      straight line, and the strip 84 is located at 180.degree. with respect to
+      the stabilizer straps 48.
+PAR  The configuration of the damper due to the presence of the inelastic strip
+      84 and the canting of the disks 38 stabilizes the damper in the presence
+      of a shear current in that the curved configuration employed in
+      conjunction with the offsetting of the points of attachment occurring at
+      the attachment rings 90 located adjacent the check valve edge regions
+      minimizes rotation of the damper, and as such rotation would aggravate the
+      instability of the damper in a shear current such features are of
+      significance.
+PAR  Additionally, vortex shedding is greatly reduced due to the presence of the
+      stabilizer straps 48 and the canting of the disks. This combination
+      disrupts the normal waterflow around the tube breaking up the pattern of
+      vortex shedding. Thus, the damper may be used in close proximity to a
+      hydrophone platform without adverse effect.
+PAR  Accordingly, it will be appreciated that the damper of the assembly
+      effectively produces mass, drag and hydrodynamic mass damping with the
+      utilization of economically produced structure easily stowable in a
+      restricted volume container. Advantageous waterflow characteristics are
+      achieved wherein the damper does not introduce extraneous vibrations into
+      the hydrophone suspension system, and assembly of the damper components is
+      minimized due to the mechanical interconnection thereof achieved by the
+      check valves 36.
+PAR  It is appreciated that various modifications to the inventive concept may
+      be apparent to those skilled in the art without departing from the scope
+      and spirit of the invention.
+CLMS
+STM  I claim:
+NUM  1.
+PAR  1. A hydrophone damper assembly comprising, in combination, an elongated
+      tube of flexible material having first and second ends, a check valve
+      attached to each tube end and sealing the associated end, said check
+      valves permitting water to enter the tube and preventing water egress, and
+      attachment means associated with said tube for attaching hydrophone
+      structure thereto.
+NUM  2.
+PAR  2. In a hydrophone damper assembly as in claim 1 wherein said attachment
+      means is mounted upon at least one of said check valves.
+NUM  3.
+PAR  3. In a hydrophone damper assembly as in claim 1 wherein said tube is
+      formed of a synthetic plastic film.
+NUM  4.
+PAR  4. In a hydrophone damper assembly as in claim 1, a disk attached to said
+      tube, said disk having a generally flat planar configuration and
+      transversely related to the length of said tube and having a diameter
+      greater than the diameter of said tube.
+NUM  5.
+PAR  5. In a hydrophone damper assembly as in claim 4 wherein said disk is
+      affixed to said tube adjacent one of said ends.
+NUM  6.
+PAR  6. In a hydrophone damper assembly as in claim 5 wherein a disk is attached
+      to each end of said tube.
+NUM  7.
+PAR  7. In a hydrophone damper assembly as in claim 5 wherein said check valves
+      include tube and disk mounting means, said valve at said one tube end
+      attaching said disk to said tube.
+NUM  8.
+PAR  8. A hydrophone damper assembly comprising, in combination, an elongated
+      tube of flexible material having first and second ends, a check valve
+      affixed to each tube end and closing the associated end permitting water
+      to enter the tube and preventing water egress therefrom, a substantially
+      flat disk member affixed to said tube adjacent each end whereby the
+      general plane of said disks is transversely disposed to the tube length,
+      and attachment means mounted upon said tube adjacent said ends for
+      attaching hydrophone structure thereto.
+NUM  9.
+PAR  9. In a hydrophone assembly as in claim 8 wherein said tube and disks are
+      formed of a synthetic plastic film, each of said disks including a
+      deformable resilient ring forming and maintaining the disk periphery.
+NUM  10.
+PAR  10. In a hydrophone damper assembly as in claim 9 wherein said check valves
+      include film retaining means, said film retaining means interconnecting
+      and maintaining the assembly of the associated tube end, disk and check
+      valve.
+NUM  11.
+PAR  11. In a hydrophone damper assembly as in claim 8, disk orientation means
+      interposed between said disks and said tube obliquely angularly orienting
+      the plane of said disks to the length of said tube.
+NUM  12.
+PAR  12. In a hydrophone damper assembly as in claim 11 wherein said tube is of
+      a curved configuration relative to its length. .Iadd. 13. A hydrophone
+      damper comprising, in combination, an envelope of flexible material, a
+      check valve defined in said envelope directly communicating with the
+      environment surrounding said envelope, said check valve permitting water
+      to directly enter the envelope whereby said envelope confines the water
+      therein and preventing said water from leaving said envelope, and
+      attachment means associated with said envelope for attaching hydrophone
+      structure thereto. .Iaddend. .Iadd. 14. In a hydrophone damper assembly as
+      in claim 13 wherein said envelope comprises a tube having first and second
+      ends, and said check valve is located in one of said ends. .Iaddend.
+      .Iadd. 15. In a hydrophone damper assembly as in claim 13 wherein said
+      envelope comprises a tube having first and second ends, a disk attached to
+      said tube adjacent at least one of said ends, said disk having a generally
+      flat planar configuration and transversely related to the length of said
+      tube and having a diameter greater than the diameter of said tube.
+      .Iaddend. .Iadd. 16. In a hydrophone damper assembly as in claim 15
+      wherein said disk is formed of a flexible synthetic plastic film and has a
+      generally circular periphery, an annular resilient spring element within
+      said disk engaging the periphery thereof and having a normal expanded
+      circular configuration, said element capable of being twisted and folded
+      into a plurality of loops of a dimension less than said elements' normal
+      expanded configuration and expanding into its normal configuration when
+      unrestrained. .Iaddend. .Iadd. 17. In a hydrophone damper as in claim 13,
+      said envelope having an elongated tubular configuration and an inflated
+      cylindrical transverse cross-sectional configuration, said check valve
+      having a flat configuration having a circular diameter substantially
+      corresponding to the inflated diameter of said envelope. .Iaddend. .Iadd.
+      18. A hydrophone damper comprising, in combination, an envelope of
+      flexible material having first and second ends, a check valve defined in
+      one of said envelope ends directly communicating with the environment
+      surrounding said envelope, said check valve permitting water to directly
+      enter the envelope whereby said envelope confines the water therein and
+      preventing water from leaving said envelope, and attachment means
+      associated with said envelope for attaching hydrophone structure thereto.
+      .Iaddend.
+PATN
+WKU  RE0286729
+SRC  5
+APN  5475732
+APT  2
+PBL  E
+ART  353
+APD  19750206
+TTL  Pliable tape structure
+ISD  19760106
+NCL  25
+ECL  1
+EXP  Larkin; Geo. V.
+NDR  5
+NFG  34
+INVT
+NAM  Wakeman; Alfred W.
+STR  Madison Road
+CTY  Durham
+STA  CT
+ZIP  06422
+REIS
+COD  50
+APN  159796
+APD  19710706
+PNO  03751760
+ISD  19730814
+CLAS
+OCL   16150
+XCL  281 375
+EDF  2
+ICL  E05D  700
+FSC   16
+FSS  150
+FSC  220
+FSS  30;32
+FSC  229
+FSS  44
+FSC  248
+FSS  205 A
+FSC  281
+FSS  37.5;40;41;21 R;22
+UREF
+PNO  1843170
+ISD  19320200
+NAM  Meldrim
+OCL   16150
+UREF
+PNO  2611659
+ISD  19520900
+NAM  Hadley
+OCL   16150
+UREF
+PNO  3279473
+ISD  19691000
+NAM  Toman
+OCL   16150
+UREF
+PNO  3442415
+ISD  19690500
+NAM  Glass
+OCL   16150
+UREF
+PNO  3851353
+ISD  19741200
+NAM  Wakeman
+OCL   16150
+FREF
+PNO  970,771
+ISD  19640900
+CNT  UK
+OCL   16150X
+FREF
+PNO  1,099,154
+ISD  19550800
+CNT  FR
+OCL   16150X
+LREP
+FRM  St. Onge Mayers Steward & Reens
+ABST
+PAL  A flexible longitudinally continuous tape construction is disclosed for use
+      in joining mating edges of juxtaposed members, the tape having an X-like
+      configuration transversely of its length to provide legs adapted to
+      receive and be secured to the edges of the members to be joined. The tape
+      is capable of serving as a pliable hinge to permit articulation of the
+      joined members, or it may also serve simply as a binding for joining
+      members intended to be fixed relative to each other. The tape construction
+      combines longitudinally continuous marginal web portions or carriers,
+      forming the extremities of the legs of the X, with longitudinally spaced
+      strand or equivalent connector means running crosswise of and
+      interconnecting pairs of marginal web portions. The connector means
+      intersect and interlock forming the axis of the X-like configuration.
+PARN
+PAC  CROSS REFERENCE TO RELATED APPLICATIONS
+PAR  This application is a continuation-in-part of my prior copending
+      application Ser. No. 859,619, filed Sept. 22, 1969 .[...]. .Iadd.now
+      abandoned..Iaddend.
+BSUM
+PAC  1. Field of the Invention
+PAR  This invention pertains to continuous length, pliable tape structures
+      useful in joining mating edges of adjacent members for making rigid or
+      hinged connection between such members.
+PAC  2. Prior Art Background
+PAR  The limiting strength of conventional hinged or jointed structures
+      utilizing sheet or panel members to form the structure is the ability of
+      such members to carry localized stresses at points of attachment. There
+      has accordingly existed for some time a need for better means of joining
+      the edges of materials having relatively low resistance to localized
+      loading stresses, such as the imposed by rivets screws, spot welding and
+      the like. Sheet or panel materials which are particularly involved include
+      formed plastic sheet, foamed
+      .[.core/stressed.]..Iadd.core-stressed.Iaddend.skin laminates, corrugated
+      board, chipboard, felt laminates and similar light weight, low cost but
+      easily rupturable stock which is commonly used in fabricating containers
+      or other vessels, display structures, protective table pads, folio covers,
+      etc.
+PAR  Various tape constructions for joining mating edges of such materials have
+      been advanced heretofore. A common arrangement is illustrated in Pats.
+      Nos. 589,504, 1,260,197, 1,833,469 and 3,035,752 where the junction is
+      formed by fabric or paper strips or tabs which are simply glued to the
+      faces of the members to be joined. One particular difficulty with these
+      arrangements is their poor resistance to peeling of the tabs from the
+      faces of the joined members when forces are applied tending to move the
+      members bodily relative to each other. Another form is illustrated in U.S.
+      Pats. Nos. Re. 18,204, 1,998,036, 2,025,926, and 3,442,415. This form of
+      joint-forming tape is characterized generally by the employment of two,
+      coextending tapes which are stitched together along their center lines to
+      form an X-like configuration in cross section. The legs of the X are then
+      glued or otherwise secured to the margins of the members to be joined.
+      This represents an improvement over flat tape but the stitching, falling
+      as it must at the axis of the hinge, weakens the structure at its most
+      critical location. Still another approach used for hingedly joining
+      members is represented by the constructions shown in Pats. Nos. 46,071,
+      570,365 and 2,219,524. The arrangements there shown are not longitudinally
+      continuous of the joined edges, so that a plurality of separate hinges
+      must be used; and their attachment to the members to be joined presents
+      problems. Molded plastic hinges of the type illustrated in Pats. Nos.
+      3,202,310 and 3,301,430 are designed to provide a continuous joint along
+      the mating edges, but here again a problem is encountered in providing
+      suitable means for securing such joint-forming constructions to the panel
+      members.
+PAC  SUMMARY OF THE INVENTION
+PAR  The present invention provides a pliable tape structure which can be
+      manufactured in continuous lengths and easily cut to any desired length
+      for application to the members to be joined, much the same as ordinary
+      pressure-sensitive tape is applied to a surface but which avoids the
+      short-comings of prior tape arrangements discussed above. The novel tape
+      structure is designed to take advantage of the highest tensile
+      strength-to-weight ratio of any material form, namely that of the
+      filament. The invention applies this high strength property to hinges or
+      joint-forming tape without creating localized stress points in the
+      resulting structure, as the tape configuration puts the entire attachment
+      area (glue or other bonding agent) in shear only and eliminates peel
+      forces.
+PAR  As mentioned, the novel tape may serve to join both articulated and
+      non-articulated members and one of the principal objectives of the
+      invention is to provide a hinge or joint-forming tape structure which
+      affords uniform distribution of attachment stress over as large an area as
+      practical of the members which it is desired to join, thereby avoiding
+      localized or concentrated stresses at points of attachment, while
+      minimizing susceptibility to peeling. In this way, advantage can be taken
+      of materials of low cost but stress-oriented nature, such as paperboard,
+      expanded or foamed plastic, etc., for use as basic structural members,
+      without the need and attendant expense of special reinforcement or
+      auxiliary construction at the point of attachment. The invention makes
+      possible better application of maximum material properties to achieve
+      great strength-to-weight ratios in joined structures.
+PAR  Other objectives include greater ease of application of the tape to members
+      to be joined, and provision for specialized engineering applications, such
+      as that involved in rolling hinges or in hingedly joining members whose
+      mating edges are curved.
+PAR  Use of the novel tapes for purposes other than hinging applications is of
+      advantage where members to be secured together are subjected to loading or
+      other forces tending to shift one member bodily relative to the other. The
+      invention enables loadbearing structures such as display stands, mock-ups
+      of prototype equipment, cartons or containers of various configurations,
+      to be made of relatively low strength sheet stock. By joining members or
+      sections of these devices with tape of the design herein disclosed, the
+      inadequacy in peel strength of conventional pressure-sensitive adhesive or
+      mending tape is largely overcome.
+PAR  In accordance with the teaching herein, engineering advantage is taken of
+      inherent tensile strength in pliable fabric, strand or sheet materials,
+      when used in the tape configurations disclosed, to form continuous length
+      tape structures which are easily applied to the members to be joined, and
+      which distribute the attachment stresses uniformly over the adjacent edges
+      of joined members, thereby reducing the chance for failure of the
+      materials at such locations.
+PAR  Briefly, the tape structures of the invention are comprised generally of
+      two essential sets of elements. One set of elements consists of pliable
+      strands, or equivalent connector means, disposed to run transversely of
+      the joint to be formed. The other set of elements consists of pliable web
+      portions or carriers disposed to run longitudinally of the joint to be
+      formed. Each transverse strand or connector element interconnects two of
+      the longitudinal web portions and serve to support load stresses purely in
+      tension, i.e. the maximum strength property of the strand. At least some
+      of the cross strands alternate with .[.the.]. .Iadd.and .Iaddend.intersect
+      other such strands along the axis of the tape, forming an X-like
+      configuration in cross-section of the tape. Adhesive is applied to the
+      confronting faces of legs in two transversely oriented quadrants of the X
+      for bonding the tape to the margins of the members to be joined, whereby
+      the margins are clamped between adjacent legs in quadrants of the X-like
+      tape on opposite sides of the tape axis.
+PAR  Various embodiments of this basic combination and modifications thereof are
+      illustrated in the accompanying drawings and are described hereinafter.
+DRWD
+PAC  DESCRIPTION OF DRAWINGS
+PAR  FIG. 1 is a perspective view showing a portion of a preferred form of tape
+      structure embodying the invention;
+PAR  FIG. 2 is a fragmentary elevational view in perspective showing one method
+      of forming the finished tape of FIG. 1;
+PAR  FIG. 3 is a view in cross-section on line 3--3 of FIG. 2;
+PAR  FIG. 4 is a cross-sectional view similar to FIG. 3, showing rearrangement
+      of the tape upon removal from the forming mandrels seen in FIG. 2;
+PAR  FIG. 5 is a cross-section similar to FIG. 3, showing an arrangement for
+      fabricating a number of tapes simultaneously;
+PAR  FIG. 6 is a cross-sectional view of another arrangement for forming
+      multiple tapes;
+PAR  FIGS. 7-12 are fragmentary cross-sectional views of different types of
+      hinged members and hinging arrangements using the tape of FIG. 1;
+PAR  FIG. 13 is a fragmentary cross-sectional view of hinged members employing a
+      modified type of tape hinge;
+PAR  FIG. 14 is a fragmentary view of a jig structure illustrating the formation
+      of a tape hinge of the type shown in FIG. 13;
+PAR  FIG. 15 is a fragmentary cross-sectional view of another form of tape hinge
+      construction;
+PAR  FIG. 16 is a view similar to that of FIG. 14 illustrating a manner of
+      forming the tape hinge of FIG. 15;
+PAR  FIGS. 17 and 18 are fragmentary views of additional tape hinge
+      constructions;
+PAR  FIGS. 19 and 19A are perspective views of tape structures similar to FIG. 1
+      but employing multiply grouped strands or strips crossing on the bias;
+PAR  FIG. 20 is a perspective view of a tape structure similar to FIG. 1 but
+      incorporating pressure-sensitive adhesive and protective release strips;
+PAR  FIG. 21 illustrates the manner of applying the tape of FIG. 20 to one
+      member which is to be joined to another;
+PAR  FIG. 22 is a fragmentary perspective view of an integrally woven tape
+      structure incorporating the invention;
+PAR  FIG. 23 is a cross-sectional view of a woven structure from which tapes of
+      the form shown in FIG. 22 are cut;
+PAR  FIG. 24 is a perspective view of another form of tape incorporating the
+      invention, in which the manner of forming the tape is illustrated;
+PAR  FIG. 25 is a cross-sectional view of the finished tape seen in FIG. 24;
+PAR  FIG. 26 illustrates still another form of tape embodying the invention, and
+      a means of fabricating such tape;
+PAR  FIG. 27 is a cross-sectional view of the finished tape of FIG. 26;
+PAR  FIG. 28 is an enlarged, fragmentary view of the tape structure of FIG. 26;
+PAR  FIG. 29 is a perspective view of another form of tape and a method of
+      making it;
+PAR  FIGS. 30 and 31 are cross-sectional views of the tape of FIG. 29 in
+      partially completed and fully completed condition;
+PAR  FIG. 32 is a broken view in perspective elevation of a foamed core/stressed
+      skin panel member having a curved edge with a tape secured along such
+      edge; and
+PAR  FIG. 33 is a similar view showing a pair of curved-edge members of FIG. 32
+      joined by the tape.
+DETD
+PAC  DESCRIPTION OF THE PREFERRED EMBODIMENTS
+PAR  Tape structure 20 illustrated in FIG. 1 is composed of alternating runs of
+      intersecting flexible strands 22 producing an X-configuration, and carrier
+      strips 24 running lengthwise of the tape axis in transversely opposite
+      quadrants of the X. Each of carrier strips 24 is folded lengthwise at 25
+      and extends continuously between adjacent legs in each of two opposite
+      quadrants of the X. Each of strands 22 is secured at its opposite or
+      cross-axis ends to margins of opposite carrier strips 24 by suitable
+      adhesive. Collectively the strands in each opposite pair of legs of the X
+      form a mat in conjunction with the associated carrier strips. In order to
+      allow free intersection and lateral cross-over of the strands at the tape
+      axis, the carrier strips are positioned to dispose their fold lines 25
+      slightly outwardly of the tape axis.
+PAR  As will be more fully described presently, tape 20 is adapted to be applied
+      along the mating edges of two members to be joined. To this end the edges
+      of the members are received between adjacent tape legs in transversely
+      opposite quadrants of the X-configuration, and adhesive is applied to the
+      confronting faces of such legs to bond them to the margins or edges of the
+      members. It is apparent that the members to be joined may be received in
+      either of the two different sets of opposed quadrants of the tape. Where
+      the members are received in the quadrants in which the carrier strips 24
+      are located, the carrier strips serve as barriers to prevent glue or other
+      adhesive working into the axis of the tape. That is important where the
+      tape is used as a hinged connection between members, since glue in the
+      axis will impair the freedom of the hinging action of the connecting
+      strands 22. Also the carrier strips serve in such case to prevent wear of
+      the strands on a rough or sharp edge of the hinged member. In cases where
+      the tape is employed simply for joining non-articulated members, these
+      considerations are not so important; in fact it may even be of advantage
+      to use the alternate set of quadrants so that direct glued contact of the
+      strands 22 to the members being joined is obtained.
+PAR  In the preferred construction shown in FIG. 1, hinge 20 is intended to be
+      quite flexible so that it may be easily applied in a manner similar to
+      that in which ordinary pressure-sensitive tape is applied to a surface.
+      For that reason both the carrier strip 24 and the transverse strands 22
+      are of pliable material. Typically useful materials for the carrier strips
+      include paper, more especially craft or crepe paper, woven textile webbing
+      or light plastic film or tape. In fact various types of presently
+      available commercial pressure-sensitive masking tape can conveniently be
+      used for the carrier strip. Strands 22 may be multifilament textile
+      threads or cords, natural or synthetic, as well as monofilament strands of
+      organic or inorganic, e.g. metallic, material.
+PAR  In FIGS. 2-4 a method is illustrated for handfabrication of tape of the
+      type shown in FIG. 1. To this end there is provided a pair of elongated
+      flat mandrels 34 suitably supported in edgewise spaced parallel relation.
+      Cord 36 is wound about the mandrels in figure-8  manner to form the mat of
+      strands 22 comprising the connector elements of the completed hinge.
+      Pressure-sensitive tape is then applied over the cord on opposite faces of
+      the mandrels to secure all of the courses or runs of the cord in fixed
+      position relative to each other. A knife or other sharp instrument is then
+      used to sever the terminal bends of each convolution of the cord where is
+      passes around the outer edges of mandrels 34, cutting along plane c--c as
+      shown in FIG. 3. The preliminary tape hinge assembly may then be easily
+      slipped off the mandrels. The legs of the tape hinge are then folded into
+      reverse relationship from that in which they are formed on the mandrels,
+      to the position shown in FIG. 4, so that the margins of each strip 24 are
+      placed in back-to-back relation.
+PAR  Methods suitable for commerical production of the tape are shown in FIGS. 5
+      and 6 in which a plurality of mandrels 34 is employed and cord is woven
+      continuously about these to build up a wide mat of any desired length. In
+      FIG. 5, the opposite faces of this mat are then covered with sheets 36 of
+      paper, cloth, plastic film or the like, which are glued or otherwise
+      bonded to the cord. The finished mat is then cut by suitable slitting
+      knives (not shown) advanced against and along the opposite faces of the
+      mandrels, the knives being spaced on the center lines a--a of mandrels 34
+      to slit the composite mat lenthwise of the mandrels and form a plurality
+      of separate ribbons or tapes. These are removed from the mandrels, as in
+      FIG. 4. FIG. 6 illustrates a similar method of manufacture but in this
+      case each mandrel 34 is first faced or wound with the material which will
+      serve as the carrier strips, and then the cord is woven about the mandrels
+      in figure-8  manner as before. Alternatively, the tape can be woven
+      without the mandrels, using the carrier strips as the warp elements for
+      the cross strands.
+PAR  The tape hinge can be applied to the edges of the members to be joined
+      using either set of diametrically opposed hinge quadrants for receiving
+      and securing the members. Also various types of hinge arrangements can be
+      accommodated. This is illustrated in FIGS. 7 through 12 of the drawings.
+      In each of these illustrations the members to be joined are received in
+      the tape quadrants which do not contain carrier strips 24. For some
+      applications. this has an advantage, as can be seen by reference to FIG.
+      7. Any tendency of strands 22 to peel away from the surface of the hinged
+      member A or B to which they are bonded is resisted by the interpositioning
+      of the carrier strips 24. That is, strands 22 must cut through the
+      interposed carrier strip if forces are applied to members A and B tending
+      to separate them bodily.
+PAR  In FIG. 8, hinge 20 connects a relatively thick member C to a flat surface
+      D to permit swinging of member C through an arc of 90.degree.. In FIG. 9,
+      member E is hinged to the flat surface D for swinging movement through an
+      arc of 180.degree.. In this illustration, member E is relatively thin and
+      the legs of hinge 20 are secured to it along opposite margins of the faces
+      rather than along one edge and the adjacent face as is necessary with a
+      thick member.
+PAR  FIGS. 10 and 11 also illustrate rolling hinges, the one in FIG. 10
+      providing for 180.degree. arcuate movement between the hinged members F
+      and G, while FIG. 11 illustrates a hinge permitting 360.degree. arc of
+      movement for member I relative to member H. For this application, a
+      centrally more open type of hinge is necessary. This can be readily
+      provided simply by increasing the distance between the mandrels 34 in
+      forming the hinge.
+PAR  Further strengthening of the attachment of the hinge to the hinged members
+      can be provided, as shown in FIG. 12, by applying and bonding overlying
+      tapes 46 on one or both pairs of hinge legs.
+PAR  For maximum strength in preventing separation of the hinged members at
+      their limiting position of arcuate movement, a hinge structure such as
+      that shown in FIG. 13 is useful. In this example, hinge 50 is generally
+      similar to previously described hinge 20 except that some of the strands,
+      while extending transversely of the hinge axis, do not cross laterally
+      from one side to another in a given run of such strand; that is, such
+      strands start and end on the same lateral side of the axis in that run.
+      This is illustrated more particularly in FIG. 14 showing a method of
+      constructing hinge 50 of FIG. 13. As before, a jig is used providing
+      spaced mandrels 34, and a length of cord 36 is wrapped about the mandrels
+      to form the strand runs. For clarity of illustration, the runs are shown
+      in spread condition in the drawing but they would normally be closely
+      spaced in actual practice. In this example, cord 36 is wound about the
+      mandrels in alternate courses or runs, first with a figure-8
+      configuration in which strands 52 laterally cross the hinge axis
+      intermediate the mandrels. In the next course the strands 54 are wound so
+      as to pass completely around the outside of both mandrels without crossing
+      between the mandrels. In other words, while strands 52 in transversly
+      crossing the axis of the hinge move laterally from one side to the other
+      of the mandrels, alternate strands 54 remain on the same lateral side of
+      the mandrels.
+PAR  In the resulting hinge construction illustrated in FIG. 13, (after applying
+      carrier strips 24, cutting the terminal bends of the strands to release
+      the hinge from the jig and applying the hinge to members A and B), each
+      strand 54 extends directly across the hinge axis from one member to the
+      other in the limiting position of the hinged members as shown. Such
+      strands are thus in straight tension, providing maximum resistance to
+      separation of the hinged members and to any tendency toward peeling of the
+      intermediate strands 52 from margins of the hinged members. In the
+      alternate limiting position of members A and B, strands 52 extend straight
+      across the hinge axis and provide resistance to separation.
+PAR  FIGS. 15 and 16 illustrate a further modification of the preceding example.
+      In this example hinge 60 .[.incorporporates.]. .Iadd.incorporates
+      .Iaddend.an interlocking or overlapping of the strands at the hinge axis.
+      This is accomplished by winding cord 36 about mandrels 34 with a twist at
+      each run, forming a series of interlocking clove hitches as shown in FIG.
+      16. It will be noted from the drawing however that although each strand 62
+      or 64 in any given run from one mandrel 34 to the other is positioned on
+      the same lateral side of both mandrels, the strand is laterally displaced
+      intermediate the mandrels by intersection with and overlapping of the
+      strand of the correspondingly opposite run on the other side of the
+      mandrels. The hinge 60 which results thus puts on strand in straight
+      tension, e.g. strand 64 in FIG. 15, in the hinged structure.
+PAR  Another method of forming tape hinges of the invention is illustrated in
+      FIGS. 17 and 18 wherein the cord used in forming the transverse strands is
+      not cut or severed as in the previous examples. In both of these
+      illustrations the carrier strips consist of pressure-sensitive tapes 72,
+      74 and the hinged structure is formed using two pairs of the tape strips
+      in back-to-back relation, one pair on either side transversely of the
+      hinge axis and each pair having the inner edges spaced from the other a
+      distance sufficient to permit passage of the strands between the paired
+      strips in passing from one lateral face to the other.
+PAR  In forming this type of hinge structure, two separate lengths of cord 36
+      are required. In FIG. 17, the two lengths are interwoven or interlocked
+      intermediate the loop portions 76, 78 which are adhered to the faces of
+      the strips. In FIG. 18 the arrangement is essentially the same but does
+      not embody interlocking of the two strands within each loop.
+PAR  Multiple cords are used in forming tape 80 also, as seen in FIG. 19. This
+      tape can be formed as described in connection with FIGS. 1-4, except that
+      instead of using a single strand of cord to form the runs, a group 82 of
+      parallel cords is woven about the mandrels. The number of cords in the
+      group will determine the angle or bias of the group in respect to the axis
+      of the X; the greater the number of cords, the greater the bias angle.
+PAR  A similar arrangement is shown in FIG. 19A where again a plurality of cords
+      is wound simultaneously as above, but in this case the cords .[.were.].
+      .Iadd.are .Iaddend.wound about a series of mandrels, as in FIG. 5.
+      Depending on the width of the composite group of mandrels, each run of
+      grouped cords 92 will cross the tape axis at little or no bias in
+      connecting carriers 24. In place of the grouped cords, webbing or tape of
+      various sorts can be used to provide equivalent connector means.
+PAR  Attachment of the finished tape product to the members to be joined is
+      facilitated by incorporating pressure-sensitive adhesive with the tape, as
+      produced, so that it is self-containined ready for application as
+      purchased. FIG. 20 illustrates such an arrangement. The basic tape
+      structure is the same as that shown in FIG. 1, but in this case tape 120
+      includes bands of pressure-sensitive adhesive 102 extending lengthwise of
+      the tape on confronting faces of the carrier strips 124 in opposite
+      quadrants of the X. In the preferred construction, adhesive 102 does not
+      extend into the center of carriers 124, but is confined to the margins of
+      the tape. Temporary protection in the form of peel or release strips 104
+      are applied over the adhesive, the strips being made wider than the bands
+      on adhesive so as to overlap at the inner edge and provide a convenient
+      free tab 106 by which to start the peeling off of strips 104 when the tape
+      is to be applied to members to joined.
+PAR  In attaching the tape, one release strip is first completely stripped from
+      one leg and that leg is pressed along an edge of the member to be joined.
+      See FIG. 21. The adjacent leg of the tape is lifted to get access to free
+      tab 106 of its release strip 104 which is then peeled back at 90.degree.
+      to the tape axis. As this strip 104 is pulled, it releases next to the X
+      axis first and then diagonally outwardly across the face of tape 120,
+      pulling it firmly against the edge of the member to which it is being
+      attached. This leg of the tape is simultaneously pressed into contact with
+      the face of the member and the process is repeated in securing the other
+      two legs of the tape to the opposite member.
+PAR  The arrangement not only facilitates the attachment process, providing a
+      smooth, tight surface contact between the tape and members but aids in
+      getting alignment of the tape axis and the abutting edges of the members,
+      even if there is some initial misalignment due to improper starting
+      placement of the tape. By pulling the release strip in the manner
+      discussed, the tape is made to lie straight and its natural axis is caused
+      to conform closely with the edge of the member to which it is attached so
+      as to produce a rigid axis in the finished structure. In speaking of
+      "natural axis" above, this is intended to mean not so much the axis
+      defined by the crossing strands in the tape as it exists before
+      application to the edges of the numbers to be formed, but rather to that
+      axis defined by the crossing strands as this is developed upon securing
+      the tape to the members to be joined. The two conditions are identical in
+      the case of a perfectly applied tape to prefectly straight, aligned edges
+      of members to be joined. But such ideal condition seldom exists in
+      practice, and it is one of the virtues of the novel tape that such perfect
+      condition need not exist, because the tape will align itself to
+      accommodate irregularity of the edge and/or inexact application to those
+      edges, without resulting in a loose or wobbly hinged joint. This feature
+      arises inherently from the tape construction wherein the flexible
+      connector strands, in crossing between web portions to which their ends
+      are connected, are free to shift relative to each other, within of course
+      the limits of their points of connection to the longitudinal web portions.
+PAR  Still another form of tape is shown in FIG. 22. Tape 220 is woven on a
+      suitable loom to produce an integral structure in which weft threads 222
+      of the webbing form the cross-connectors for marginal or selvage portions
+      produced by interweaving threads 222 with longitudinal or warp threads
+      223. Separate carrier members are accordingly not required in this
+      arrangement. Selfsticking adhesive and protective peel strips can of
+      course be incorporated in this form of tape, similar to that, described
+      above. Tape 220 can be produced initially in multiple widths, as shown in
+      FIG. 23, by a process similar to that described in connection with FIG. 5,
+      but without using mandrels and slit on lines b--b to produce separate
+      tapes.
+PAR  Yet another form of the invention is illustrated in FIGS. 24 and 25 where a
+      continuous strip 302 of paper or sheet plastic is slit in sinusoidal
+      manner along its longitudinal axis to produce complementary left and right
+      strips or marginal portions 304, 306 having mutually projecting fingers
+      308. These strips are then pressed laterally together to cause them to
+      intermesh, with the fingers 308 of one overlapping the respective marginal
+      portion 304 or 306 of the other. An imperforate strip 310 is then applied
+      to the intermeshed and overlapped first members 304, 306, and bonded by
+      gluing or welding to the tips of the fingers of those members. Strip 310
+      is creased longitudinally, causing the free edges of the members to
+      separate and form the X-like tape 320, as seen in FIG. 25.
+PAR  FIGS. 26 and 27 show another tape structure 420 incorporating the
+      invention. In this case two strips 402, 406 of suitable sheet stock are
+      slit longitudinally along a central sinusoidal line to produce left and
+      right marginal portions 401, 403 and 405, 407, all having teeth 408.
+      Strips 402 and 406 are brought together in such manner that the teeth of
+      one are out of phase, longitudinally of the tape, with those of the other
+      so that the peaks of the teeth overlap. The overlapped peaks are glued or
+      otherwise bonded together at 410, and the marginal portions separated to
+      form the X-like configuration, as seen in cross-section in FIG. 27.
+      Preferably the marginal halves of each strip 402, 406 are first laterally
+      separated, as seen on enlarged scale in FIG. 28, before the overlapping
+      teeth 408 are bonded together. This provides more freedom and reduces
+      binding along the axis of the tape. Again, the marginal web portions may
+      have a band of self-sticking adhesive 412, by which to secure the tape to
+      the edges of the members to be joined, in which case a release or peel
+      strip 414 is provided to protect the adhesion areas until the tape is to
+      be used.
+PAR  In FIGS. 29 to 31, a tape 520 is formed by joining two strips 502, 504 by
+      welding or gluing along a central portion or band 506, and then cutting a
+      series of slots 508 across band 506, spaced longitudinally along the tape.
+      Next, each strip 502, 504 is slit at 510, 512, respectively,
+      longitudinally between slots 508 at alternate ends of adjacent slots.
+      Slits 510, 512 are also alternated in the confronting strips 502, 504
+      along the tape so as not to coincide at any point. Separating the legs or
+      marginal portions of strips 502, 504 results in an X-shaped tape section,
+      as shown in FIGS. 30 and 31.
+PAR  Application of tape to curved edges of members is illustrated in FIGS. 32
+      and 33. In FIG. 32 a semiflexible member 602 has a curved edge 604 which
+      is to be joined to a similar curved edge of panel member 606 (see FIG.
+      33). Tape 620 of the construction shown in FIG. 20 is used but to
+      facilitate obtaining a smooth fit of the tape to the curved edge, the
+      carrier strip members 624 of tape 620 are preferably formed of crepe paper
+      to permit some stretching of the tape during application. When the free
+      edges of members 602 are separated, after curved edges 604 are joined, a
+      geodesic structure is obtained as seen in FIG. 33. Any slight longitudinal
+      accommodation necessary along curved edge 604 as the structure is
+      .[.foRmed.]. .Iadd.formed .Iaddend.is readily permitted by the elasticity
+      of tape 620. FIG. 33 also illustrates the use of light weight, low cost
+      laminated, foamed or .[.honey combed.]. .Iadd.honeycombed
+      .Iaddend.core/stressed skin panels to form geometric structures, where the
+      panels will not resist highly localized loads imposed by the use of rivets
+      or screws as fastening means. Ordinary flat tape if used in such a
+      construction may overcome the problem of localized attachment stress, but
+      is .[.partIcularly.]. .Iadd.particularly .Iaddend.vulnerable to peeling
+      forces in the situation here illustrated.
+CLMS
+STM  What is claimed is:
+NUM  1.
+PAR  1. A flexible tape for joining mating edges of adjacent members,
+PA1  said tape having an X-like configuration in cross section and providing a
+      longitudinally continuous structure adapted to extend along and be secured
+      to the edges of the members to be joined so that the axis of said X-like
+      configuration coincides generally with the juncture formed by the members
+      to be joined, said tape comprising
+PA1  carrier strip means comprising pliable, longitudinally continuous, marginal
+      web portions at the extremities of the legs of the X; and
+PA1  flexible, spaced, connector means running crosswise of and .[.being
+      secured.]. .Iadd.bonded .Iaddend.to and interconnecting pairs of web
+      portions, at least some of said connector means intersecting and crossing
+      other connector means to form said X-like configuration .[...]. .Iadd.,
+      said flexible connector means in crossing between said web portions being
+      free to shift relative to each other within the limits defined by their
+      points of connection to the respective longitudinal web portions..Iaddend.
+NUM  2.
+PAR  2. A flexible tape as defined in claim 1, wherein at least some of said
+      connector means join pairs of transversely opposite web portions.
+NUM  3.
+PAR  3. A flexible tape as defined in claim 2, wherein said carrier strip means
+      extends continuously between adjacent legs in each of two opposite
+      quadrants of the X-like configuration.
+NUM  4.
+PAR  4. A flexible tape as defined in claim .[.3.]. .Iadd.23, .Iaddend.wherein
+      said adhesive is of the pressure-sensitive type and is confined to the
+      outer margins of confronting faces of said carrier strip means, said tape
+      further including temporary protective release strips covering said
+      adhesive but peelable therefrom to expose said adhesive when said tape is
+      applied to the members to be joined.
+NUM  5.
+PAR  5. A flexible tape as defined in claim 4, wherein the protective release
+      strips overlap the inner margins of the adhesive to provide free tabs
+      along such margins.
+NUM  6.
+PAR  6. A flexible tape as defined in claim 1, wherein said connector means are
+      biased longitudinally of the tape axis.
+NUM  7.
+PAR  7. A flexible tape as defined in claim 1, wherein said connector means
+      comprise alternately crossing flexible strands.
+NUM  8.
+PAR  8. A flexible tape as defined in claim 1, wherein said connector means
+      comprise alternately crossing groups of strands.
+NUM  9.
+PAR  9. A flexible, continuous tape hinge for application along adjacent edges
+      of members to be hingedly joined, said hinge have an X-like configuration
+      in cross section and said hinge comprising
+PA1  carrier strip means of pliable sheet material running lengthwise of the
+      hinge on transversely opposite sides of its axis; and
+PA1  flexible strands running crosswise of said axis and carrier strip means,
+      each strand having its cross-axis ends secured to faces of opposed carrier
+      strip portions, at least some of said strands intersecting and crossing
+      over other of said strands to form the hinge axis at their intersection.
+NUM  10.
+PAR  10. A tape hinge as defined in claim 9, wherein the carrier strip portions
+      are disposed in transversely opposed quadrants of the X-like
+      configuration.
+NUM  11.
+PAR  11. A tape hinge as defined in claim 9, wherein the carrier strip portions
+      in each quadrant are integrally joined along the hinge axis.
+NUM  12.
+PAR  12. A tape hinge as defined in claim 10, which further includes
+      pressure-sensitive adhesive on the confronting faces of the legs of the
+      X-like configuration in transversely related quadrants.
+NUM  13.
+PAR  13. A tape hinge as defined in claim 12, wherein said adhesive coating is
+      located on confronting faces of said carrier strips.
+NUM  14.
+PAR  14. A tape hinge as defined in claim 12, which further includes flexible
+      release strips covering said adhesive coating but peelable therefrom to
+      expose said adhesive upon application of the hinge to members to be
+      hingedly joined.
+NUM  15.
+PAR  15. A tape hinge as defined in claim 9, wherein each of said flexible
+      strands running crosswise of said axis and carrier strip means has its
+      cross-axis ends secured to faces of said carrier strip means over a
+      substantial portion of the width thereof.
+NUM  16.
+PAR  16. A tape hinge as defined in claim 15, which further includes
+      pressure-sensitive adhesive coating on at elast one tape face on each side
+      of the hinge axis.
+NUM  17.
+PAR  17. A tape hinge as defined in claim 16, wherein said pressure-sensitive
+      adhesive coating is disposed on confronting faces of the legs of the
+      X-like configuration in transversely related quadrants, said tape further
+      including flexible release strips covering said adhesive coating but
+      peelable therefrom to expose said adhesive upon application of the hinge
+      to members to be hingedly joined.
+NUM  18.
+PAR  18. A tape hinge as defined in claim 9, wherein the carrier strip portions
+      are disposed in diametrically opposed quadrants of the X-like
+      configuration and the strip portions in each quadrant are integrally
+      joined along the hinge axis.
+NUM  19.
+PAR  19. A flexible tape for joining mating edges of adjacent members,
+PA1  said tape having an X-like configuration in crosssection and providing a
+      longitudinally continuous structure adapted to extend along and be secured
+      to the edges of members to be joined so that the axis of said X-like
+      configuration coincides generally with the juncture formed by the members
+      to be joined, said tape comprising
+PA1  pliable longitudinally continuous carrier .[.strips.]. .Iadd.means
+      .Iaddend.forming the extremities of the legs of the X .[.in transversely
+      opposite quadrants of the X.].; and
+PA1  flexible, spaced, connector means running crosswise of and interconnecting
+      .[.marginal portions of.]. opposite carrier .[.strips.]. .Iadd.means, all
+      of .Iaddend.said connector means intersecting and crossing .[.each
+      other.]. alternately to .Iadd.join diagonally opposite carrier means and
+      .Iaddend.form said X-like configuration.
+NUM  20.
+PAR  20. A flexible tape as defined in claim 19, wherein said carrier
+      .[.strips.]. .Iadd.means .Iaddend.are formed of stretchable sheet
+      material.
+NUM  21.
+PAR  21. A flexible tape as defined in claim 20 wherein said carrier
+      .[.strips.]. .Iadd.means .Iaddend.are formed of crepe paper.
+NUM  22.
+PAR  22. A flexible tape as defined in claim 1, wherein said carrier strip means
+      are formed of stretchable sheet material.
+NUM  23.
+PAR  23. A flexible tape as defined in claim 1, which further includes adhesive
+      disposed on confronting faces of said web portions in transversely opposed
+      quadrants of the X, for securing said faces to edges of the members to be
+      joined. .[.24. A flexible tape as defined in claim 1, wherein said
+      flexible connector means, in crossing between said web portions to which
+      they are connected to form said X-like configuration, are free to shift
+      relative to each other within the limits defined by their points of
+      connection to the respective longitudinal web portions..]..Iadd. 25. A
+      flexible tape for joining mating edges of adjacent members,
+PA1  said tape having an X-like configuration in cross-section and providing a
+      longitudinally continuous structure adapted to extend along and be secured
+      to the edges of members to be joined so that the axis of said X-like
+      configuration coincides generally with the juncture formed by the members
+      to be joined, said tape comprising
+PA1  carrier strip means comprising pliable, longitudinally continuous, marginal
+      web portions at the extremities of the legs of the X;
+PA1  flexible, spaced, connector means running crosswise of and being secured to
+      and interconnecting pairs of web portions, at least some of said connector
+      means intersecting and crossing other connector means to form said X-like
+      configuration; and
+PA1  adhesive means disposed on confronting faces of said web portions in
+      transversely opposite quadrants of the X for securing said faces to edges
+      of the members to be joined..Iaddend. .Iadd. 26. A flexible tape for
+      joining mating edges of adjacent members,
+PA1  said tape having an X-like configuration in cross-section and providing a
+      longitudinally continuous structure adapted to extend along and be secured
+      to the edges of the members to be joined so that the axis of said X-like
+      configuration coincides generally with the juncture formed by the members
+      to be joined, said tape comprising
+PA1  pliable, longitudinally continuous, film forming the extremities of the
+      legs of the X; and
+PA1  flexible, spaced, connector means running cross-wise of and being joined to
+      said film on both sides of the X axis, said connector means intersecting
+      and crossing each other alternately to form said X-like
+      configuration..Iaddend.

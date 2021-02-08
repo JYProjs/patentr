@@ -77,7 +77,7 @@ get_bulk_patent_data <- function(year, week, output_file = NULL) {
 
   # combine (if in df format)
   ans <- TRUE
-  if (!is.null(output_file)) {
+  if (is.null(output_file)) {
     ans <- data.table::rbindlist(df_store)
     attr(ans, ".internal.selfref") <- NULL # remove unnecessary attribute
   }

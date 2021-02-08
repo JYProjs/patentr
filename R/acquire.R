@@ -50,11 +50,11 @@ get_bulk_patent_data <- function(year, week, output_file = NULL) {
     stop(paste("Cannot get patent data prior to 1976; passed year =",
                year),
          call. = FALSE)
-  } else if (sum(year > lubridate::year(curr_day))) {
+  } else if (sum(year > lubridate::year(curr_day)) > 0) {
     stop(paste("Cannot get patent data from the future; passed year =",
                year, "& today =", curr_day))
   }
-  if (week < 0 | week > 53) {
+  if (sum(week < 0) > 0 | sum(week > 53) > 0) {
     stop(paste("`week` variable must be valid (between 1 and 53, inclusive);",
                "passed week =", week))
   }

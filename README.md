@@ -1,7 +1,7 @@
 # patentr: Access USPTO Bulk Data in Tidy Rectangular Format
 
 [![Travis-CI Build Status](https://api.travis-ci.com/JYProjs/patentr.svg?branch=main)](https://travis-ci.com/github/JYProjs/patentr)
-[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/JYProjs/patentr?branch=master&svg=true)](https://ci.appveyor.com/project/JYProjs/patentr)
+[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/JYProjs/patentr?svg=true)](https://ci.appveyor.com/project/JYProjs/patentr)
 [![Coverage Status](https://img.shields.io/codecov/c/github/JYProjs/patentr/master.svg)](https://codecov.io/github/JYProjs/patentr?branch=master)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)

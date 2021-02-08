@@ -1,6 +1,6 @@
 # patentr: Access USPTO Bulk Data in Tidy Rectangular Format
 
-[![Travis-CI Build Status](https://travis-ci.org/JYProjs/patentr.svg?branch=master)](https://travis-ci.org/JYProjs/patentr)
+[![Travis-CI Build Status](https://api.travis-ci.com/JYProjs/patentr.svg?branch=main)](https://travis-ci.com/github/JYProjs/patentr)
 [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/JYProjs/patentr?branch=master&svg=true)](https://ci.appveyor.com/project/JYProjs/patentr)
 [![Coverage Status](https://img.shields.io/codecov/c/github/JYProjs/patentr/master.svg)](https://codecov.io/github/JYProjs/patentr?branch=master)
 
@@ -18,11 +18,11 @@ By downloading, converting, and storing patent data directly from the USPTO webs
 To install patentr, run the following R code:
 
 ```r
+# install from CRAN
+install.packages("patentr")
+
 # install development version from GitHub
 devtools::install_github("JYProjs/patentr")
-
-# install from CRAN (not available yet)
-# install.packages("patentr")
 ```
 
 ## Sample code

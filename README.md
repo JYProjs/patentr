@@ -18,11 +18,11 @@ By downloading, converting, and storing patent data directly from the USPTO webs
 To install patentr, run the following R code:
 
 ```r
+# install from CRAN
+install.packages("patentr")
+
 # install development version from GitHub
 devtools::install_github("JYProjs/patentr")
-
-# install from CRAN (not available yet)
-# install.packages("patentr")
 ```
 
 ## Sample code

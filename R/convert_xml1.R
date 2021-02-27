@@ -87,7 +87,7 @@ xml1_to_df_r <- function(input_file, output_file = NULL) {
   header_bool <- ifelse(is.null(output_file), TRUE, ifelse(file.exists(output_file), FALSE, TRUE))
   
   # convert XML1 to CSV
-  num_pat <- xml1_to_df_cpp(input_file, temp_output_file, append_bool, header_bool)
+  df_pat <- xml1_to_df_base(input_file)
   
   # read CSV as data frame and return
   ans <- TRUE
@@ -109,7 +109,8 @@ xml1_to_df_r <- function(input_file, output_file = NULL) {
   return(ans)
 }
 # "WKU,Title,App_Date,Issue_Date,Inventor,Assignee,ICL_Class,References\n"
-xml_to_df_base <- function(input_file, output_file, append_param, header_param) {
+# don't need extra parameters b/c within R
+xml_to_df_base <- function(input_file) {
   # setup data frame
   num_pats <- count_xml1(input_file)
   ans <- data.frame(WKU = character(num_pats),
@@ -175,9 +176,32 @@ xml_to_df_base <- function(input_file, output_file, append_param, header_param) 
       xml_find_all(".//pcit//dnum") %>%
       xml_text() %>%
       format_field_df()
+      
+    # get assignee
+    ans$Assignee[curr_patrow] <- curr_xml %>%
+      xml_find_all(".//b731//nam") %>%
+      vapply(FUN.VALUE = character(1),
+             FUN = function(curr_assign) {
+               xml_text(curr_assign)
+             }) %>%
+      paste0(collapse = ";")
     
     # get inventor
-    
+    ans$Inventor[curr_patrow] <- curr_xml %>%
+      xml_find_all(".//b721//nam") %>%
+      vapply(FUN.VALUE = character(1),
+             FUN = function(curr_inv) {
+               curr_first <- curr_inv %>%
+                 xml_find_all(".//fnm") %>%
+                 xml_text()
+               
+               curr_last <- curr_inv %>%
+                 xml_find_all(".//snm") %>%
+                 xml_text()
+               
+               paste(curr_first, curr_last)
+             }) %>%
+      paste0(collapse = ";")
     
     # update necessary variables
     curr_patrow <- curr_patrow + 1

@@ -5,6 +5,17 @@
 
 using namespace Rcpp;
 
+// get_xml1_sizes
+std::vector<int> get_xml1_sizes(std::string input_file);
+RcppExport SEXP _patentr_get_xml1_sizes(SEXP input_fileSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< std::string >::type input_file(input_fileSEXP);
+    rcpp_result_gen = Rcpp::wrap(get_xml1_sizes(input_file));
+    return rcpp_result_gen;
+END_RCPP
+}
 // txt_to_df_cpp
 int txt_to_df_cpp(std::string input_file, std::string output_file, bool append, bool header);
 RcppExport SEXP _patentr_txt_to_df_cpp(SEXP input_fileSEXP, SEXP output_fileSEXP, SEXP appendSEXP, SEXP headerSEXP) {
@@ -21,6 +32,7 @@ END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
+    {"_patentr_get_xml1_sizes", (DL_FUNC) &_patentr_get_xml1_sizes, 1},
     {"_patentr_txt_to_df_cpp", (DL_FUNC) &_patentr_txt_to_df_cpp, 4},
     {NULL, NULL, 0}
 };

@@ -74,6 +74,7 @@ get_bulk_patent_data <- function(year, week, output_file = NULL) {
   # get data for all 3
   df_store <- vector(mode = "list", length = 3)
   df_store[[1]] <- convert_txt_to_df(date_df_txt, output_file = output_file)
+  df_store[[2]] <- convert_xml1_to_df(date_df_xml1, output_file = output_file)
 
   # combine (if in df format)
   ans <- TRUE

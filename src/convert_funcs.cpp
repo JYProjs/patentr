@@ -82,6 +82,50 @@ void alphaDigitOnly(std::string &text)
     text = ans;
 }
 
+// prefer vector<int> over Rcpp::NumericVector b/c unknown number of patents
+//   and NumericVector appears to be immutable (can add easily to vector<int>)
+// [[Rcpp::export]]
+std::vector<int> get_xml1_sizes(std::string input_file)
+{
+    // setup empty vector that will contain # lines per patent in this file
+    std::vector<int>sizes;
+    
+    // setup IO
+    std::ifstream fin(input_file);
+    
+    // read through file and store # lines per patent
+    int counter = -1;
+    std::string temp;
+    while (!fin.eof())
+    {
+        // read current line and see if it equals delimiting line b/n patents
+        getline(fin, temp);
+        
+        if (startsWith(temp, "<?xml version"))
+        {
+            // ignore first meaningless value
+            if (counter < 0)
+            {
+                counter = 0;
+            }
+            else
+            {
+                sizes.push_back(counter);
+                counter = 0;
+            }
+        }
+        
+        counter++;
+    }
+    sizes.push_back(counter);
+    
+    // close IO
+    fin.close();
+    
+    // return relevant answer
+    return(sizes);
+}
+
 // [[Rcpp::export]]
 int txt_to_df_cpp(std::string input_file, std::string output_file, bool append, bool header)
 {

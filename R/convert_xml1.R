@@ -7,7 +7,8 @@
 #   - output_file = NULL is used to acquire data and store into `df1`
 #   - output_file = <filename> is used to acquire data and then read into `df2` with `read.csv`
 # then: all.equal(df1, df2) should return TRUE
-convert_xml1_to_df <- function(date_df, output_file = NULL) {
+# append true b/c potentially adding on to txt
+convert_xml1_to_df <- function(date_df, output_file = NULL, append = TRUE) {
   # NEED TO COMPLETE: confirm dates and data frame format are valid
   # internal function so should never hit this issue
   if (!("Year" %in% colnames(date_df) & "Week" %in% colnames(date_df))) {
@@ -25,7 +26,7 @@ convert_xml1_to_df <- function(date_df, output_file = NULL) {
   df_store <- vector(mode = "list", length = nrow(date_df))
   
   # create header for output file (if necessary)
-  if (!is.null(output_file)) {
+  if (!is.null(output_file) & !append) {
     cat("WKU,Title,App_Date,Issue_Date,Inventor,Assignee,ICL_Class,References\n",
         file = output_file)
   }
@@ -47,7 +48,7 @@ convert_xml1_to_df <- function(date_df, output_file = NULL) {
       gsub(pattern = "DD", replacement = int_with_len(curr_day, 2), fixed = TRUE)
     curr_url <- xml1_uspto_url %>%
       paste0(curr_year, "/", curr_file, ".zip")
-    curr_file <- paste0(curr_file, ".xml")
+    curr_file <- paste0(curr_file, ".XML")
     
     # download appropriate zip from USPTO bulk website
     utils::download.file(url = curr_url,
@@ -60,7 +61,9 @@ convert_xml1_to_df <- function(date_df, output_file = NULL) {
     file.remove(dest_file)
     
     # convert uncompressed file
-    curr_df <- xml1_to_df_r(input_file = curr_file, output_file = output_file)
+    curr_df <- xml1_to_df_r(input_file = curr_file,
+                            output_file = output_file,
+                            append = append)
     
     # delete uncompressed file
     file.remove(curr_file)
@@ -72,47 +75,43 @@ convert_xml1_to_df <- function(date_df, output_file = NULL) {
   }
   
   # combine all data frames in list
+  ans <- TRUE
+  if (is.null(output_file)) {
+    ans <- data.table::rbindlist(df_store)
+    attr(ans, ".internal.selfref") <- NULL  # remove attribute for equality between file read and direct df methods
+  }
   
   # return
   return(ans)
 }
 
 # convert XML1 file containing patent data to data frame
-xml1_to_df_r <- function(input_file, output_file = NULL) {
-  # placeholder
-  temp_output_file <- ifelse(is.null(output_file),
-                             "temp-patent-package-output.csv",
-                             output_file)
-  append_bool <- ifelse(is.null(output_file), FALSE, TRUE)
-  header_bool <- ifelse(is.null(output_file), TRUE, ifelse(file.exists(output_file), FALSE, TRUE))
-  
+xml1_to_df_r <- function(input_file, output_file = NULL, append = FALSE) {
   # convert XML1 to CSV
-  df_pat <- xml1_to_df_base(input_file)
+  ans <- xml1_to_df_base(input_file)
   
-  # read CSV as data frame and return
-  ans <- TRUE
+  # if necessary, output CSV, otherwise just return
   if (is.null(output_file)) {
-    ans <- utils::read.csv(temp_output_file,
-                           row.names = NULL,
-                           stringsAsFactors = FALSE,
-                           na.strings = c("NA", "N/A", ""),
-                           colClasses = rep("character", 8),
-                           nrows = num_pat)
+    return(ans)
+  } else {
+    utils::write.csv(x = ans,
+                     file = output_file,
+                     row.names = FALSE,
+                     append = append,
+                     col.names = !append)
+    
+    return(TRUE)
   }
-  
-  # delete temporary storage file (if necessary)
-  if (is.null(output_file)) {
-    file.remove(temp_output_file)
-  }
-  
-  # return answer
-  return(ans)
 }
+
 # "WKU,Title,App_Date,Issue_Date,Inventor,Assignee,ICL_Class,References\n"
 # don't need extra parameters b/c within R
-xml_to_df_base <- function(input_file) {
+xml1_to_df_base <- function(input_file) {
   # setup data frame
-  num_pats <- count_xml1(input_file)
+  #num_pats <- count_xml1(input_file)
+  pat_sizes <- get_xml1_sizes(input_file)
+  print(pat_sizes[1:10])
+  num_pats <- length(pat_sizes)
   ans <- data.frame(WKU = character(num_pats),
                     Title = character(num_pats),
                     App_Date = character(num_pats),
@@ -124,24 +123,27 @@ xml_to_df_base <- function(input_file) {
                     stringsAsFactors = FALSE)
   
   # setup vars
-  curr_patrow <- 0
+  curr_patrow <- 1
+  #curr_patrow <- 0
   search_term <- "<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
   curr_patxml <- ""
   con <- file(input_file, "r")
   while (curr_patrow <= num_pats) {
     # read as much as necessary for current patent
-    found_end <- FALSE
-    while (!found_end) {
-      temp_read <- readLines(con, n = 1)
-      
-      if (length(temp_read) == 0) {
-        found_end <- TRUE
-      } else if (grepl(x = temp_read, pattern = search_term, fixed = TRUE)) {
-        found_end <- TRUE
-      } else {
-        curr_patxml <- paste0(curr_patxml, temp_read)
-      }
-    }
+    #found_end <- FALSE
+    #while (!found_end) {
+    #  temp_read <- readLines(con, n = 1)
+    #  
+    #  if (length(temp_read) == 0) {
+    #    found_end <- TRUE
+    #  } else if (grepl(x = temp_read, pattern = search_term, fixed = TRUE)) {
+    #    found_end <- TRUE
+    #  } else {
+    #    curr_patxml <- paste0(curr_patxml, temp_read)
+    #  }
+    #}
+    curr_patxml <- readLines(con, n = pat_sizes[curr_patrow]) %>%
+      paste0(collapse = "")
     
     # fix current patent w/ start and end tags
     curr_patxml <- paste0("<start>", curr_patxml, "</start>")
@@ -149,61 +151,62 @@ xml_to_df_base <- function(input_file) {
     ## process current patent
     curr_xml <- xml2::read_html(curr_patxml)
     ans$WKU[curr_patrow] <- curr_xml %>%
-      xml_find_all(".//b110") %>%
-      xml_text() %>%
+      xml2::xml_find_all(".//b110") %>%
+      xml2::xml_text() %>%
       format_field_df()
     ans$Title[curr_patrow] <- curr_xml %>%
-      xml_find_all(".//b540") %>%
-      xml_text() %>%
+      xml2::xml_find_all(".//b540") %>%
+      xml2::xml_text() %>%
       format_field_df()
     ans$App_Date[curr_patrow] <- curr_xml %>%
-      xml_find_all(".//b220") %>%
-      xml_text() %>%
+      xml2::xml_find_all(".//b220") %>%
+      xml2::xml_text() %>%
       lubridate::as_date() %>%
       as.character() %>%
       format_field_df()
     ans$Issue_Date[curr_patrow] <- curr_xml %>%
-      xml_find_all(".//b140") %>%
-      xml_text() %>%
+      xml2::xml_find_all(".//b140") %>%
+      xml2::xml_text() %>%
       lubridate::as_date() %>%
       as.character() %>%
       format_field_df()
     ans$ICL_Class[curr_patrow] <- curr_xml %>%
-      xml_find_all(".//b511") %>%
-      xml_text() %>%
+      xml2::xml_find_all(".//b511") %>%
+      xml2::xml_text() %>%
       format_field_df()
     ans$References[curr_patrow] <- curr_xml %>%
-      xml_find_all(".//pcit//dnum") %>%
-      xml_text() %>%
+      xml2::xml_find_all(".//pcit//dnum") %>%
+      xml2::xml_text() %>%
       format_field_df()
       
     # get assignee
     ans$Assignee[curr_patrow] <- curr_xml %>%
-      xml_find_all(".//b731//nam") %>%
+      xml2::xml_find_all(".//b731//nam") %>%
       vapply(FUN.VALUE = character(1),
              FUN = function(curr_assign) {
-               xml_text(curr_assign)
+               xml2::xml_text(curr_assign)
              }) %>%
       paste0(collapse = ";")
     
     # get inventor
     ans$Inventor[curr_patrow] <- curr_xml %>%
-      xml_find_all(".//b721//nam") %>%
+      xml2::xml_find_all(".//b721//nam") %>%
       vapply(FUN.VALUE = character(1),
              FUN = function(curr_inv) {
                curr_first <- curr_inv %>%
-                 xml_find_all(".//fnm") %>%
-                 xml_text()
+                 xml2::xml_find_all(".//fnm") %>%
+                 xml2::xml_text()
                
                curr_last <- curr_inv %>%
-                 xml_find_all(".//snm") %>%
-                 xml_text()
+                 xml2::xml_find_all(".//snm") %>%
+                 xml2::xml_text()
                
                paste(curr_first, curr_last)
              }) %>%
       paste0(collapse = ";")
     
     # update necessary variables
+    print(paste("DONE WITH PATENT", curr_patrow, "OUT OF", num_pats))
     curr_patrow <- curr_patrow + 1
     curr_patxml <- ""
   }

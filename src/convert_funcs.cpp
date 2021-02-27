@@ -83,6 +83,18 @@ void alphaDigitOnly(std::string &text)
 }
 
 // [[Rcpp::export]]
+int xml1_to_df_cpp(std::string input_file, std::string output_file, bool append, bool header)
+{
+    // setup IO
+    
+    // initialize ofstream depending on append param
+    
+    // variables holding patent properties
+    
+    // read input file line-by-line and store patent data
+}
+
+// [[Rcpp::export]]
 int txt_to_df_cpp(std::string input_file, std::string output_file, bool append, bool header)
 {
     // setup IO

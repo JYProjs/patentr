@@ -13,10 +13,20 @@ test_that("test TXT conversion", {
 
 test_that("test XML1 conversion", {
   # convert sample file w/ internal function
-  tester <- xml1_to_df_r(input_file = "XML-sample-14")
+  tester <- xml1_to_df_r(input_file = "XML1-sample-14")
   
   ## confirm output accuracy
   # basic dimensions
   expect_equal(nrow(tester), 14)
+  expect_equal(ncol(tester), 8)
+})
+
+test_that("test XML2 conversion", {
+  # convert sample file w/ internal function
+  tester <- xml2_to_df(input_file = "XML2-sample-10")
+  
+  ## confirm output accuracy
+  # basic dimensions
+  expect_equal(nrow(tester), 10)
   expect_equal(ncol(tester), 8)
 })

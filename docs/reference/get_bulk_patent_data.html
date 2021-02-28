@@ -76,7 +76,7 @@ at once." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">patentr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1</span>
       </span>
     </div>
 
@@ -125,7 +125,7 @@ patents weekly, at minimum, all patents from a given week must be acquired
 at once.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>get_bulk_patent_data</span>(<span class='kw'>year</span>, <span class='kw'>week</span>, output_file = <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>get_bulk_patent_data</span><span class='op'>(</span><span class='va'>year</span>, <span class='va'>week</span>, output_file <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -154,14 +154,14 @@ from which patents should be collected</p></td>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'>## NOTE: none of the examples are run due to the download requirement</span>
-<span class='co'>if</span> (<span class='fl'>FALSE</span>) {
+<span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
 <span class='co'># download patents from the first week of 1976 and get data frame</span>
-<span class='kw'>patent_data</span> <span class='op'>&lt;-</span> <span class='fu'>get_bulk_patent_data</span>(year = <span class='fl'>1976</span>, week = <span class='fl'>1</span>)
+<span class='va'>patent_data</span> <span class='op'>&lt;-</span> <span class='fu'>get_bulk_patent_data</span><span class='op'>(</span>year <span class='op'>=</span> <span class='fl'>1976</span>, week <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span>
 
 <span class='co'># download patents from the last 5 weeks of 1980 (and write to a file)</span>
-<span class='fu'>get_bulk_patent_data</span>(year = <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='fl'>1980</span>, <span class='fl'>5</span>), week = <span class='fl'>48</span><span class='op'>:</span><span class='fl'>52</span>,
-                     output_file = <span class='st'>"patent-data.csv"</span>)
-}
+<span class='fu'>get_bulk_patent_data</span><span class='op'>(</span>year <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='fl'>1980</span>, <span class='fl'>5</span><span class='op'>)</span>, week <span class='op'>=</span> <span class='fl'>48</span><span class='op'>:</span><span class='fl'>52</span>,
+                     output_file <span class='op'>=</span> <span class='st'>"patent-data.csv"</span><span class='op'>)</span>
+<span class='op'>}</span>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -178,7 +178,7 @@ from which patents should be collected</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

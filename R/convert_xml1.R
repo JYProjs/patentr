@@ -108,9 +108,7 @@ xml1_to_df_r <- function(input_file, output_file = NULL, append = FALSE) {
 # don't need extra parameters b/c within R
 xml1_to_df_base <- function(input_file) {
   # setup data frame
-  #num_pats <- count_xml1(input_file)
   pat_sizes <- get_xml1_sizes(input_file)
-  #print(pat_sizes[1:10])
   num_pats <- length(pat_sizes)
   ans <- data.frame(WKU = character(num_pats),
                     Title = character(num_pats),
@@ -124,24 +122,11 @@ xml1_to_df_base <- function(input_file) {
   
   # setup vars
   curr_patrow <- 1
-  #curr_patrow <- 0
   search_term <- "<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
   curr_patxml <- ""
   con <- file(input_file, "r")
   while (curr_patrow <= num_pats) {
     # read as much as necessary for current patent
-    #found_end <- FALSE
-    #while (!found_end) {
-    #  temp_read <- readLines(con, n = 1)
-    #  
-    #  if (length(temp_read) == 0) {
-    #    found_end <- TRUE
-    #  } else if (grepl(x = temp_read, pattern = search_term, fixed = TRUE)) {
-    #    found_end <- TRUE
-    #  } else {
-    #    curr_patxml <- paste0(curr_patxml, temp_read)
-    #  }
-    #}
     curr_patxml <- readLines(con, n = pat_sizes[curr_patrow]) %>%
       paste0(collapse = "")
     
@@ -206,7 +191,6 @@ xml1_to_df_base <- function(input_file) {
       paste0(collapse = ";")
     
     # update necessary variables
-    #print(paste("DONE WITH PATENT", curr_patrow, "OUT OF", num_pats))
     curr_patrow <- curr_patrow + 1
     curr_patxml <- ""
   }

@@ -52,7 +52,7 @@ std::string extractField(const std::string &line, int startPos)
 
 void formatName(std::string &name)
 {
-    int semicolon = name.find(';');
+    long unsigned int semicolon = name.find(';');
 
     // leave as-is if there's no semi colon or if the format is not as expected
     if (semicolon == std::string::npos || name.length() < semicolon + 2) return ;
@@ -84,8 +84,9 @@ void alphaDigitOnly(std::string &text)
 
 // prefer vector<int> over Rcpp::NumericVector b/c unknown number of patents
 //   and NumericVector appears to be immutable (can add easily to vector<int>)
+// works for xml1 and xml2 formats
 // [[Rcpp::export]]
-std::vector<int> get_xml1_sizes(std::string input_file)
+std::vector<int> get_xml_sizes(std::string input_file)
 {
     // setup empty vector that will contain # lines per patent in this file
     std::vector<int>sizes;

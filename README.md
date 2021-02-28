@@ -27,16 +27,23 @@ devtools::install_github("JYProjs/patentr")
 
 ## Sample code
 
-Bulk patent data in TXT format (1976-2001) can be downloaded using the year and week (within each year) as follows:
+Bulk patent data can be downloaded using the year and week (within each year)
+as follows:
 
 ```r
-# download patents from the first week of 1976 and get data frame
-patent_data <- get_bulk_patent_data(year = 1976, week = 1)
+# load patentr
+library("patentr")
 
-# download patents from the last 5 weeks of 1980
-# and store in a CSV file named "patent-data.csv"
-get_bulk_patent_data(year = rep(1980, 5), week = 49:53,
-                     output_file = "patent-data.csv")
+# download patents from the first week of 1976
+patent_data1 <- get_bulk_patent_data(year = 1976, week = 1)
+
+# download patents from:
+#   1. week 1 of 1976 (TXT format in USPTO)
+#   2. week 48 of 2002 (XML format 1 in USPTO)
+#   3. week 19 of 2006 (XML format 2 in USPTO)
+# N.B. it will take a few minutes to run the next line
+patent_data2 <- get_bulk_patent_data(year = c(1976, 2002, 2006),
+                                     week = c(1, 48, 19))
 ```
 
 ## Functionality

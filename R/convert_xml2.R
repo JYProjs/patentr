@@ -8,8 +8,7 @@
 #   - output_file = <filename> is used to acquire data and then read into `df2` with `read.csv`
 # then: all.equal(df1, df2) should return TRUE
 # append true b/c potentially adding on to txt
-convert_xml1_to_df <- function(date_df, output_file = NULL, append = TRUE) {
-  # NEED TO COMPLETE: confirm dates and data frame format are valid
+convert_xml2_to_df <- function(date_df, output_file = NULL, append = TRUE) {
   # internal function so should never hit this issue
   if (!("Year" %in% colnames(date_df) & "Week" %in% colnames(date_df))) {
     stop(paste("date_df parameter must have `Year` and `Week` columns;",
@@ -18,14 +17,15 @@ convert_xml1_to_df <- function(date_df, output_file = NULL, append = TRUE) {
   }
   
   # base vars
-  filename_uspto <- "pgYYMMDD"
-  xml1_uspto_url <- "https://bulkdata.uspto.gov/data/patent/grant/redbook/fulltext/"
+  filename_uspto <- "ipgYYMMDD"
+  xml2_uspto_url <- "https://bulkdata.uspto.gov/data/patent/grant/redbook/fulltext/"
   dest_file <- "temp-output.zip"
   
   # list to store data frames
   df_store <- vector(mode = "list", length = nrow(date_df))
   
   # create header for output file (if necessary)
+  # CONFIRM THIS IS NEEDED: FIX IF NOT
   if (!is.null(output_file) & !append) {
     cat("WKU,Title,App_Date,Issue_Date,Inventor,Assignee,ICL_Class,References\n",
         file = output_file)
@@ -46,10 +46,8 @@ convert_xml1_to_df <- function(date_df, output_file = NULL, append = TRUE) {
       gsub(pattern = "YY", replacement = substr(curr_year, 3, 4), fixed = TRUE) %>%
       gsub(pattern = "MM", replacement = int_with_len(curr_month, 2), fixed = TRUE) %>%
       gsub(pattern = "DD", replacement = int_with_len(curr_day, 2), fixed = TRUE)
-    curr_url <- xml1_uspto_url %>%
+    curr_url <- xml2_uspto_url %>%
       paste0(curr_year, "/", curr_file, ".zip")
-    extra_file1 <- paste0(curr_file, ".SGM")
-    extra_file2 <- paste0(curr_file, ".sgm")
     curr_file1 <- paste0(curr_file, ".XML")
     curr_file2 <- paste0(curr_file, ".xml")
     
@@ -75,20 +73,13 @@ convert_xml1_to_df <- function(date_df, output_file = NULL, append = TRUE) {
       stop("Logically should never be able to reach this line")
     }
     
-    # if extra file, then delete
-    if (file.exists(extra_file1)) {
-      file.remove(extra_file1)
-    } else if (file.exists(extra_file2)) {
-      file.remove(extra_file2)
-    }
-    
     # delete zip
     file.remove(dest_file)
     
     # convert uncompressed file
-    curr_df <- xml1_to_df_r(input_file = curr_file,
-                            output_file = output_file,
-                            append = append)
+    curr_df <- xml2_to_df(input_file = curr_file,
+                          output_file = output_file,
+                          append = append)
     
     # delete uncompressed file
     file.remove(curr_file)
@@ -103,37 +94,15 @@ convert_xml1_to_df <- function(date_df, output_file = NULL, append = TRUE) {
   ans <- TRUE
   if (is.null(output_file)) {
     ans <- data.table::rbindlist(df_store)
-    attr(ans, ".internal.selfref") <- NULL  # remove attribute for equality between file read and direct df methods
+    attr(ans, ".internal.selfref") <- NULL # remove attribute for equality between file read and direct df methods
   }
   
   # return
   return(ans)
 }
 
-# convert XML1 file containing patent data to data frame
-xml1_to_df_r <- function(input_file, output_file = NULL, append = FALSE) {
-  # convert XML1 to CSV
-  ans <- xml1_to_df_base(input_file)
-  
-  # if necessary, output CSV, otherwise just return
-  if (is.null(output_file)) {
-    return(ans)
-  } else {
-    utils::write.csv(x = ans,
-                     file = output_file,
-                     row.names = FALSE,
-                     append = append,
-                     col.names = !append)
-    
-    return(TRUE)
-  }
-}
-
-# "WKU,Title,App_Date,Issue_Date,Inventor,Assignee,ICL_Class,References\n"
-# don't need extra parameters b/c within R
-#' @import magrittr
-xml1_to_df_base <- function(input_file) {
-  # setup data frame
+xml2_to_df <- function(input_file, output_file = NULL, append = FALSE) {
+  # convert XML2 to CSV
   pat_sizes <- get_xml_sizes(input_file)
   num_pats <- length(pat_sizes)
   ans <- data.frame(WKU = character(num_pats),
@@ -148,7 +117,6 @@ xml1_to_df_base <- function(input_file) {
   
   # setup vars
   curr_patrow <- 1
-  search_term <- "<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
   curr_patxml <- ""
   con <- file(input_file, "r")
   while (curr_patrow <= num_pats) {
@@ -162,43 +130,81 @@ xml1_to_df_base <- function(input_file) {
     ## process current patent
     curr_xml <- xml2::read_html(curr_patxml)
     ans$WKU[curr_patrow] <- curr_xml %>%
-      xml2::xml_find_all(".//b110") %>%
+      xml2::xml_find_first(".//us-patent-grant//publication-reference//document-id//doc-number") %>%
       xml2::xml_text() %>%
       format_field_df()
     ans$Title[curr_patrow] <- curr_xml %>%
-      xml2::xml_find_all(".//b540") %>%
+      xml2::xml_find_first(".//us-patent-grant//invention-title") %>%
       xml2::xml_text() %>%
       format_field_df()
     ans$App_Date[curr_patrow] <- curr_xml %>%
-      xml2::xml_find_all(".//b220") %>%
+      xml2::xml_find_first(".//us-patent-grant//application-reference//date") %>%
       xml2::xml_text() %>%
       lubridate::as_date() %>%
       as.character() %>%
       format_field_df()
     ans$Issue_Date[curr_patrow] <- curr_xml %>%
-      xml2::xml_find_all(".//b140") %>%
+      xml2::xml_find_first(".//us-patent-grant//publication-reference//date") %>%
       xml2::xml_text() %>%
       lubridate::as_date() %>%
       as.character() %>%
       format_field_df()
-    ans$ICL_Class[curr_patrow] <- curr_xml %>%
-      xml2::xml_find_all(".//b511") %>%
-      xml2::xml_text() %>%
-      format_field_df()
     
-    # get references (after removing foreign ones)
+    ans$ICL_Class[curr_patrow] <- curr_xml %>%
+      xml2::xml_find_all(".//us-patent-grant//classification-ipc//main-classification") %>%
+      vapply(USE.NAMES = FALSE,
+             FUN.VALUE = character(1),
+             FUN = function(curr_ipc) {
+               curr_ipc %>%
+                 xml2::xml_text()
+             }) %>%
+      paste0(collapse = ";")
+    
+    # extract inventor
+    ans$Inventor[curr_patrow] <- curr_xml %>%
+      xml2::xml_find_all(".//us-patent-grant//applicants//applicant//addressbook") %>%
+      vapply(USE.NAMES = FALSE,
+             FUN.VALUE = character(1),
+             FUN = function(curr_inv) {
+               curr_first <- curr_inv %>%
+                 xml2::xml_find_first(".//first-name") %>%
+                 xml2::xml_text()
+               
+               curr_last <- curr_inv %>%
+                 xml2::xml_find_first(".//last-name") %>%
+                 xml2::xml_text()
+               
+               paste(curr_first, curr_last)
+             }) %>%
+      paste0(collapse = ";")
+    
+    # extract assignee
+    ans$Assignee[curr_patrow] <- curr_xml %>%
+      xml2::xml_find_all(".//us-patent-grant//assignees//assignee") %>%
+      vapply(USE.NAMES = FALSE,
+             FUN.VALUE = character(1),
+             FUN = function(curr_assign) {
+               curr_assign %>%
+                 xml2::xml_find_first(".//addressbook//orgname") %>%
+                 xml2::xml_text()
+             }) %>%
+      paste0(collapse = ";")
+    
+    # extract references
     ans$References[curr_patrow] <- curr_xml %>%
-      xml2::xml_find_all(".//pcit") %>%
-      vapply(FUN.VALUE = character(1),
+      xml2::xml_find_all(".//us-patent-grant//references-cited//citation//patcit") %>%
+      vapply(USE.NAMES = FALSE,
+             FUN.VALUE = character(1),
              FUN = function(curr_pcit_xml) {
-               # if foreign, return NA
+               # if foreign, return blank
                check_foreign <- curr_pcit_xml %>%
-                 xml2::xml_find_all(".//ctry")
-               if (length(check_foreign) > 0) return("")
+                 xml2::xml_find_first(".//country") %>%
+                 xml2::xml_text()
+               if (check_foreign != "US") return("")
                
                # if not foreign, return XML text
                ans <- curr_pcit_xml %>%
-                 xml2::xml_find_all(".//dnum") %>%
+                 xml2::xml_find_first(".//doc-number") %>%
                  xml2::xml_text() %>%
                  strip_nonalphanum()
                
@@ -207,44 +213,24 @@ xml1_to_df_base <- function(input_file) {
       paste0(collapse = ";") %>%
       gsub(pattern = ";;+", replacement = ";")
     
-    #ans$References[curr_patrow] <- curr_xml %>%
-    #  xml2::xml_find_all(".//pcit//dnum") %>%
-    #  xml2::xml_text() %>%
-    #  format_field_df()
-      
-    # get assignee
-    ans$Assignee[curr_patrow] <- curr_xml %>%
-      xml2::xml_find_all(".//b731//nam") %>%
-      vapply(FUN.VALUE = character(1),
-             FUN = function(curr_assign) {
-               xml2::xml_text(curr_assign)
-             }) %>%
-      paste0(collapse = ";")
-    
-    # get inventor
-    ans$Inventor[curr_patrow] <- curr_xml %>%
-      xml2::xml_find_all(".//b721//nam") %>%
-      vapply(FUN.VALUE = character(1),
-             FUN = function(curr_inv) {
-               curr_first <- curr_inv %>%
-                 xml2::xml_find_all(".//fnm") %>%
-                 xml2::xml_text()
-               
-               curr_last <- curr_inv %>%
-                 xml2::xml_find_all(".//snm") %>%
-                 xml2::xml_text()
-               
-               paste(curr_first, curr_last)
-             }) %>%
-      paste0(collapse = ";")
-    
-    # update necessary variables
+    # update necessary vars
     print(paste("FINISHED PATENT", curr_patrow, "OUT OF", num_pats))
     curr_patrow <- curr_patrow + 1
     curr_patxml <- ""
   }
   close(con)
+  # at this point, `ans` contains all the converted data-----
   
-  # return data frame
-  return(ans)
+  # if necessary, output CSV, otherwise just return
+  if (is.null(output_file)) {
+    return(ans)
+  } else {
+    utils::write.csv(x = ans,
+                     file = output_file,
+                     row.names = FALSE,
+                     append = append,
+                     col.names = !append)
+    
+    return(TRUE)
+  }
 }

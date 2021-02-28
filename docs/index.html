@@ -17,9 +17,9 @@
     directly from the USPTO bulk data website, eliminating need for users to
     wrangle multiple data formats to get large patent databases in tidy,
     rectangular format. Data details can be found on the USPTO website
-    &lt;https://bulkdata.uspto.gov/&gt;. Currently, only TXT data (1976-2001)
-    and one version of XML data (2002-2004) conversion is implemented; XML
-    formats are in the process of being added.
+    &lt;https://bulkdata.uspto.gov/&gt;. Currently, all 3 formats: 1. TXT data
+    (1976-2001); 2. XML format 1 data (2002-2004); and 3. XML format 2 data
+    (2005-current) can be converted to rectangular, CSV format.
     Relevant literature that uses data from USPTO includes Wada (2020)
     &lt;doi:10.1007/s11192-020-03674-4&gt; and Plaza &amp; Albert (2008)
     &lt;doi:10.1007/s11192-007-1763-3&gt;.">
@@ -100,15 +100,21 @@
 <div id="sample-code" class="section level2">
 <h2 class="hasAnchor">
 <a href="#sample-code" class="anchor"></a>Sample code</h2>
-<p>Bulk patent data in TXT format (1976-2001) can be downloaded using the year and week (within each year) as follows:</p>
+<p>Bulk patent data can be downloaded using the year and week (within each year) as follows:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit">
-<span class="co"># download patents from the first week of 1976 and get data frame</span>
-<span class="va">patent_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/get_bulk_patent_data.html">get_bulk_patent_data</a></span><span class="op">(</span>year <span class="op">=</span> <span class="fl">1976</span>, week <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>
+<span class="co"># load patentr</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://JYProjs.github.io/patentr/">"patentr"</a></span><span class="op">)</span>
 
-<span class="co"># download patents from the last 5 weeks of 1980</span>
-<span class="co"># and store in a CSV file named "patent-data.csv"</span>
-<span class="fu"><a href="reference/get_bulk_patent_data.html">get_bulk_patent_data</a></span><span class="op">(</span>year <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1980</span>, <span class="fl">5</span><span class="op">)</span>, week <span class="op">=</span> <span class="fl">49</span><span class="op">:</span><span class="fl">53</span>,
-                     output_file <span class="op">=</span> <span class="st">"patent-data.csv"</span><span class="op">)</span></pre></div>
+<span class="co"># download patents from the first week of 1976</span>
+<span class="va">patent_data1</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/get_bulk_patent_data.html">get_bulk_patent_data</a></span><span class="op">(</span>year <span class="op">=</span> <span class="fl">1976</span>, week <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>
+
+<span class="co"># download patents from:</span>
+<span class="co">#   1. week 1 of 1976 (TXT format in USPTO)</span>
+<span class="co">#   2. week 48 of 2002 (XML format 1 in USPTO)</span>
+<span class="co">#   3. week 19 of 2006 (XML format 2 in USPTO)</span>
+<span class="co"># N.B. it will take a few minutes to run the next line</span>
+<span class="va">patent_data2</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/get_bulk_patent_data.html">get_bulk_patent_data</a></span><span class="op">(</span>year <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1976</span>, <span class="fl">2002</span>, <span class="fl">2006</span><span class="op">)</span>,
+                                     week <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">48</span>, <span class="fl">19</span><span class="op">)</span><span class="op">)</span></pre></div>
 </div>
 <div id="functionality" class="section level2">
 <h2 class="hasAnchor">

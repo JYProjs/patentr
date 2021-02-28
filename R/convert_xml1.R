@@ -134,7 +134,7 @@ xml1_to_df_r <- function(input_file, output_file = NULL, append = FALSE) {
 #' @import magrittr
 xml1_to_df_base <- function(input_file) {
   # setup data frame
-  pat_sizes <- get_xml1_sizes(input_file)
+  pat_sizes <- get_xml_sizes(input_file)
   num_pats <- length(pat_sizes)
   ans <- data.frame(WKU = character(num_pats),
                     Title = character(num_pats),

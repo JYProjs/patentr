@@ -41,7 +41,7 @@ convert_xml2_to_df <- function(date_df, output_file = NULL, append = TRUE) {
     file_date <- get_date_tues(year = curr_year,
                                week = curr_week)
     curr_month <- lubridate::month(file_date)
-    curr_date <- lubridate::day(file_date)
+    curr_day <- lubridate::day(file_date)
     curr_file <- filename_uspto %>%
       gsub(pattern = "YY", replacement = substr(curr_year, 3, 4), fixed = TRUE) %>%
       gsub(pattern = "MM", replacement = int_with_len(curr_month, 2), fixed = TRUE) %>%
@@ -149,10 +149,16 @@ xml2_to_df <- function(input_file, output_file = NULL, append = FALSE) {
       lubridate::as_date() %>%
       as.character() %>%
       format_field_df()
+    
     ans$ICL_Class[curr_patrow] <- curr_xml %>%
-      xml2::xml_find_all(".//us-patent-grant//classification-locarno//main-classification") %>%
-      xml2::xml_text() %>%
-      format_field_df()
+      xml2::xml_find_all(".//us-patent-grant//classification-ipc//main-classification") %>%
+      vapply(USE.NAMES = FALSE,
+             FUN.VALUE = character(1),
+             FUN = function(curr_ipc) {
+               curr_ipc %>%
+                 xml2::xml_text()
+             }) %>%
+      paste0(collapse = ";")
     
     # extract inventor
     ans$Inventor[curr_patrow] <- curr_xml %>%

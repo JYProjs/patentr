@@ -87,25 +87,67 @@ strip_nonalphanum <- function(char_vec) {
 # convert WKU to patent number (e.g. remove checksum digit)
 # wku parameter should be a character vector
 # source: https://www.uspto.gov/patents/apply/applying-online/patent-number
+#' @import magrittr
 wku_to_pno <- function(wku) {
   vapply(X = wku,
+         USE.NAMES = FALSE,
          FUN.VALUE = character(1),
          FUN = function(curr_wku) {
+           # setup var that'll be returned
+           curr_wku <- strip_nonalphanum(curr_wku)
+           ans <- curr_wku
+           
            # utility patents (6-8 numeric digits)
-           
+           if (grepl(x = curr_wku, pattern = "^[0-9]{6,}$")) {
+             # remove leading zeroes
+             ans <- gsub(x = curr_wku,
+                         pattern = "^0+",
+                         replacement = "")
+             
            # reissue patents ("RE" followed by 6 digits, add leading zeroes)
-           
            # plant patents ("PP" followed by 6 digits, add leading zeroes)
-           
-           # design patents ("D" followed by 7 digits, add leading zeroes)
-           
            # additions of improvements ("AI" followed by 6 digits, add leading zeroes)
-           
+           # above is likely how WKU was created from USPTO source, need to reverse
+           } else if (grepl(x = curr_wku,
+                            pattern = "^(RE)|(PP)|(AI)[0-9]{5,}")) {
+             # store first two chars
+             char_part <- substr(curr_wku, start = 1, stop = 2)
+             
+             # remove leading zeroes from numeric portion
+             num_part <- curr_wku %>%
+               substr(start = 3, stop = 100) %>%
+               gsub(pattern = "^0+", replacement = "")
+             
+             # add back starting "RE"
+             ans <- paste0(char_part, num_part)
+             
+           # design patents ("D" followed by 7 digits, add leading zeroes)
            # X patents ("X" followed by 7 digits, add leading zeroes)
-           
            # H documents ("H" followed by 7 digits, add leading zeroes)
-           
            # T documents ("T" followed by 7 digits, add leading zeroes)
+           # above is likely how WKU was created from USPTO source, need to reverse
+           } else if (grepl(x = curr_wku,
+                            pattern = "^[DXHT][0-9]{4,}")) {
+             # store first char
+             char_part <- substr(curr_wku, start = 1, stop = 1)
+             
+             # remove leading zeroes from numeric portion
+             num_part <- curr_wku %>%
+               substr(start = 2, stop = 100) %>%
+               gsub(pattern = "^0+", replacement = "")
+             
+             # add back starting char
+             ans <- paste0(char_part, num_part)
+           }
+           # don't know what to do with this if no matches, return untouched
            
+           # return
+           return(ans)
          })
+}
+
+# remove final checksum digit from utility patents in TXT format
+remove_txt_checksum <- function(wku) {
+  end_substr <- nchar(wku) - 1
+  substr(wku, start = 1, stop = end_substr)
 }

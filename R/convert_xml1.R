@@ -48,13 +48,10 @@ convert_xml1_to_df <- function(date_df, output_file = NULL, append = TRUE) {
       gsub(pattern = "DD", replacement = int_with_len(curr_day, 2), fixed = TRUE)
     curr_url <- xml1_uspto_url %>%
       paste0(curr_year, "/", curr_file, ".zip")
-    curr_file <- paste0(curr_file, ".XML")
-    
-    # if extra file, then delete
-    extra_file <- paste0(curr_file, ".SGM")
-    if (file.exists(extra_file)) {
-      file.delete(extra_file)
-    }
+    extra_file1 <- paste0(curr_file, ".SGM")
+    extra_file2 <- paste0(curr_file, ".sgm")
+    curr_file1 <- paste0(curr_file, ".XML")
+    curr_file2 <- paste0(curr_file, ".xml")
     
     # download appropriate zip from USPTO bulk website
     utils::download.file(url = curr_url,
@@ -62,6 +59,28 @@ convert_xml1_to_df <- function(date_df, output_file = NULL, append = TRUE) {
     
     # uncompress
     utils::unzip(zipfile = dest_file)
+    
+    # if file doesn't exist, there's a problem
+    if (!file.exists(curr_file1) &
+        !file.exists(curr_file2)) {
+      stop(paste("File", curr_file1, "and", curr_file2,
+                 "do not exist after unzipping"),
+           call. = FALSE)
+    # otherwise, assign the correct name to the curr_file var for later use
+    } else if (file.exists(curr_file1)) {
+      curr_file <- curr_file1
+    } else if (file.exists(curr_file2)) {
+      curr_file <- curr_file2
+    } else {
+      stop("Logically should never be able to reach this line")
+    }
+    
+    # if extra file, then delete
+    if (file.exists(extra_file1)) {
+      file.remove(extra_file1)
+    } else if (file.exists(extra_file2)) {
+      file.remove(extra_file2)
+    }
     
     # delete zip
     file.remove(dest_file)
@@ -112,6 +131,7 @@ xml1_to_df_r <- function(input_file, output_file = NULL, append = FALSE) {
 
 # "WKU,Title,App_Date,Issue_Date,Inventor,Assignee,ICL_Class,References\n"
 # don't need extra parameters b/c within R
+#' @import magrittr
 xml1_to_df_base <- function(input_file) {
   # setup data frame
   pat_sizes <- get_xml1_sizes(input_file)

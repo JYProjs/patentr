@@ -79,6 +79,9 @@ convert_txt_to_df <- function(date_df, output_file = NULL) {
     ans <- data.table::rbindlist(df_store)
     attr(ans, ".internal.selfref") <- NULL  # remove attribute for equality between file read and direct df methods
   }
+  
+  # remove checksum digit from WKU of TXT format
+  ans <- dplyr::mutate(ans, WKU = remove_txt_checksum(WKU))
 
   # return
   return(ans)

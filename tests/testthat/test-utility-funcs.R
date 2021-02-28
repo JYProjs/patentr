@@ -40,3 +40,21 @@ test_that("utility function: get_date_tues", {
   expect_error(get_date_tues(year = runif(n = 1, min = 1976, max = 2020),
                              week = 54)) # week cannot be greater than 53
 })
+
+test_that("utility function: wku_to_pno", {
+  # test w/ example WKUs from 1976
+  before <- c("RE028671", "03930271")
+  correct<- c("RE28671", "3930271")
+  after <- wku_to_pno(before)
+  expect_equal(correct, after)
+})
+
+test_that("utility function: remove_txt_checksum", {
+  # test w/ example numbers from 1976
+  before <- c("RE286710", "RE286725", "RE286738",
+              "39302710", "39302724", "39302737")
+  correct<- c("RE28671", "RE28672", "RE28673",
+              "3930271", "3930272", "3930273")
+  after <- remove_txt_checksum(before)
+  expect_equal(correct, after)
+})

@@ -35,7 +35,7 @@ patent_data <- get_bulk_patent_data(year = 1976, week = 1)
 
 # download patents from the last 5 weeks of 1980
 # and store in a CSV file named "patent-data.csv"
-get_bulk_patent_data(year = rep(1980, 5), week = 48:52,
+get_bulk_patent_data(year = rep(1980, 5), week = 49:53,
                      output_file = "patent-data.csv")
 ```
 

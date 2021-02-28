@@ -18,9 +18,9 @@ Description: Converts TXT and XML data curated by the United States Patent and
     directly from the USPTO bulk data website, eliminating need for users to
     wrangle multiple data formats to get large patent databases in tidy,
     rectangular format. Data details can be found on the USPTO website
-    <https://bulkdata.uspto.gov/>. Currently, only TXT data (1976-2001)
-    and one version of XML data (2002-2004) conversion is implemented; XML
-    formats are in the process of being added.
+    <https://bulkdata.uspto.gov/>. Currently, all 3 formats: 1. TXT data
+    (1976-2001); 2. XML format 1 data (2002-2004); and 3. XML format 2 data
+    (2005-current) can be converted to rectangular, CSV format.
     Relevant literature that uses data from USPTO includes Wada (2020)
     <doi:10.1007/s11192-020-03674-4> and Plaza & Albert (2008)
     <doi:10.1007/s11192-007-1763-3>.

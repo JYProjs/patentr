@@ -73,8 +73,13 @@ int_with_len <- function(int_val, len) {
 }
 
 # format character vector for data frame
+#' @import magrittr
 format_field_df <- function(vec) {
-  paste0(vec, collapse = ";")
+  paste0(vec, collapse = ";") %>%
+    # remove leading spaces
+    gsub(pattern = "^ +", replacement = "") %>%
+    # remove lagging spaces
+    gsub(pattern = " +$", replacement = "")
 }
 
 # only alphanumeric characters

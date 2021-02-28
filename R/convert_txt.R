@@ -29,7 +29,7 @@ convert_txt_to_df <- function(date_df, output_file = NULL) {
 
   # create header for output file (if necessary)
   if (!is.null(output_file)) {
-    cat("WKU,Title,App_Date,Issue_Date,Inventor,Assignee,ICL_Class,References\n",
+    cat("WKU,Title,App_Date,Issue_Date,Inventor,Assignee,ICL_Class,References,Claims\n",
         file = output_file)
   }
 
@@ -116,7 +116,7 @@ txt_to_df_r <- function(input_file, output_file = NULL) {
                            row.names = NULL,
                            stringsAsFactors = FALSE,
                            na.strings = c("NA", "N/A", ""),
-                           colClasses = rep("character", 8),
+                           colClasses = rep("character", 9),
                            nrows = num_pat)
   }
 

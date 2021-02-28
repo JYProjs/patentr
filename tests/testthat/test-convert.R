@@ -5,7 +5,7 @@ test_that("test TXT conversion", {
   ## confirm output accuracy
   # basic dimensions
   expect_equal(nrow(tester), 2)
-  expect_equal(ncol(tester), 8)
+  expect_equal(ncol(tester), 9)
   
   # exactly 1 missing value in sample data
   expect_equal(sum(is.na(tester)), 1)
@@ -18,7 +18,7 @@ test_that("test XML1 conversion", {
   ## confirm output accuracy
   # basic dimensions
   expect_equal(nrow(tester), 14)
-  expect_equal(ncol(tester), 8)
+  expect_equal(ncol(tester), 9)
 })
 
 test_that("test XML2 conversion", {
@@ -28,5 +28,5 @@ test_that("test XML2 conversion", {
   ## confirm output accuracy
   # basic dimensions
   expect_equal(nrow(tester), 10)
-  expect_equal(ncol(tester), 8)
+  expect_equal(ncol(tester), 9)
 })

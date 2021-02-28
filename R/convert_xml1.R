@@ -27,7 +27,7 @@ convert_xml1_to_df <- function(date_df, output_file = NULL, append = TRUE) {
   
   # create header for output file (if necessary)
   if (!is.null(output_file) & !append) {
-    cat("WKU,Title,App_Date,Issue_Date,Inventor,Assignee,ICL_Class,References\n",
+    cat("WKU,Title,App_Date,Issue_Date,Inventor,Assignee,ICL_Class,References,Claims\n",
         file = output_file)
   }
   
@@ -144,6 +144,7 @@ xml1_to_df_base <- function(input_file) {
                     Assignee = character(num_pats),
                     ICL_Class = character(num_pats),
                     References = character(num_pats),
+                    Claims = character(num_pats),
                     stringsAsFactors = FALSE)
   
   # setup vars
@@ -185,6 +186,10 @@ xml1_to_df_base <- function(input_file) {
       xml2::xml_find_all(".//b511") %>%
       xml2::xml_text() %>%
       format_field_df()
+    ans$Claims[curr_patrow] <- curr_xml %>%
+      xml2::xml_find_all(".//cl//clm//ptext") %>%
+      xml2::xml_text() %>%
+      paste0(collapse = " ")
     
     # get references (after removing foreign ones)
     ans$References[curr_patrow] <- curr_xml %>%

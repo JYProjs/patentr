@@ -27,7 +27,7 @@ convert_xml2_to_df <- function(date_df, output_file = NULL, append = TRUE) {
   # create header for output file (if necessary)
   # CONFIRM THIS IS NEEDED: FIX IF NOT
   if (!is.null(output_file) & !append) {
-    cat("WKU,Title,App_Date,Issue_Date,Inventor,Assignee,ICL_Class,References\n",
+    cat("WKU,Title,App_Date,Issue_Date,Inventor,Assignee,ICL_Class,References,Claims\n",
         file = output_file)
   }
   
@@ -113,6 +113,7 @@ xml2_to_df <- function(input_file, output_file = NULL, append = FALSE) {
                     Assignee = character(num_pats),
                     ICL_Class = character(num_pats),
                     References = character(num_pats),
+                    Claims = character(num_pats),
                     stringsAsFactors = FALSE)
   
   # setup vars
@@ -159,6 +160,13 @@ xml2_to_df <- function(input_file, output_file = NULL, append = FALSE) {
                  xml2::xml_text()
              }) %>%
       paste0(collapse = ";")
+    
+    ans$Claims[curr_patrow] <- curr_xml %>%
+      xml2::xml_find_all(".//us-patent-grant//claims//claim//claim-text") %>%
+      xml2::xml_text() %>%
+      gsub(pattern = "\"", replacement = "", fixed = TRUE) %>%
+      gsub(pattern = "'", replacement = "", fixed = TRUE) %>%
+      paste0(collapse = " ")
     
     # extract inventor
     ans$Inventor[curr_patrow] <- curr_xml %>%

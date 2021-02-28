@@ -76,3 +76,36 @@ int_with_len <- function(int_val, len) {
 format_field_df <- function(vec) {
   paste0(vec, collapse = ";")
 }
+
+# only alphanumeric characters
+strip_nonalphanum <- function(char_vec) {
+  gsub(x = char_vec,
+       pattern = "[^0-9A-Za-z]",
+       replacement = "")
+}
+
+# convert WKU to patent number (e.g. remove checksum digit)
+# wku parameter should be a character vector
+# source: https://www.uspto.gov/patents/apply/applying-online/patent-number
+wku_to_pno <- function(wku) {
+  vapply(X = wku,
+         FUN.VALUE = character(1),
+         FUN = function(curr_wku) {
+           # utility patents (6-8 numeric digits)
+           
+           # reissue patents ("RE" followed by 6 digits, add leading zeroes)
+           
+           # plant patents ("PP" followed by 6 digits, add leading zeroes)
+           
+           # design patents ("D" followed by 7 digits, add leading zeroes)
+           
+           # additions of improvements ("AI" followed by 6 digits, add leading zeroes)
+           
+           # X patents ("X" followed by 7 digits, add leading zeroes)
+           
+           # H documents ("H" followed by 7 digits, add leading zeroes)
+           
+           # T documents ("T" followed by 7 digits, add leading zeroes)
+           
+         })
+}

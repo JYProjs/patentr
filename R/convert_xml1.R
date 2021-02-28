@@ -50,6 +50,12 @@ convert_xml1_to_df <- function(date_df, output_file = NULL, append = TRUE) {
       paste0(curr_year, "/", curr_file, ".zip")
     curr_file <- paste0(curr_file, ".XML")
     
+    # if extra file, then delete
+    extra_file <- paste0(curr_file, ".SGM")
+    if (file.exists(extra_file)) {
+      file.delete(extra_file)
+    }
+    
     # download appropriate zip from USPTO bulk website
     utils::download.file(url = curr_url,
                          destfile = dest_file)
@@ -159,10 +165,32 @@ xml1_to_df_base <- function(input_file) {
       xml2::xml_find_all(".//b511") %>%
       xml2::xml_text() %>%
       format_field_df()
+    
+    # get references (after removing foreign ones)
     ans$References[curr_patrow] <- curr_xml %>%
-      xml2::xml_find_all(".//pcit//dnum") %>%
-      xml2::xml_text() %>%
-      format_field_df()
+      xml2::xml_find_all(".//pcit") %>%
+      vapply(FUN.VALUE = character(1),
+             FUN = function(curr_pcit_xml) {
+               # if foreign, return NA
+               check_foreign <- curr_pcit_xml %>%
+                 xml2::xml_find_all(".//ctry")
+               if (length(check_foreign) > 0) return("")
+               
+               # if not foreign, return XML text
+               ans <- curr_pcit_xml %>%
+                 xml2::xml_find_all(".//dnum") %>%
+                 xml2::xml_text() %>%
+                 strip_nonalphanum()
+               
+               return(ans)
+             }) %>%
+      paste0(collapse = ";") %>%
+      gsub(pattern = ";;+", replacement = ";")
+    
+    #ans$References[curr_patrow] <- curr_xml %>%
+    #  xml2::xml_find_all(".//pcit//dnum") %>%
+    #  xml2::xml_text() %>%
+    #  format_field_df()
       
     # get assignee
     ans$Assignee[curr_patrow] <- curr_xml %>%
@@ -191,6 +219,7 @@ xml1_to_df_base <- function(input_file) {
       paste0(collapse = ";")
     
     # update necessary variables
+    print(paste("FINISHED PATENT", curr_patrow, "OUT OF", num_pats))
     curr_patrow <- curr_patrow + 1
     curr_patxml <- ""
   }

@@ -27,26 +27,26 @@ get_date_tues <- function(year, week) {
 }
 
 # count number of patents in XML1 formatted files
-count_xml1 <- function(filename) {
-  search_term <- "<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
-  counter <- 0
-  
-  # read file line-by-line
-  con <- file(filename, "r")
-  while (TRUE) {
-    curr_line <- readLines(con, n = 1)
-    if (length(curr_line) == 0) break
-    
-    # check if line contains new patent
-    if (grepl(x = curr_line, pattern = search_term, fixed = TRUE)) {
-      counter <- counter + 1
-    }
-  }
-  close(con)
-  
-  # return
-  return(counter)
-}
+# count_xml1 <- function(filename) {
+#   search_term <- "<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
+#   counter <- 0
+#   
+#   # read file line-by-line
+#   con <- file(filename, "r")
+#   while (TRUE) {
+#     curr_line <- readLines(con, n = 1)
+#     if (length(curr_line) == 0) break
+#     
+#     # check if line contains new patent
+#     if (grepl(x = curr_line, pattern = search_term, fixed = TRUE)) {
+#       counter <- counter + 1
+#     }
+#   }
+#   close(con)
+#   
+#   # return
+#   return(counter)
+# }
 
 # get integer with set number of digits (adds appropriate leading zeroes)
 int_with_len <- function(int_val, len) {

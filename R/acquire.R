@@ -86,8 +86,8 @@ get_bulk_patent_data <- function(year, week, output_file = NULL) {
   # convert WKU to patent numbers (make sure nothing was ruined in the process)
   num_missing_before <- sum(is.na(ans$WKU))
   ans <- ans %>%
-    dplyr::mutate(WKU = wku_to_pno(WKU)) %>%
-    dplyr::rename(Pat_ID = WKU)
+    dplyr::mutate(WKU = wku_to_pno(.data$WKU)) %>%
+    dplyr::rename(Pat_ID = .data$WKU)
   num_missing_after <- sum(is.na(ans$Pat_ID))
   if (num_missing_after != num_missing_before) {
     stop(paste("Something messed up w/ WKU conversion, NA before =",

@@ -9,6 +9,7 @@
 #     (read.csv(<filename>, colClasses = rep("character", 8), na.strings = c("NA", "N/A", "")))
 # then: all.equal(df1, df2) should return TRUE
 #' @import magrittr
+#' @importFrom rlang .data
 convert_txt_to_df <- function(date_df, output_file = NULL) {
   # NEED TO COMPLETE: confirm dates and data frame format are valid
   # internal function so should never hit this issue
@@ -83,10 +84,10 @@ convert_txt_to_df <- function(date_df, output_file = NULL) {
   
   ans <- ans %>%
     # remove checksum digit from WKU of TXT format
-    dplyr::mutate(WKU = remove_txt_checksum(WKU),
+    dplyr::mutate(WKU = remove_txt_checksum(.data$WKU),
     # make date format consistent w/ XML formats
-                  App_Date = lubridate::as_date(App_Date) %>% as.character(),
-                  Issue_Date=lubridate::as_date(Issue_Date)%>%as.character())
+                  App_Date = lubridate::as_date(.data$App_Date) %>% as.character(),
+                  Issue_Date=lubridate::as_date(.data$Issue_Date)%>%as.character())
 
   # return
   return(ans)

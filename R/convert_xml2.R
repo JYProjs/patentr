@@ -105,16 +105,6 @@ xml2_to_df <- function(input_file, output_file = NULL, append = FALSE) {
   # convert XML2 to CSV
   pat_sizes <- get_xml_sizes(input_file)
   num_pats <- length(pat_sizes)
-  # ans <- data.frame(WKU = character(num_pats),
-  #                   Title = character(num_pats),
-  #                   App_Date = character(num_pats),
-  #                   Issue_Date = character(num_pats),
-  #                   Inventor = character(num_pats),
-  #                   Assignee = character(num_pats),
-  #                   ICL_Class = character(num_pats),
-  #                   References = character(num_pats),
-  #                   Claims = character(num_pats),
-  #                   stringsAsFactors = FALSE)
   
   temp_output_file <- ifelse(is.null(output_file),
                              "temp-patent-package-output.csv",
@@ -172,7 +162,6 @@ xml2_to_df <- function(input_file, output_file = NULL, append = FALSE) {
       xml2::xml_find_all(".//us-patent-grant//claims//claim//claim-text") %>%
       xml2::xml_text() %>%
       gsub(pattern = "\"", replacement = "", fixed = TRUE) %>%
-      gsub(pattern = "'", replacement = "", fixed = TRUE) %>%
       paste0(collapse = " ")
     
     # extract inventor

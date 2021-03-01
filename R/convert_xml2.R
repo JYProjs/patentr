@@ -105,16 +105,13 @@ xml2_to_df <- function(input_file, output_file = NULL, append = FALSE) {
   # convert XML2 to CSV
   pat_sizes <- get_xml_sizes(input_file)
   num_pats <- length(pat_sizes)
-  ans <- data.frame(WKU = character(num_pats),
-                    Title = character(num_pats),
-                    App_Date = character(num_pats),
-                    Issue_Date = character(num_pats),
-                    Inventor = character(num_pats),
-                    Assignee = character(num_pats),
-                    ICL_Class = character(num_pats),
-                    References = character(num_pats),
-                    Claims = character(num_pats),
-                    stringsAsFactors = FALSE)
+  
+  temp_output_file <- ifelse(is.null(output_file),
+                             "temp-patent-package-output.csv",
+                             output_file)
+  fout <- file(temp_output_file, "w")
+  cat("WKU,Title,App_Date,Issue_Date,Inventor,Assignee,ICL_Class,References,Claims\n",
+      file = fout)
   
   # setup vars
   curr_patrow <- 1
@@ -130,28 +127,28 @@ xml2_to_df <- function(input_file, output_file = NULL, append = FALSE) {
     
     ## process current patent
     curr_xml <- xml2::read_html(curr_patxml)
-    ans$WKU[curr_patrow] <- curr_xml %>%
+    WKU <- curr_xml %>%
       xml2::xml_find_first(".//us-patent-grant//publication-reference//document-id//doc-number") %>%
       xml2::xml_text() %>%
       format_field_df()
-    ans$Title[curr_patrow] <- curr_xml %>%
+    title <- curr_xml %>%
       xml2::xml_find_first(".//us-patent-grant//invention-title") %>%
       xml2::xml_text() %>%
       format_field_df()
-    ans$App_Date[curr_patrow] <- curr_xml %>%
+    app_date <- curr_xml %>%
       xml2::xml_find_first(".//us-patent-grant//application-reference//date") %>%
       xml2::xml_text() %>%
       lubridate::as_date() %>%
       as.character() %>%
       format_field_df()
-    ans$Issue_Date[curr_patrow] <- curr_xml %>%
+    issue_date <- curr_xml %>%
       xml2::xml_find_first(".//us-patent-grant//publication-reference//date") %>%
       xml2::xml_text() %>%
       lubridate::as_date() %>%
       as.character() %>%
       format_field_df()
     
-    ans$ICL_Class[curr_patrow] <- curr_xml %>%
+    icl_class <- curr_xml %>%
       xml2::xml_find_all(".//us-patent-grant//classification-ipc//main-classification") %>%
       vapply(USE.NAMES = FALSE,
              FUN.VALUE = character(1),
@@ -161,15 +158,14 @@ xml2_to_df <- function(input_file, output_file = NULL, append = FALSE) {
              }) %>%
       paste0(collapse = ";")
     
-    ans$Claims[curr_patrow] <- curr_xml %>%
+    claims <- curr_xml %>%
       xml2::xml_find_all(".//us-patent-grant//claims//claim//claim-text") %>%
       xml2::xml_text() %>%
       gsub(pattern = "\"", replacement = "", fixed = TRUE) %>%
-      gsub(pattern = "'", replacement = "", fixed = TRUE) %>%
       paste0(collapse = " ")
     
     # extract inventor
-    ans$Inventor[curr_patrow] <- curr_xml %>%
+    inventor <- curr_xml %>%
       xml2::xml_find_all(".//us-patent-grant//applicants//applicant//addressbook") %>%
       vapply(USE.NAMES = FALSE,
              FUN.VALUE = character(1),
@@ -187,7 +183,7 @@ xml2_to_df <- function(input_file, output_file = NULL, append = FALSE) {
       paste0(collapse = ";")
     
     # extract assignee
-    ans$Assignee[curr_patrow] <- curr_xml %>%
+    assignee <- curr_xml %>%
       xml2::xml_find_all(".//us-patent-grant//assignees//assignee") %>%
       vapply(USE.NAMES = FALSE,
              FUN.VALUE = character(1),
@@ -199,7 +195,7 @@ xml2_to_df <- function(input_file, output_file = NULL, append = FALSE) {
       paste0(collapse = ";")
     
     # extract references
-    ans$References[curr_patrow] <- curr_xml %>%
+    references <- curr_xml %>%
       xml2::xml_find_all(".//us-patent-grant//references-cited//citation//patcit") %>%
       vapply(USE.NAMES = FALSE,
              FUN.VALUE = character(1),
@@ -221,13 +217,34 @@ xml2_to_df <- function(input_file, output_file = NULL, append = FALSE) {
       paste0(collapse = ";") %>%
       gsub(pattern = ";;+", replacement = ";")
     
+    # output to file in CSV format
+    cat(paste0("\"",WKU,"\",",
+               "\"",title,"\",",
+               app_date,",",
+               issue_date,",",
+               "\"",inventor,"\",",
+               "\"",assignee,"\",",
+               "\"",icl_class,"\",",
+               "\"",references,"\",",
+               "\"",claims,"\""), "\n",
+        file = fout,
+        append = TRUE)
+    
     # update necessary vars
     print(paste("FINISHED PATENT", curr_patrow, "OUT OF", num_pats))
     curr_patrow <- curr_patrow + 1
     curr_patxml <- ""
   }
   close(con)
-  # at this point, `ans` contains all the converted data-----
+  close(fout)
+  
+  # make `ans` contain all the converted data, then delete file
+  ans <- utils::read.csv(file = temp_output_file,
+                         row.names = NULL,
+                         stringsAsFactors = FALSE,
+                         na.strings = c("NA", "N/A"),
+                         colClasses = rep("character", 9))
+  file.remove(temp_output_file)
   
   # if necessary, output CSV, otherwise just return
   if (is.null(output_file)) {

@@ -136,20 +136,14 @@ xml1_to_df_base <- function(input_file) {
   # setup data frame
   pat_sizes <- get_xml_sizes(input_file)
   num_pats <- length(pat_sizes)
-  ans <- data.frame(WKU = character(num_pats),
-                    Title = character(num_pats),
-                    App_Date = character(num_pats),
-                    Issue_Date = character(num_pats),
-                    Inventor = character(num_pats),
-                    Assignee = character(num_pats),
-                    ICL_Class = character(num_pats),
-                    References = character(num_pats),
-                    Claims = character(num_pats),
-                    stringsAsFactors = FALSE)
+  
+  temp_output_file <- "temp-patent-package-output.csv"
+  fout <- file(temp_output_file, "w")
+  cat("WKU,Title,App_Date,Issue_Date,Inventor,Assignee,ICL_Class,References,Claims\n",
+      file = fout)
   
   # setup vars
   curr_patrow <- 1
-  search_term <- "<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
   curr_patxml <- ""
   con <- file(input_file, "r")
   while (curr_patrow <= num_pats) {
@@ -162,48 +156,50 @@ xml1_to_df_base <- function(input_file) {
     
     ## process current patent
     curr_xml <- xml2::read_html(curr_patxml)
-    ans$WKU[curr_patrow] <- curr_xml %>%
-      xml2::xml_find_all(".//b110") %>%
+    WKU <- curr_xml %>%
+      xml2::xml_find_first(".//b110") %>%
       xml2::xml_text() %>%
       format_field_df()
-    ans$Title[curr_patrow] <- curr_xml %>%
-      xml2::xml_find_all(".//b540") %>%
+    title <- curr_xml %>%
+      xml2::xml_find_first(".//b540") %>%
       xml2::xml_text() %>%
       format_field_df()
-    ans$App_Date[curr_patrow] <- curr_xml %>%
-      xml2::xml_find_all(".//b220") %>%
-      xml2::xml_text() %>%
-      lubridate::as_date() %>%
-      as.character() %>%
-      format_field_df()
-    ans$Issue_Date[curr_patrow] <- curr_xml %>%
-      xml2::xml_find_all(".//b140") %>%
+    app_date <- curr_xml %>%
+      xml2::xml_find_first(".//b220") %>%
       xml2::xml_text() %>%
       lubridate::as_date() %>%
       as.character() %>%
       format_field_df()
-    ans$ICL_Class[curr_patrow] <- curr_xml %>%
+    issue_date <- curr_xml %>%
+      xml2::xml_find_first(".//b140") %>%
+      xml2::xml_text() %>%
+      lubridate::as_date() %>%
+      as.character() %>%
+      format_field_df()
+    icl_class <- curr_xml %>%
       xml2::xml_find_all(".//b511") %>%
       xml2::xml_text() %>%
       format_field_df()
-    ans$Claims[curr_patrow] <- curr_xml %>%
+    claims <- curr_xml %>%
       xml2::xml_find_all(".//cl//clm//ptext") %>%
       xml2::xml_text() %>%
+      gsub(pattern = "\"", replacement = "", fixed = TRUE) %>%
       paste0(collapse = " ")
     
     # get references (after removing foreign ones)
-    ans$References[curr_patrow] <- curr_xml %>%
+    references <- curr_xml %>%
       xml2::xml_find_all(".//pcit") %>%
-      vapply(FUN.VALUE = character(1),
+      vapply(USE.NAMES = FALSE,
+             FUN.VALUE = character(1),
              FUN = function(curr_pcit_xml) {
                # if foreign, return NA
                check_foreign <- curr_pcit_xml %>%
-                 xml2::xml_find_all(".//ctry")
+                 xml2::xml_find_first(".//ctry")
                if (length(check_foreign) > 0) return("")
                
                # if not foreign, return XML text
                ans <- curr_pcit_xml %>%
-                 xml2::xml_find_all(".//dnum") %>%
+                 xml2::xml_find_first(".//dnum") %>%
                  xml2::xml_text() %>%
                  strip_nonalphanum()
                
@@ -212,36 +208,46 @@ xml1_to_df_base <- function(input_file) {
       paste0(collapse = ";") %>%
       gsub(pattern = ";;+", replacement = ";")
     
-    #ans$References[curr_patrow] <- curr_xml %>%
-    #  xml2::xml_find_all(".//pcit//dnum") %>%
-    #  xml2::xml_text() %>%
-    #  format_field_df()
-      
     # get assignee
-    ans$Assignee[curr_patrow] <- curr_xml %>%
+    assignee <- curr_xml %>%
       xml2::xml_find_all(".//b731//nam") %>%
-      vapply(FUN.VALUE = character(1),
+      vapply(USE.NAMES = FALSE,
+             FUN.VALUE = character(1),
              FUN = function(curr_assign) {
                xml2::xml_text(curr_assign)
              }) %>%
       paste0(collapse = ";")
     
     # get inventor
-    ans$Inventor[curr_patrow] <- curr_xml %>%
+    inventor <- curr_xml %>%
       xml2::xml_find_all(".//b721//nam") %>%
-      vapply(FUN.VALUE = character(1),
+      vapply(USE.NAMES = FALSE,
+             FUN.VALUE = character(1),
              FUN = function(curr_inv) {
                curr_first <- curr_inv %>%
-                 xml2::xml_find_all(".//fnm") %>%
+                 xml2::xml_find_first(".//fnm") %>%
                  xml2::xml_text()
                
                curr_last <- curr_inv %>%
-                 xml2::xml_find_all(".//snm") %>%
+                 xml2::xml_find_first(".//snm") %>%
                  xml2::xml_text()
                
                paste(curr_first, curr_last)
              }) %>%
       paste0(collapse = ";")
+    
+    # output to file in CSV format
+    cat(paste0("\"",WKU,"\",",
+               "\"",title,"\",",
+               app_date,",",
+               issue_date,",",
+               "\"",inventor,"\",",
+               "\"",assignee,"\",",
+               "\"",icl_class,"\",",
+               "\"",references,"\",",
+               "\"",claims,"\""), "\n",
+        file = fout,
+        append = TRUE)
     
     # update necessary variables
     print(paste("FINISHED PATENT", curr_patrow, "OUT OF", num_pats))
@@ -249,6 +255,15 @@ xml1_to_df_base <- function(input_file) {
     curr_patxml <- ""
   }
   close(con)
+  close(fout)
+  
+  # make `ans` contain all the converted data, then delete file
+  ans <- utils::read.csv(file = temp_output_file,
+                         row.names = NULL,
+                         stringsAsFactors = FALSE,
+                         na.strings = c("NA", "N/A"),
+                         colClasses = rep("character", 9))
+  file.remove(temp_output_file)
   
   # return data frame
   return(ans)

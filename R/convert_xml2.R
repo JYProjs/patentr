@@ -239,11 +239,11 @@ xml2_to_df <- function(input_file, output_file = NULL, append = FALSE) {
   close(fout)
   
   # make `ans` contain all the converted data, then delete file
-  ans <- read.csv(file = temp_output_file,
-                  row.names = NULL,
-                  stringsAsFactors = FALSE,
-                  na.strings = c("NA", "N/A"),
-                  colClasses = rep("character", 9))
+  ans <- utils::read.csv(file = temp_output_file,
+                         row.names = NULL,
+                         stringsAsFactors = FALSE,
+                         na.strings = c("NA", "N/A"),
+                         colClasses = rep("character", 9))
   file.remove(temp_output_file)
   
   # if necessary, output CSV, otherwise just return

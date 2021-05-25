@@ -1,3 +1,92 @@
+# download file from USPTO website
+# assumes year >= 1976 and <= current year
+download_uspto <- function(year, week, destfile) {
+  # get date given year and week
+  # USPTO always uploads new files on Tuesdays
+  ans_date <- get_date_tues(year = year, week = week)
+  
+  # pick correct function to pass to based on year
+  if (year < 2002) {
+    download_uspto_txt(ans_date, destfile)
+  } else if (year < 2005) {
+    download_uspto_xml1(ans_date, destfile)
+  } else {
+    download_uspto_xml2(ans_date, destfile)
+  }
+}
+
+# download TXT file from USPTO website
+#' @importFrom magrittr "%>%"
+download_uspto_txt <- function(file_date, destfile) {
+  
+}
+
+# download XML1 file from USPTO website
+#' @importFrom magrittr "%>%"
+download_uspto_xml1 <- function(file_date, destfile) {
+  # base vars
+  filename_uspto <- "pgYYMMDD"
+  xml1_uspto_url <- "https://bulkdata.uspto.gov/data/patent/grant/redbook/fulltext/"
+  dest_file <- "temp-output.zip"
+  
+  # figure out file names
+  curr_month <- lubridate::month(file_date)
+  curr_day <- lubridate::day(file_date)
+  curr_year <- lubridate::year(file_date)
+  curr_file <- filename_uspto %>%
+    gsub(pattern = "YY", replacement = substr(curr_year, 3, 4), fixed = TRUE) %>%
+    gsub(pattern = "MM", replacement = int_with_len(curr_month, 2), fixed = TRUE) %>%
+    gsub(pattern = "DD", replacement = int_with_len(curr_day, 2), fixed = TRUE)
+  curr_url <- xml1_uspto_url %>%
+    paste0(curr_year, "/", curr_file, ".zip")
+  extra_file1 <- paste0(curr_file, ".SGM")
+  extra_file2 <- paste0(curr_file, ".sgm")
+  curr_file1 <- paste0(curr_file, ".XML")
+  curr_file2 <- paste0(curr_file, ".xml")
+  
+  # download appropriate zip from USPTO bulk website
+  utils::download.file(url = curr_url,
+                       destfile = dest_file,
+                       quiet = TRUE)
+  
+  # uncompress
+  utils::unzip(zipfile = dest_file)
+  
+  # if file doesn't exist, there's a problem
+  if (!file.exists(curr_file1) &
+      !file.exists(curr_file2)) {
+    stop(paste("File", curr_file1, "and", curr_file2,
+               "do not exist after unzipping"),
+         call. = FALSE)
+    # otherwise, assign the correct name to the curr_file var for later use
+  } else if (file.exists(curr_file1)) {
+    curr_file <- curr_file1
+  } else if (file.exists(curr_file2)) {
+    curr_file <- curr_file2
+  } else {
+    stop("Logically should never be able to reach this line")
+  }
+  
+  # if extra file, then delete
+  if (file.exists(extra_file1)) {
+    file.remove(extra_file1)
+  } else if (file.exists(extra_file2)) {
+    file.remove(extra_file2)
+  }
+  
+  # delete zip
+  file.remove(dest_file)
+  
+  # rename downloaded file to desired name
+  file.rename(from = curr_file, to = destfile)
+}
+
+# download XML2 file from USPTO website
+#' @importFrom magrittr "%>%"
+download_uspto_xml2 <- function(file_date, destfile) {
+  
+}
+
 # figure out date of Nth Tuesday in given year
 # important b/c USPTO issues patents every Tues
 #' @importFrom magrittr "%>%"

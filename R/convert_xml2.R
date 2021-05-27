@@ -101,22 +101,21 @@ convert_xml2_to_df <- function(date_df, output_file = NULL, append = TRUE) {
   return(ans)
 }
 
-xml2_to_df <- function(input_file, output_file = NULL, append = FALSE) {
-  # convert XML2 to CSV
+# actually does work to convert XML1 to CSV
+xml2_to_csv_base <- function(xml2_file, csv_con) {
+  # scope out file being converted
   pat_sizes <- get_xml_sizes(input_file)
   num_pats <- length(pat_sizes)
   
-  temp_output_file <- ifelse(is.null(output_file),
-                             "temp-patent-package-output.csv",
-                             output_file)
-  fout <- file(temp_output_file, "w")
-  cat("WKU,Title,App_Date,Issue_Date,Inventor,Assignee,ICL_Class,References,Claims\n",
-      file = fout)
+  # setup progress bar
+  pb <- progress::progress_bar$new(format = "[:bar] :current/:total (:percent)",
+                                   total = num_pats)
+  pb$tick(0)
   
-  # setup vars
+  # setup input
   curr_patrow <- 1
   curr_patxml <- ""
-  con <- file(input_file, "r")
+  con <- file(xml2_file, "r")
   while (curr_patrow <= num_pats) {
     # read as much as necessary for current patent
     curr_patxml <- readLines(con, n = pat_sizes[curr_patrow]) %>%
@@ -227,35 +226,13 @@ xml2_to_df <- function(input_file, output_file = NULL, append = FALSE) {
                "\"",icl_class,"\",",
                "\"",references,"\",",
                "\"",claims,"\""), "\n",
-        file = fout,
+        file = csv_con,
         append = TRUE)
     
-    # update necessary vars
-    print(paste("FINISHED PATENT", curr_patrow, "OUT OF", num_pats))
+    # update loop vars
+    pb$tick()
     curr_patrow <- curr_patrow + 1
     curr_patxml <- ""
   }
   close(con)
-  close(fout)
-  
-  # make `ans` contain all the converted data, then delete file
-  ans <- utils::read.csv(file = temp_output_file,
-                         row.names = NULL,
-                         stringsAsFactors = FALSE,
-                         na.strings = c("NA", "N/A"),
-                         colClasses = rep("character", 9))
-  file.remove(temp_output_file)
-  
-  # if necessary, output CSV, otherwise just return
-  if (is.null(output_file)) {
-    return(ans)
-  } else {
-    utils::write.csv(x = ans,
-                     file = output_file,
-                     row.names = FALSE,
-                     append = append,
-                     col.names = !append)
-    
-    return(TRUE)
-  }
 }

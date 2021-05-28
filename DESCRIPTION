@@ -15,7 +15,7 @@ Authors@R:
              family = "Desai",
              role = "aut"),
       person(given = "Jacob",
-             familiy = "Scott",
+             family = "Scott",
              role = "aut"),
       person(given = "Peter",
              family = "Erdi",

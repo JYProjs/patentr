@@ -3,7 +3,6 @@
 # date_df: column1 = year; column2 = week
 # output_file should be a CSV
 # returns TRUE if successful, FALSE otherwise
-#' @export
 convert_xml2 <- function(date_df,
                          output_file, # output_file needs to be a connection to simplify things
                          header = TRUE) {
@@ -85,7 +84,8 @@ xml2_to_csv_base <- function(xml2_file, csv_con) {
     title <- curr_xml %>%
       xml2::xml_find_first(".//us-patent-grant//invention-title") %>%
       xml2::xml_text() %>%
-      format_field_df()
+      format_field_df() %>%
+      remove_csv_issues()
     app_date <- curr_xml %>%
       xml2::xml_find_first(".//us-patent-grant//application-reference//date") %>%
       xml2::xml_text() %>%
@@ -113,7 +113,8 @@ xml2_to_csv_base <- function(xml2_file, csv_con) {
       xml2::xml_find_all(".//us-patent-grant//claims//claim//claim-text") %>%
       xml2::xml_text() %>%
       gsub(pattern = "\"", replacement = "", fixed = TRUE) %>%
-      paste0(collapse = " ")
+      paste0(collapse = " ") %>%
+      remove_csv_issues()
     
     # extract inventor
     inventor <- curr_xml %>%
@@ -131,7 +132,8 @@ xml2_to_csv_base <- function(xml2_file, csv_con) {
                
                paste(curr_first, curr_last)
              }) %>%
-      paste0(collapse = ";")
+      paste0(collapse = ";") %>%
+      remove_csv_issues()
     
     # extract assignee
     assignee <- curr_xml %>%
@@ -143,7 +145,8 @@ xml2_to_csv_base <- function(xml2_file, csv_con) {
                  xml2::xml_find_first(".//addressbook//orgname") %>%
                  xml2::xml_text()
              }) %>%
-      paste0(collapse = ";")
+      paste0(collapse = ";") %>%
+      remove_csv_issues()
     
     # extract references
     references <- curr_xml %>%
@@ -177,7 +180,7 @@ xml2_to_csv_base <- function(xml2_file, csv_con) {
                "\"",assignee,"\",",
                "\"",icl_class,"\",",
                "\"",references,"\",",
-               "\"",claims,"\""), "\n",
+               "\"",claims,"\"\n"),
         file = csv_con,
         append = TRUE)
     

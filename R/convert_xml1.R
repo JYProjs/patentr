@@ -3,7 +3,6 @@
 # date_df: column1 = year; column2 = week
 # output_file should be a CSV
 # returns TRUE if successful, FALSE otherwise
-#' @export
 convert_xml1 <- function(date_df,
                          output_file, # output_file needs to be a connection to simplify things
                          header = TRUE) {
@@ -86,7 +85,8 @@ xml1_to_csv_base <- function(xml1_file, csv_con) {
     title <- curr_xml %>%
       xml2::xml_find_first(".//b540") %>%
       xml2::xml_text() %>%
-      format_field_df()
+      format_field_df() %>%
+      remove_csv_issues()
     app_date <- curr_xml %>%
       xml2::xml_find_first(".//b220") %>%
       xml2::xml_text() %>%
@@ -107,7 +107,8 @@ xml1_to_csv_base <- function(xml1_file, csv_con) {
       xml2::xml_find_all(".//cl//clm//ptext") %>%
       xml2::xml_text() %>%
       gsub(pattern = "\"", replacement = "", fixed = TRUE) %>%
-      paste0(collapse = " ")
+      paste0(collapse = " ") %>%
+      remove_csv_issues()
     
     # get references (after removing foreign ones)
     references <- curr_xml %>%
@@ -139,7 +140,8 @@ xml1_to_csv_base <- function(xml1_file, csv_con) {
              FUN = function(curr_assign) {
                xml2::xml_text(curr_assign)
              }) %>%
-      paste0(collapse = ";")
+      paste0(collapse = ";") %>%
+      remove_csv_issues()
     
     # get inventor
     inventor <- curr_xml %>%
@@ -157,7 +159,8 @@ xml1_to_csv_base <- function(xml1_file, csv_con) {
                
                paste(curr_first, curr_last)
              }) %>%
-      paste0(collapse = ";")
+      paste0(collapse = ";") %>%
+      remove_csv_issues()
     
     # output to file in CSV format
     cat(paste0("\"",WKU,"\",",
@@ -168,7 +171,7 @@ xml1_to_csv_base <- function(xml1_file, csv_con) {
                "\"",assignee,"\",",
                "\"",icl_class,"\",",
                "\"",references,"\",",
-               "\"",claims,"\""), "\n",
+               "\"",claims,"\"\n"),
         file = csv_con,
         append = TRUE)
     

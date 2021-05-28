@@ -317,3 +317,9 @@ remove_txt_checksum <- function(wku) {
   end_substr <- nchar(wku) - 1
   substr(wku, start = 1, stop = end_substr)
 }
+
+# remove commas and quotes that cause issues with CSV file format
+remove_csv_issues <- function(txt) {
+  txt %>%
+    gsub(pattern = '[",]', replacement = "")
+}

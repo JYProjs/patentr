@@ -27,7 +27,7 @@
 #' get_bulk_patent_data(year = rep(1980, 5), week = 48:52,
 #'                      output_file = "patent-data.csv")
 #' }
-get_bulk_patent_data <- function(year, week, output_file = NULL) {
+get_bulk_patent_data <- function(year, week, output_file) {
   # valid arguments?
   if (sum(is.na(year)) > 0 | sum(is.na(week)) > 0 |
       sum(is.null(year)) > 0 | sum(is.null(week)) > 0) {
@@ -69,38 +69,24 @@ get_bulk_patent_data <- function(year, week, output_file = NULL) {
   date_df_txt <- dplyr::filter(date_df, .data$Year <= 2001)
   date_df_xml1<- dplyr::filter(date_df, .data$Year >= 2002 & .data$Year <= 2004)
   date_df_xml2<- dplyr::filter(date_df, .data$Year >= 2005)
+  
+  # output header
+  cat("WKU,Title,App_Date,Issue_Date,Inventor,Assignee,ICL_Class,References,Claims\n",
+      file = output_file)
 
-  # NEED TO ADD OTHER 2 FORMATS HERE
-  # get data for all 3
-  df_store <- vector(mode = "list", length = 3)
-  df_store[[1]] <- convert_txt_to_df(date_df_txt, output_file = output_file)
-  df_store[[2]] <- convert_xml1_to_df(date_df_xml1, output_file = output_file)
-  df_store[[3]] <- convert_xml2_to_df(date_df_xml2, output_file = output_file)
-
-  # combine (if in df format)
-  ans <- TRUE
-  if (is.null(output_file)) {
-    ans <- data.table::rbindlist(df_store)
-    attr(ans, ".internal.selfref") <- NULL # remove unnecessary attribute
+  # get data for all 3 and return TRUE if all worked
+  if (nrow(date_df_txt) > 0) {
+    convert_txt(date_df_txt, output_file, header = FALSE)
+  }
+  if (nrow(date_df_xml1) > 0) {
+    convert_xml1(date_df_xml1, output_file, header = FALSE)
+  }
+  if (nrow(date_df_xml2) > 0) {
+    convert_xml2(date_df_xml2, output_file, header = FALSE)
   }
   
   # convert WKU to patent numbers (make sure nothing was ruined in the process)
   # only do if non-empty to avoid errors
-  if (nrow(ans) > 0) {
-    num_missing_before <- sum(is.na(ans$WKU))
-    ans <- ans %>%
-      dplyr::mutate(WKU = wku_to_pno(.data$WKU)) %>%
-      dplyr::rename(Pat_ID = .data$WKU)
-    num_missing_after <- sum(is.na(ans$Pat_ID))
-    if (num_missing_after != num_missing_before) {
-      stop(paste("Something messed up w/ WKU conversion, NA before =",
-                 num_missing_before,
-                 "and after =",
-                 num_missing_after),
-           call. = FALSE)
-    }
-  }
-
-  # return (TRUE or df)
-  return(ans)
+  
+  TRUE
 }

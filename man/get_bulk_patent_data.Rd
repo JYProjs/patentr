@@ -4,7 +4,7 @@
 \alias{get_bulk_patent_data}
 \title{Get Bulk Patent Data from USPTO}
 \usage{
-get_bulk_patent_data(year, week, output_file = NULL)
+get_bulk_patent_data(year, week, output_file)
 }
 \arguments{
 \item{year}{integer vector containing years from which patents should be

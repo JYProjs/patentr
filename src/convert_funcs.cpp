@@ -63,6 +63,21 @@ void formatName(std::string &name)
     name = revised + " " + temp;
 }
 
+std::string formatDate(const std::string &date)
+{
+    if (date.length() != 8) return date;
+    
+    std::string ans = "";
+    int i;
+    for (i = 0; i < 4; i++) ans.push_back(date[i]);
+    ans.push_back('-');
+    for (; i < 6; i++) ans.push_back(date[i]);
+    ans.push_back('-');
+    for (; i < 8; i++) ans.push_back(date[i]);
+    
+    return ans;
+}
+
 void appendToField(std::string &orig, const std::string &addon)
 {
     if (orig == "")
@@ -188,11 +203,13 @@ int txt_to_df_cpp(std::string input_file, std::string output_file, bool append, 
             {
                 // remove quotes from text claims field first to avoid CSV issues
                 removeQuotes(currClaims);
-                
+                removeQuotes(inventor);
+                removeQuotes(assignee);
+                removeQuotes(title);
                 fout << currID
                   << ",\"" << title
-                  << "\"," << appDate
-                  << "," << issDate
+                  << "\"," << formatDate(appDate)
+                  << "," << formatDate(issDate)
                   << ",\"" << inventor
                   << "\",\"" << assignee
                   << "\"," << iclClass
@@ -323,10 +340,13 @@ int txt_to_df_cpp(std::string input_file, std::string output_file, bool append, 
 
     // output details of last patent
     removeQuotes(currClaims);
+    removeQuotes(inventor);
+    removeQuotes(assignee);
+    removeQuotes(title);
     fout << currID
          << ",\"" << title
-         << "\"," << appDate
-         << "," << issDate
+         << "\"," << formatDate(appDate)
+         << "," << formatDate(issDate)
          << ",\"" << inventor
          << "\",\"" << assignee
          << "\"," << iclClass

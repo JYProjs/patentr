@@ -18,7 +18,7 @@ used in most sources. The References provided in bulk patent files are
 also in patent number format, not in WKU format.
 }
 \examples{
-# convert sample WKU to patent number and print
-sample_wku <- "RE028671"
+# convert sample WKUs to patent number and print
+sample_wku <- c("RE028671", "03930271")
 print(wku_to_pno(sample_wku))
 }

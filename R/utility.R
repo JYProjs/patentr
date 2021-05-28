@@ -253,7 +253,21 @@ strip_nonalphanum <- function(char_vec) {
 # convert WKU to patent number (e.g. remove checksum digit)
 # wku parameter should be a character vector
 # source: https://www.uspto.gov/patents/apply/applying-online/patent-number
+#' Get Patient Number from WKU
+#'
+#' Convert WKU identifier provided in bulk patent files to patent number
+#' used in most sources. The References provided in bulk patent files are
+#' also in patent number format, not in WKU format.
+#'
+#' @param wku character vector containing patent WKUs
+#' @return character vector containing patent numbers
+#' @export
 #' @import magrittr
+#' @importFrom rlang .data
+#' @examples
+#' # convert sample WKU to patent number and print
+#' sample_wku <- "RE028671"
+#' print(wku_to_pno(sample_wku))
 wku_to_pno <- function(wku) {
   vapply(X = wku,
          USE.NAMES = FALSE,

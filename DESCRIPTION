@@ -50,4 +50,7 @@ URL: https://JYProjs.github.io/patentr/
 BugReports: https://github.com/JYProjs/patentr/issues
 Suggests: 
     testthat,
-    covr
+    covr,
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr

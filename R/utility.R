@@ -7,7 +7,7 @@ download_uspto <- function(year, week, destfile) {
   
   # pick correct function to pass to based on year
   if (year < 2002) {
-    download_uspto_txt(ans_date, destfile)
+    download_uspto_txt(ans_date, week, destfile)
   } else if (year < 2005) {
     download_uspto_xml1(ans_date, destfile)
   } else {
@@ -17,8 +17,37 @@ download_uspto <- function(year, week, destfile) {
 
 # download TXT file from USPTO website
 #' @importFrom magrittr "%>%"
-download_uspto_txt <- function(file_date, destfile) {
+download_uspto_txt <- function(file_date, curr_week, destfile) {
+  # base vars
+  filename_uspto <- "pftapsYYYYMMDD_wkNN"
+  txt_uspto_url <- "https://bulkdata.uspto.gov/data/patent/grant/redbook/fulltext/"
+  dest_file <- "temp-output.zip"
   
+  # figure out file names
+  curr_year <- lubridate::year(file_date)
+  curr_month <- lubridate::month(file_date)
+  curr_day <- lubridate::day(file_date)
+  curr_file <- filename_uspto %>%
+    gsub(pattern = "YYYY", replacement = curr_year, fixed = TRUE) %>%
+    gsub(pattern = "MM", replacement = int_with_len(curr_month, 2), fixed = TRUE) %>%
+    gsub(pattern = "DD", replacement = int_with_len(curr_day, 2), fixed = TRUE) %>%
+    gsub(pattern = "NN", replacement = int_with_len(curr_week, 2), fixed = TRUE)
+  curr_url <- txt_uspto_url %>%
+    paste0(curr_year, "/", curr_file, ".zip")
+  curr_file <- paste0(curr_file, ".txt")
+  
+  # download appropriate zip from USPTO bulk website
+  utils::download.file(url = curr_url,
+                       destfile = dest_file)
+  
+  # uncompress
+  utils::unzip(zipfile = dest_file)
+  
+  # delete zip
+  file.remove(dest_file)
+  
+  # rename downloaded file to desired name
+  file.rename(curr_file, destfile)
 }
 
 # download XML1 file from USPTO website

@@ -54,13 +54,13 @@ get_bulk_patent_data <- function(year, week, output_file) {
     stop(paste("Cannot get patent data from the future; passed year =",
                year, "& today =", curr_day))
   }
-  if (sum(week < 0) > 0 | sum(week > 53) > 0) {
+  if (sum(week <= 0) > 0 | sum(week > 53) > 0) {
     stop(paste("`week` variable must be valid (between 1 and 53, inclusive);",
                "passed week =", week))
   }
   # add checks to see if week is in the future
   # add checks to see if week is valid for the year (e.g. if 53 and year doesn't have start of 53rd week)
-
+  
   # make appropriate data frame
   date_df <- data.frame(Year = year,
                         Week = week)

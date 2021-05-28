@@ -1,6 +1,8 @@
 test_that("test TXT conversion", {
   # convert sample file w/ internal function
-  tester <- txt_to_df_r(input_file = "TXT-sample-2")
+  txt_to_df_cpp("TXT-sample-2", "test-output.csv", FALSE, TRUE)
+  tester <- readr::read_csv("test-output.csv")
+  file.remove("test-output.csv")
   
   ## confirm output accuracy
   # basic dimensions
@@ -13,7 +15,9 @@ test_that("test TXT conversion", {
 
 test_that("test XML1 conversion", {
   # convert sample file w/ internal function
-  tester <- xml1_to_df_r(input_file = "XML1-sample-14")
+  xml1_to_csv_base("XML1-sample-14", "test-output.csv")
+  tester <- readr::read_csv("test-output.csv", col_names = FALSE)
+  file.remove("test-output.csv")
   
   ## confirm output accuracy
   # basic dimensions
@@ -23,7 +27,9 @@ test_that("test XML1 conversion", {
 
 test_that("test XML2 conversion", {
   # convert sample file w/ internal function
-  tester <- xml2_to_df(input_file = "XML2-sample-10")
+  xml2_to_csv_base("XML2-sample-10", "test-output.csv")
+  tester <- readr::read_csv("test-output.csv", col_names = FALSE)
+  file.remove("test-output.csv")
   
   ## confirm output accuracy
   # basic dimensions

@@ -35,30 +35,31 @@ as follows:
 library("patentr")
 
 # download patents from the first week of 1976
-patent_data1 <- get_bulk_patent_data(year = 1976, week = 1)
+get_bulk_patent_data(year = 1976,
+                     week = 1,
+                     output_file = "patent_output1.csv")
 
 # download patents from:
 #   1. week 1 of 1976 (TXT format in USPTO)
 #   2. week 48 of 2002 (XML format 1 in USPTO)
 #   3. week 19 of 2006 (XML format 2 in USPTO)
 # N.B. it will take a few minutes to run the next line
-patent_data2 <- get_bulk_patent_data(year = c(1976, 2002, 2006),
-                                     week = c(1, 48, 19))
+get_bulk_patent_data(year = c(1976, 2002, 2006),
+                     week = c(1, 48, 19),
+                     output_file = "patent_output2.csv")
 ```
-
-## Functionality
 
 ### Data collected for each patent
 
 * patent title
 * application date
-* patent issue date
-* text in patent abstract
+* issue date
 * inventor name(s)
 * assignee name(s)
 * ICL classification
-* unique identifier (AKA patent number)
+* unique identifier (WKU)
 * referenced patent numbers
+* claims
 
 ## Contribute
 
@@ -67,4 +68,4 @@ You can also fork the patentr repository and create pull requests to add feature
 
 ## Citation
 
-Wadhwa RR, Yu J, Erdi P. patentr: Access USPTO Bulk Data in Tidy Rectangular Format. 2021; R package version 0.1.0. URL https://github.com/JYProjs/patentr.
+Wadhwa RR, Yu J, Desai MY, Scott JG, Érdi P. patentr: Access USPTO Bulk Data in Tidy Rectangular Format. 2021; R package version 0.1.0. URL https://github.com/JYProjs/patentr.

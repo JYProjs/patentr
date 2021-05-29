@@ -41,7 +41,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">patentr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.2</span>
       </span>
     </div>
 
@@ -49,18 +49,30 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
 <li>
   <a href="reference/index.html">Reference</a>
 </li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+<li>
+      <a href="articles/intro.html">Introduction to patentr</a>
+    </li>
+  </ul>
+</li>
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
   <a href="https://github.com/JYProjs/patentr/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -90,48 +102,47 @@
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
 <p>To install patentr, run the following R code:</p>
-<div class="sourceCode" id="cb1"><pre class="downlit">
-<span class="co"># install from CRAN</span>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># install from CRAN</span>
 <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"patentr"</span><span class="op">)</span>
 
 <span class="co"># install development version from GitHub</span>
-<span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github</a></span><span class="op">(</span><span class="st">"JYProjs/patentr"</span><span class="op">)</span></pre></div>
+<span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github</a></span><span class="op">(</span><span class="st">"JYProjs/patentr"</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="sample-code" class="section level2">
 <h2 class="hasAnchor">
 <a href="#sample-code" class="anchor"></a>Sample code</h2>
 <p>Bulk patent data can be downloaded using the year and week (within each year) as follows:</p>
-<div class="sourceCode" id="cb2"><pre class="downlit">
-<span class="co"># load patentr</span>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># load patentr</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://JYProjs.github.io/patentr/">"patentr"</a></span><span class="op">)</span>
 
 <span class="co"># download patents from the first week of 1976</span>
-<span class="va">patent_data1</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/get_bulk_patent_data.html">get_bulk_patent_data</a></span><span class="op">(</span>year <span class="op">=</span> <span class="fl">1976</span>, week <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>
+<span class="fu"><a href="reference/get_bulk_patent_data.html">get_bulk_patent_data</a></span><span class="op">(</span>year <span class="op">=</span> <span class="fl">1976</span>,
+                     week <span class="op">=</span> <span class="fl">1</span>,
+                     output_file <span class="op">=</span> <span class="st">"patent_output1.csv"</span><span class="op">)</span>
 
 <span class="co"># download patents from:</span>
 <span class="co">#   1. week 1 of 1976 (TXT format in USPTO)</span>
 <span class="co">#   2. week 48 of 2002 (XML format 1 in USPTO)</span>
 <span class="co">#   3. week 19 of 2006 (XML format 2 in USPTO)</span>
 <span class="co"># N.B. it will take a few minutes to run the next line</span>
-<span class="va">patent_data2</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/get_bulk_patent_data.html">get_bulk_patent_data</a></span><span class="op">(</span>year <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1976</span>, <span class="fl">2002</span>, <span class="fl">2006</span><span class="op">)</span>,
-                                     week <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">48</span>, <span class="fl">19</span><span class="op">)</span><span class="op">)</span></pre></div>
-</div>
-<div id="functionality" class="section level2">
-<h2 class="hasAnchor">
-<a href="#functionality" class="anchor"></a>Functionality</h2>
+<span class="fu"><a href="reference/get_bulk_patent_data.html">get_bulk_patent_data</a></span><span class="op">(</span>year <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1976</span>, <span class="fl">2002</span>, <span class="fl">2006</span><span class="op">)</span>,
+                     week <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">48</span>, <span class="fl">19</span><span class="op">)</span>,
+                     output_file <span class="op">=</span> <span class="st">"patent_output2.csv"</span><span class="op">)</span></code></pre></div>
 <div id="data-collected-for-each-patent" class="section level3">
 <h3 class="hasAnchor">
 <a href="#data-collected-for-each-patent" class="anchor"></a>Data collected for each patent</h3>
 <ul>
 <li>patent title</li>
 <li>application date</li>
-<li>patent issue date</li>
-<li>text in patent abstract</li>
+<li>issue date</li>
 <li>inventor name(s)</li>
 <li>assignee name(s)</li>
 <li>ICL classification</li>
-<li>unique identifier (AKA patent number)</li>
+<li>unique identifier (WKU)</li>
 <li>referenced patent numbers</li>
+<li>claims</li>
 </ul>
 </div>
 </div>
@@ -143,7 +154,7 @@
 <div id="citation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#citation" class="anchor"></a>Citation</h2>
-<p>Wadhwa RR, Yu J, Erdi P. patentr: Access USPTO Bulk Data in Tidy Rectangular Format. 2021; R package version 0.1.0. URL <a href="https://github.com/JYProjs/patentr" class="uri">https://github.com/JYProjs/patentr</a>.</p>
+<p>Wadhwa RR, Yu J, Desai MY, Scott JG, Érdi P. patentr: Access USPTO Bulk Data in Tidy Rectangular Format. 2021; R package version 0.1.0. URL <a href="https://github.com/JYProjs/patentr" class="uri">https://github.com/JYProjs/patentr</a>.</p>
 </div>
 </div>
   </div>
@@ -170,8 +181,10 @@
 <div class="developers">
 <h2>Developers</h2>
 <ul class="list-unstyled">
-<li>Raoul Wadhwa <br><small class="roles"> Author, maintainer </small>  </li>
+<li>Raoul Wadhwa <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0003-0503-9580" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
 <li>James Yu <br><small class="roles"> Author </small>  </li>
+<li>Milind Desai <br><small class="roles"> Author </small>  </li>
+<li>Jacob Scott <br><small class="roles"> Author </small>  </li>
 <li>Peter Erdi <br><small class="roles"> Author </small>  </li>
 </ul>
 </div>
@@ -189,7 +202,7 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Raoul Wadhwa, James Yu, Peter Erdi.</p>
+  <p>Developed by Raoul Wadhwa, James Yu, Milind Desai, Jacob Scott, Peter Erdi.</p>
 </div>
 
 <div class="pkgdown">

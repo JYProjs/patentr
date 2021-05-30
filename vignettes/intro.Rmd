@@ -20,7 +20,7 @@ knitr::opts_chunk$set(
 
 Information about patents approved in the United States is publicly available.
 The United States Patent and Trademark Office (USPTO) provides digital bulk patent files on its website containing basic details including patent titles, application and issue dates, classification, and so on.
-Although files are available for patents issued during or after 1976, patents from different periods are accessible in different formats: patents issued between 1976 and 2001 (inclusive) are provided in TXT files; patents issued between 2002 and 2004 (inclusive) are provided in XML format; and patents issued during or after 2005 are provided in a distinct XML format.
+Although files are available for patents issued during or after 1976, patents from different periods are accessible in different formats: patents issued between 1976 and 2001 (inclusive) are provided in TXT files; patents issued between 2002 and 2004 (inclusive) are provided in one XML format; and patents issued during or after 2005 are provided in a second XML format.
 The `patentr` R package accesses USPTO bulk data files and converts them to rectangular CSV format so that users do not have to deal with distinct formats and can work with patent data more easily.
 
 ## Installation

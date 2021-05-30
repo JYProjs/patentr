@@ -1,7 +1,7 @@
 ---
 title: "Introduction to patentr"
 author: "Raoul R. Wadhwa, James Yu, Milind Y. Desai, Jacob G. Scott, Péter Érdi"
-date: "28 May 2021"
+date: "30 May 2021"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Introduction to patentr}
@@ -99,3 +99,22 @@ hist(lag_time,
 
 In addition to application and issue dates, the downloaded USPTO data contains multiple text columns.
 More information about these can be found at https://uspto.gov.
+
+## Available data for each patent
+
+Text in boldface corresponds to column names in datasets returned by `get_bulk_patent_data`.
+Note that the following definitions for each column in the returned dataset are intuitive, not official, definitions.
+For official definitions, visit https://uspto.gov.
+
+* **WKU:** unique identifier for each patent.
+This is not identical to the patent number, but is derived from it.
+The WKU generally has an additional leading zero or a checksum at the end.
+* **Title:** patent title.
+* **App_Date:** date the patent application was submitted.
+* **Issue_Date:** date the patent was filed.
+* **Inventor:** person(s) or organization(s) credited with inventing the patent.
+* **Assignee:** person(s) or organization(s) with an ownership interest in the patent.
+* **ICL_Class:** patent class based on the International Patent Classification (IPC) system.
+For more information, visit https://www.wipo.int/classifications/ipc/en.
+* **References:** set of patents cited by this patent.
+* **Claims:** text field of claims regarding what should be protected by this patent.

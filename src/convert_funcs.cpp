@@ -303,7 +303,7 @@ int txt_to_df_cpp(std::string input_file, std::string output_file, bool append, 
             // add this reference to set of references for this patent
             appendToField(refs, tempRef);
         }
-        else if (inPatent && startsWith(currLine, "CLMS"))
+        else if (inPatent && (startsWith(currLine, "CLMS") || startsWith(currLine, "DCLM")))
         {
             // we're in claims, text will be coming soon
             inClaims = true;
@@ -321,6 +321,7 @@ int txt_to_df_cpp(std::string input_file, std::string output_file, bool append, 
         }
         else if (inPatent && inClaims && (startsWith(currLine, "PAR  ") ||
                                           startsWith(currLine, "PA1  ") ||
+                                          startsWith(currLine, "PAL  ") ||
                                           startsWith(currLine, "     ")))
         {
             // add claims text

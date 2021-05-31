@@ -1,0 +1,4 @@
+# rmarkdown intermediate files
+*.pdf
+*.tex
+^patentr-preprint_files$

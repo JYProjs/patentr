@@ -12,7 +12,7 @@ Authors@R:
              family = "Yu",
              role = "aut"),
       person(given = "Hayley",
-             familiy = "Beltz",
+             family = "Beltz",
              role = "aut"),
       person(given = "Milind",
              family = "Desai",

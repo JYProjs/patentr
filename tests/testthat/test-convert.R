@@ -36,3 +36,20 @@ test_that("test XML2 conversion", {
   expect_equal(nrow(tester), 10)
   expect_equal(ncol(tester), 9)
 })
+
+test_that("test download from USPTO", {
+  skip_on_cran()
+  
+  # download and convert single file
+  test_file <- get_bulk_patent_data(year = 1976, week = 1,
+                                    output_file = "test.csv")
+  
+  # make sure file exists
+  expect_true(file.exists("test.csv"))
+  
+  # delete file
+  file.remove("test.csv")
+  
+  # make sure file doesn't exist any more
+  expect_false(file.exists("test.csv"))
+})

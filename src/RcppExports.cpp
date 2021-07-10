@@ -5,6 +5,11 @@
 
 using namespace Rcpp;
 
+#ifdef RCPP_USE_GLOBAL_ROSTREAM
+Rcpp::Rostream<true>&  Rcpp::Rcout = Rcpp::Rcpp_cout_get();
+Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
+#endif
+
 // get_xml_sizes
 std::vector<int> get_xml_sizes(std::string input_file);
 RcppExport SEXP _patentr_get_xml_sizes(SEXP input_fileSEXP) {

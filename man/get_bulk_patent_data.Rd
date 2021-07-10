@@ -13,8 +13,8 @@ collected}
 \item{week}{integer vector of weeks within the corresponding `year` element
 from which patents should be collected}
 
-\item{output_file}{if `NULL`, returns a data frame; if a `character`
-(single-element vector), will output to that file in CSV format}
+\item{output_file}{variable of class `character`; will output to that file
+in CSV format}
 }
 \value{
 either `TRUE` (placeholder) or object of class `data.frame` (see

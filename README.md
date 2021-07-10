@@ -68,4 +68,4 @@ You can also fork the patentr repository and create pull requests to add feature
 
 ## Citation
 
-Wadhwa RR, Yu J, Beltz H, Desai MY, Scott JG, Érdi P. patentr: Access USPTO Bulk Data in Tidy Rectangular Format. 2021; R package version 0.1.0. URL https://github.com/JYProjs/patentr.
+Wadhwa RR, Yu J, Beltz H, Desai MY, Érdi P, Scott JG. patentr: Access USPTO Bulk Data in Tidy Rectangular Format. 2021; R package version 0.1.0. URL https://github.com/JYProjs/patentr.

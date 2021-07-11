@@ -30,9 +30,7 @@ convert_xml1 <- function(date_df,
     unlist()
   
   # return TRUE only if all of the downloads + conversions were successful
-  ans %>%
-    all %>%
-    return
+  ans %>% all
 }
 
 # converts single XML1 file to CSV

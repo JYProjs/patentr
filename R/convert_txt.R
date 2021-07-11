@@ -29,9 +29,7 @@ convert_txt <- function(date_df,
   )
   
   # return TRUE only if all of the downloads + conversions were successful
-  ans %>%
-    all %>%
-    return
+  ans %>% all
 }
 
 # converts single TXT file to CSV

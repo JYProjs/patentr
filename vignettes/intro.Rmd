@@ -98,13 +98,13 @@ hist(lag_time,
 ```
 
 In addition to application and issue dates, the downloaded USPTO data contains multiple text columns.
-More information about these can be found at https://uspto.gov.
+More information about these can be found at https://www.uspto.gov/.
 
 ## Available data for each patent
 
 Text in boldface corresponds to column names in datasets returned by `get_bulk_patent_data`.
 Note that the following definitions for each column in the returned dataset are intuitive, not official, definitions.
-For official definitions, visit https://uspto.gov.
+For official definitions, visit https://www.uspto.gov/.
 
 * **WKU:** unique identifier for each patent.
 This is not identical to the patent number, but is derived from it.

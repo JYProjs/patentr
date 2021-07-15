@@ -36,7 +36,6 @@ Description: Converts TXT and XML data curated by the United States Patent and
     <doi:10.1007/s11192-007-1763-3>.
 License: MIT + file LICENSE
 Encoding: UTF-8
-LazyData: true
 RoxygenNote: 7.1.1
 LinkingTo: Rcpp
 Imports: 

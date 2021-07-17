@@ -54,7 +54,8 @@ Suggests:
     covr,
     knitr,
     readr,
-    rmarkdown
+    rmarkdown,
+    tibble
 VignetteBuilder: knitr
 LazyData: true
 Depends: 

@@ -1,7 +1,7 @@
 ---
 title: "Introduction to patentr"
-author: "Raoul R. Wadhwa, James Yu, Milind Y. Desai, Jacob G. Scott, Péter Érdi"
-date: "30 May 2021"
+author: "Raoul R. Wadhwa, James Yu, Milind Y. Desai, Péter Érdi, Jacob G. Scott"
+date: "17 July 2021"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Introduction to patentr}
@@ -43,16 +43,17 @@ First, we load `patentr` and the packages we'll need for this vignette.
 
 ```{r setup, message=FALSE}
 library(patentr)
-library(readr)     # to input data
+library(tibble)    # for the tibble data containers
 library(magrittr)  # for the pipe (%>%) operator
 library(dplyr)     # to work with patent data
+library(lubridate) # to work with dates
 ```
 
 Then, we use it to acquire data from the first 2 weeks in 1976.
 Since `patentr` stores the data as a local CSV file, we must import the data into R.
-For this, we use `read_csv` from the `readr` package.
+For this, we use the `read.csv` function.
 
-```{r acquire}
+```{r acquire, eval=FALSE}
 # acquire data from USPTO
 get_bulk_patent_data(
   year = rep(1976, 2),            # each week must have a corresponding year
@@ -61,13 +62,26 @@ get_bulk_patent_data(
 )
 
 # import data into R
-patent_data <- read_csv("temp_output.csv")
+patent_data <- read.csv("temp_output.csv") %>%
+  as_tibble() %>%
+  mutate(App_Date = as_date(App_Date),
+         Issue_Date=as_date(Issue_Date))
 
 # delete local file (optional - but we no longer need it for this tutorial)
 file.remove("temp_output.csv")
 ```
 
+The `patent_data` variable should be equal to the `y1976w1` dataset provided
+with `patentr`.
 We peek at the patent data to get a glimpse of its structure.
+
+```{r set_data, include=FALSE}
+data("y1976w1")
+patent_data <- y1976w1 %>%
+  as_tibble %>%
+  mutate(App_Date = as_date(App_Date),
+         Issue_Date=as_date(Issue_Date))
+```
 
 ```{r peek}
 tail(patent_data)

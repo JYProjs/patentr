@@ -1,8 +1,12 @@
 test_that("test TXT conversion", {
+  skip_on_cran()
+  
   # convert sample file w/ internal function
-  txt_to_df_cpp("TXT-sample-2", "test-output.csv", FALSE, TRUE)
-  tester <- readr::read_csv("test-output.csv")
-  file.remove("test-output.csv")
+  txt_to_df_cpp("TXT-sample-2", "test-output.csv", FALSE, FALSE)
+  tester <- readr::read_csv("test-output.csv", col_names = FALSE)
+  #file.remove("test-output.csv")
+  #print(head(tester))
+  #print(tail(tester))
   
   ## confirm output accuracy
   # basic dimensions
@@ -14,10 +18,14 @@ test_that("test TXT conversion", {
 })
 
 test_that("test XML1 conversion", {
+  skip_on_cran()
+  
   # convert sample file w/ internal function
   xml1_to_csv_base("XML1-sample-14", "test-output.csv")
   tester <- readr::read_csv("test-output.csv", col_names = FALSE)
-  file.remove("test-output.csv")
+  #file.remove("test-output.csv")
+  #print(head(tester))
+  #print(tail(tester))
   
   ## confirm output accuracy
   # basic dimensions
@@ -26,10 +34,14 @@ test_that("test XML1 conversion", {
 })
 
 test_that("test XML2 conversion", {
+  skip_on_cran()
+  
   # convert sample file w/ internal function
   xml2_to_csv_base("XML2-sample-10", "test-output.csv")
   tester <- readr::read_csv("test-output.csv", col_names = FALSE)
-  file.remove("test-output.csv")
+  #file.remove("test-output.csv")
+  #print(head(tester))
+  #print(tail(tester))
   
   ## confirm output accuracy
   # basic dimensions

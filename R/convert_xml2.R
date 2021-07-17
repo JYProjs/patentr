@@ -51,7 +51,11 @@ xml2_to_csv <- function(year, week, output_file) {
 }
 
 # actually does work to convert XML1 to CSV
-xml2_to_csv_base <- function(xml2_file, csv_con) {
+xml2_to_csv_base <- function(xml2_file, csv_con, append = FALSE) {
+  if (!append) {
+    cat("", file = csv_con, append = FALSE)
+  }
+  
   # scope out file being converted
   pat_sizes <- get_xml_sizes(xml2_file)
   num_pats <- length(pat_sizes)

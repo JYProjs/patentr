@@ -56,5 +56,6 @@ Suggests:
     readr,
     rmarkdown
 VignetteBuilder: knitr
+LazyData: true
 Depends: 
     R (>= 2.10)

@@ -9,4 +9,5 @@
 ^codecov\.yml$
 ^docs$
 ^preprint$
+^data-raw$
 .*\.csv$

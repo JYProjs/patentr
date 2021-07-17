@@ -1,0 +1,22 @@
+#' Patents issued in week 1 of the year 1976.
+#'
+#' A dataset containing information about patents issued by the United States
+#' Patent and Trademark Office (USPTO) <https://www.uspto.gov/> in the first
+#' week of the year 1976. This can be recreated by running the
+#' `get_bulk_patent_data` function in the `patentr` package and setting the
+#' `year` and `week` parameters to `1976` and `1`, respectively.
+#'
+#' @format A data frame with 1379 rows and 9 variables:
+#' \describe{
+#'   \item{WKU}{unique patient identifier}
+#'   \item{Title}{patent title}
+#'   \item{App_Date}{date on which patent application was submitted}
+#'   \item{Issue_Date}{date on which patent was issued by USPTO}
+#'   \item{Inventor}{patent inventor(s)}
+#'   \item{Assignee}{person(s)/corporation(s) to whom the patent was assigned}
+#'   \item{ICL_Class}{patent classification based on IPC system}
+#'   \item{References}{patents referenced by this patent}
+#'   \item{Claims}{free-text claims made about value of this patent}
+#' }
+#' @source \url{https://www.uspto.gov/}
+"y1976w1"

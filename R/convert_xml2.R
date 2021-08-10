@@ -36,7 +36,7 @@ convert_xml2 <- function(date_df,
 # converts single XML2 file to CSV
 # always appends b/c output_file contains at least the header row
 # year is always a single year (not vector w/ multiple); same for week param
-xml2_to_csv <- function(year, week, output_file) {
+xml2_to_csv <- function(year, week, output_file, append = TRUE) {
   # download bulk file from USPTO
   temp_filename <- "temp_ans.xml"
   download_uspto(year = year, week = week, destfile = temp_filename)
@@ -44,7 +44,8 @@ xml2_to_csv <- function(year, week, output_file) {
   
   # convert downloaded file
   xml2_to_csv_base(xml2_file = temp_filename,
-                   csv_con = output_file)
+                   csv_con = output_file,
+                   append = append)
   
   # delete downloaded file
   file.remove(temp_filename)

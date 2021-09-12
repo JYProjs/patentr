@@ -1,7 +1,7 @@
 Package: patentr
 Type: Package
 Title: Access USPTO Bulk Data in Tidy Rectangular Format
-Version: 0.1.2
+Version: 0.1.4
 Authors@R:
     c(person(given = "Raoul",
              family = "Wadhwa",

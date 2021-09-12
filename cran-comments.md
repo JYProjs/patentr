@@ -1,8 +1,7 @@
 ## Test environments
 
-* local install (OS X), r-release
 * local install (Debian 10), r-release
-* AppVeyor CI (Windows), r-release
+* win-builder (Windows), r-release
 * win-builder (Windows), r-devel
 
 ## R CMD check results

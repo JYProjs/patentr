@@ -79,8 +79,17 @@ xml1_to_csv_base <- function(xml1_file, csv_con, append = FALSE) {
     curr_patxml <- paste0("<start>", curr_patxml, "</start>")
     
     ## process current patent
-    curr_xml <- xml2::read_html(curr_patxml) %>%
-      suppressWarnings()
+    skipped <- FALSE
+    curr_xml <- tryCatch(
+      { xml2::read_html(curr_patxml) %>% suppressWarnings() },
+      error = function(e) {
+        skipped <<- TRUE
+        print(paste("SKIPPED A PATENT:", e))
+      }
+    )
+    
+    if (skipped) next
+    
     WKU <- curr_xml %>%
       xml2::xml_find_first(".//b110") %>%
       xml2::xml_text() %>%

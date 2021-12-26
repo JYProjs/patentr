@@ -88,7 +88,13 @@ xml1_to_csv_base <- function(xml1_file, csv_con, append = FALSE) {
       }
     )
     
-    if (skipped) next
+    # skip patent due to (most likely) incorrect XML formatting
+    if (skipped) {
+      pb$tick()
+      curr_patrow <- curr_patrow + 1
+      curr_patxml <- ""
+      next
+    }
     
     WKU <- curr_xml %>%
       xml2::xml_find_first(".//b110") %>%
